@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Website ôn tập từ vựng tiếng Trung HSK cho học sinh" />
+  <title>Chinese Vocabulary Review</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">汉</div>
+      <div>
+        <h1>Chinese Vocabulary Review</h1>
+        <p>Ôn từ vựng HSK • Flashcard • Quiz • Luyện dịch</p>
+      </div>
+    </div>
+    <div class="progress-pill" id="progressPill">Tiến độ: 0%</div>
+  </header>
+
+  <main class="container">
+    <section id="homeView" class="view active">
+      <div class="hero card">
+        <div>
+          <span class="eyebrow">HỌC TIẾNG TRUNG MỖI NGÀY</span>
+          <h2>Chọn cấp độ và bài học</h2>
+          <p>
+            Website mẫu dành cho giáo viên và học sinh. Bạn có thể thay toàn bộ
+            dữ liệu từ vựng trong file <code>data.js</code>.
+          </p>
+        </div>
+        <div class="hero-badge">📚</div>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>1. Chọn cấp độ HSK</h3>
+          <div class="segmented" id="levelButtons"></div>
+        </div>
+
+        <div class="card">
+          <h3>2. Chọn bài học</h3>
+          <select id="lessonSelect" class="input"></select>
+          <button class="btn primary full" id="startLessonBtn">Bắt đầu học</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Chức năng</h3>
+        <div class="feature-grid">
+          <button class="feature" data-go="vocabView">
+            <span>📖</span><strong>Từ vựng</strong><small>Xem toàn bộ từ trong bài</small>
+          </button>
+          <button class="feature" data-go="flashcardView">
+            <span>🃏</span><strong>Flashcard</strong><small>Lật thẻ và ghi nhớ</small>
+          </button>
+          <button class="feature" data-go="quizView">
+            <span>✅</span><strong>Quiz</strong><small>Trắc nghiệm tự chấm điểm</small>
+          </button>
+          <button class="feature" data-go="translateView">
+            <span>✍️</span><strong>Luyện dịch</strong><small>Dịch Việt → Trung</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="vocabView" class="view">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow" id="vocabBreadcrumb"></span>
+          <h2>Danh sách từ vựng</h2>
+        </div>
+        <button class="btn ghost" data-go="homeView">← Trang chủ</button>
+      </div>
+      <div class="card">
+        <input id="searchInput" class="input" placeholder="Tìm chữ Hán, pinyin hoặc nghĩa tiếng Việt..." />
+      </div>
+      <div id="vocabList" class="vocab-list"></div>
+    </section>
+
+    <section id="flashcardView" class="view">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow" id="flashBreadcrumb"></span>
+          <h2>Flashcard</h2>
+        </div>
+        <button class="btn ghost" data-go="homeView">← Trang chủ</button>
+      </div>
+
+      <div class="flash-wrap">
+        <div class="flashcard" id="flashcard">
+          <div class="flash-inner">
+            <div class="flash-face flash-front">
+              <span class="muted" id="flashIndex"></span>
+              <div class="hanzi" id="flashHanzi"></div>
+              <div class="hint">Nhấn vào thẻ để xem đáp án</div>
+            </div>
+            <div class="flash-face flash-back">
+              <div class="pinyin" id="flashPinyin"></div>
+              <div class="meaning" id="flashMeaning"></div>
+              <hr />
+              <div class="example" id="flashExample"></div>
+              <div class="muted" id="flashExampleVi"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn ghost" id="prevCard">← Trước</button>
+          <button class="btn danger" id="dontKnowBtn">Chưa nhớ</button>
+          <button class="btn success" id="knowBtn">Đã nhớ</button>
+          <button class="btn ghost" id="nextCard">Tiếp →</button>
+        </div>
+        <div class="card mini">
+          <strong>Từ cần ôn lại:</strong>
+          <span id="reviewCount">0</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="quizView" class="view">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow" id="quizBreadcrumb"></span>
+          <h2>Quiz trắc nghiệm</h2>
+        </div>
+        <button class="btn ghost" data-go="homeView">← Trang chủ</button>
+      </div>
+
+      <div class="card quiz-card">
+        <div class="quiz-meta">
+          <span id="quizCounter"></span>
+          <span id="quizScore"></span>
+        </div>
+        <h3 id="quizQuestion"></h3>
+        <div id="quizOptions" class="quiz-options"></div>
+        <div id="quizFeedback" class="feedback"></div>
+        <button class="btn primary" id="nextQuestionBtn" disabled>Câu tiếp theo</button>
+      </div>
+    </section>
+
+    <section id="translateView" class="view">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow" id="translateBreadcrumb"></span>
+          <h2>Luyện dịch Việt → Trung</h2>
+        </div>
+        <button class="btn ghost" data-go="homeView">← Trang chủ</button>
+      </div>
+
+      <div class="card">
+        <div class="quiz-meta">
+          <span id="translateCounter"></span>
+          <span id="translateScore"></span>
+        </div>
+
+        <p class="muted">Hãy dịch câu sau sang tiếng Trung:</p>
+        <h3 id="translatePrompt"></h3>
+
+        <textarea id="translateAnswer" class="input textarea" placeholder="Nhập câu tiếng Trung ở đây..."></textarea>
+
+        <div class="controls left">
+          <button class="btn primary" id="checkTranslateBtn">Kiểm tra</button>
+          <button class="btn ghost" id="showAnswerBtn">Xem đáp án</button>
+          <button class="btn ghost" id="nextTranslateBtn">Câu tiếp theo</button>
+        </div>
+
+        <div id="translateFeedback" class="feedback"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Chinese Vocabulary Review • Có thể triển khai miễn phí bằng GitHub Pages</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
