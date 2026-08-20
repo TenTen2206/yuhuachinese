@@ -1,405 +1,120 @@
-let selectedLevel = "HSK3";
-let selectedLesson = "Bài 1";
-let currentWords = [];
 
-let flashIndex = 0;
-let quizIndex = 0;
-let quizScoreValue = 0;
-let quizQuestions = [];
-let translateIndex = 0;
-let translateScoreValue = 0;
-let translateChecked = false;
+let currentLesson=null, currentModule="vocab", exIndex=0;
 
-const stateKey = "chinese-vocab-progress-v1";
+const $=id=>document.getElementById(id);
+const totalWords=HSK3_DATA.reduce((s,l)=>s+l.words.length,0);
+$("globalStat").textContent=`${totalWords} mục từ • 18 bài`;
 
-function $id(id) {
-  return document.getElementById(id);
+function statusText(l){
+  if(l.status==="complete") return `<span class="badge complete">✓ Có dữ liệu từ vựng</span>`;
+  if(l.status==="partial") return `<span class="badge partial">⚠ Chưa đầy đủ</span>`;
+  return `<span class="badge missing">Chưa có dữ liệu từ PDF</span>`;
+}
+function renderLessons(){
+  $("lessonGrid").innerHTML=HSK3_DATA.map(l=>`
+  <button class="lesson-card" onclick="openLesson(${l.n})">
+    <div class="lesson-num">BÀI ${l.n}</div>
+    <h3>${l.title}</h3>
+    ${statusText(l)}
+    <div class="muted" style="margin-top:8px">${l.words.length?l.words.length+" từ":"Chờ bổ sung"}</div>
+  </button>`).join("");
+}
+window.openLesson=n=>{
+  currentLesson=HSK3_DATA.find(x=>x.n===n); exIndex=0;
+  $("home").classList.remove("active");$("lesson").classList.add("active");
+  $("lessonNo").textContent=`BÀI ${currentLesson.n} • HSK 3`;
+  $("lessonTitle").textContent=currentLesson.title;
+  $("lessonStatus").innerHTML=statusText(currentLesson)+(currentLesson.note?`<div class="muted" style="margin-top:8px">${currentLesson.note}</div>`:"");
+  $("lessonBreadcrumb").textContent=`HSK 3 / Bài ${currentLesson.n}`;
+  showModule("vocab");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+$("backBtn").onclick=()=>{$("lesson").classList.remove("active");$("home").classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
+
+document.querySelectorAll("[data-module]").forEach(b=>b.onclick=()=>showModule(b.dataset.module));
+
+function showModule(mod){
+  currentModule=mod; exIndex=0;
+  if(!currentLesson)return;
+  const c=$("moduleContent");
+  if(mod==="vocab") return renderVocab(c);
+  if(mod.startsWith("text")) return renderText(c,Number(mod.replace("text","")));
+  if(mod==="review") return renderExercise(c,"review");
+  if(mod==="translate") return renderExercise(c,"translate");
+  if(mod==="fill") return renderExercise(c,"fill");
 }
 
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+function renderVocab(c){
+  if(!currentLesson.words.length){c.innerHTML='<div class="text-placeholder">Chưa có dữ liệu từ vựng cho bài này trong PDF hiện tại.</div>';return;}
+  c.innerHTML=`<h3>Từ vựng</h3><div class="word-list">${
+    currentLesson.words.map((w,i)=>`<div class="word-row">
+      <div class="muted">${i+1}</div><div class="hanzi">${w.hanzi}</div><div class="pinyin">${w.pinyin}</div>
+      <div class="vi">${w.vi}</div><button class="speak" onclick="speak('${w.hanzi}')">🔊</button>
+    </div>`).join("")
+  }</div>`;
+}
+function renderText(c,id){
+  const t=currentLesson.texts.find(x=>x.id===id);
+  c.innerHTML=`<h3>${t.title}</h3>
+  <div class="text-placeholder">
+    <b>课文 ${id}</b><br><br>
+    ${t.content? t.content : t.note}
+    <br><br><span class="muted">Phần này đã được thiết kế sẵn để sau đó nhập nguyên văn bài khóa từ giáo trình.</span>
+  </div>`;
 }
 
-function normalizeChinese(text) {
-  return String(text)
-    .trim()
-    .replace(/[，。！？、,.!?;；:“”"'（）()\s]/g, "");
+function getExerciseSet(type){
+  return currentLesson[type]||[];
 }
-
-function getProgress() {
-  try {
-    return JSON.parse(localStorage.getItem(stateKey)) || {
-      known: {},
-      review: {},
-      quiz: {}
-    };
-  } catch {
-    return { known: {}, review: {}, quiz: {} };
-  }
+function renderExercise(c,type){
+  const set=getExerciseSet(type);
+  if(!set.length){c.innerHTML='<div class="text-placeholder">Chưa có bài tập cho bài này.</div>';return;}
+  const item=set[exIndex%set.length];
+  let title="", prompt="", answer="";
+  if(type==="review"){title="Ôn tập từ vựng";prompt=item.question;answer=item.answer;}
+  if(type==="translate"){title="Dịch câu";prompt=item.vi;answer=item.zh;}
+  if(type==="fill"){title="Bài tập điền từ";prompt=item.prompt;answer=item.answer;}
+  c.innerHTML=`<div class="exercise">
+    <div class="muted">Câu ${exIndex+1}/${set.length}</div>
+    <h3>${title}</h3>
+    <p style="font-size:20px">${prompt}</p>
+    <div class="answer-box"><input id="exerciseAnswer" placeholder="Nhập câu trả lời..."></div>
+    <div class="controls">
+      <button class="primary" onclick="checkAnswer('${escapeJs(answer)}')">Kiểm tra</button>
+      <button class="secondary" onclick="showAnswer('${escapeJs(answer)}')">Xem đáp án</button>
+      <button class="secondary" onclick="nextExercise('${type}')">Câu tiếp theo</button>
+    </div>
+    <div id="feedback" class="feedback"></div>
+  </div>`;
 }
-
-function saveProgress(progress) {
-  localStorage.setItem(stateKey, JSON.stringify(progress));
-  updateProgressPill();
+window.escapeJs=s=>String(s).replaceAll("\\","\\\\").replaceAll("'","\\'");
+window.checkAnswer=answer=>{
+  const v=$("exerciseAnswer").value.trim().replace(/\s+/g,"");
+  const a=answer.trim().replace(/\s+/g,"");
+  $("feedback").textContent=v===a?"✅ Chính xác!":`❌ Chưa đúng.`;
 }
+window.showAnswer=answer=>$("feedback").textContent=`Đáp án: ${answer}`;
+window.nextExercise=type=>{const set=getExerciseSet(type);exIndex=(exIndex+1)%set.length;renderExercise($("moduleContent"),type)}
 
-function lessonKey() {
-  return `${selectedLevel}-${selectedLesson}`;
+function speak(text){
+  if(!("speechSynthesis" in window))return;
+  speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text);u.lang="zh-CN";u.rate=.82;speechSynthesis.speak(u);
 }
+window.speak=speak;
 
-function renderLevelButtons() {
-  const wrap = $id("levelButtons");
-  wrap.innerHTML = "";
-
-  Object.keys(COURSE_DATA).forEach(level => {
-    const btn = document.createElement("button");
-    btn.className = `level-btn ${level === selectedLevel ? "active" : ""}`;
-    btn.textContent = COURSE_DATA[level].title;
-
-    btn.addEventListener("click", () => {
-      selectedLevel = level;
-      selectedLesson = Object.keys(COURSE_DATA[level].lessons)[0];
-      renderLevelButtons();
-      renderLessonSelect();
-      loadLesson();
-    });
-
-    wrap.appendChild(btn);
-  });
+$("globalSearch").oninput=e=>{
+  const q=e.target.value.trim().toLowerCase();
+  if(!q){$("searchResults").classList.add("hidden");return}
+  const hits=[];HSK3_DATA.forEach(l=>l.words.forEach(w=>{if(`${w.hanzi} ${w.pinyin} ${w.vi}`.toLowerCase().includes(q))hits.push({l,w})}));
+  $("searchResults").classList.remove("hidden");
+  $("searchResults").innerHTML=hits.length?hits.slice(0,80).map(x=>`<div class="search-hit"><b>Bài ${x.l.n}</b><span class="hanzi">${x.w.hanzi}</span><span class="pinyin">${x.w.pinyin}</span><span>${x.w.vi}</span></div>`).join(""):'<div class="muted">Không tìm thấy.</div>';
 }
+$("clearSearch").onclick=()=>{$("globalSearch").value="";$("searchResults").classList.add("hidden")}
 
-function renderLessonSelect() {
-  const select = $id("lessonSelect");
-  select.innerHTML = "";
-
-  Object.keys(COURSE_DATA[selectedLevel].lessons).forEach(lesson => {
-    const option = document.createElement("option");
-    option.value = lesson;
-    option.textContent = lesson;
-    option.selected = lesson === selectedLesson;
-    select.appendChild(option);
-  });
-
-  select.onchange = (e) => {
-    selectedLesson = e.target.value;
-    loadLesson();
-  };
-}
-
-function loadLesson() {
-  currentWords = COURSE_DATA[selectedLevel].lessons[selectedLesson];
-  flashIndex = 0;
-  renderBreadcrumbs();
-  renderVocabulary();
-  setupFlashcard();
-  setupQuiz();
-  setupTranslation();
-  updateProgressPill();
-}
-
-function renderBreadcrumbs() {
-  const text = `${COURSE_DATA[selectedLevel].title} • ${selectedLesson}`;
-  ["vocabBreadcrumb", "flashBreadcrumb", "quizBreadcrumb", "translateBreadcrumb"]
-    .forEach(id => $id(id).textContent = text);
-}
-
-function showView(viewId) {
-  document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-  $id(viewId).classList.add("active");
-
-  if (viewId === "vocabView") renderVocabulary();
-  if (viewId === "flashcardView") setupFlashcard();
-  if (viewId === "quizView") setupQuiz();
-  if (viewId === "translateView") setupTranslation();
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-document.querySelectorAll("[data-go]").forEach(btn => {
-  btn.addEventListener("click", () => showView(btn.dataset.go));
+document.querySelectorAll("[data-global]").forEach(btn=>btn.onclick=()=>{
+  const type=btn.dataset.global;
+  const first=HSK3_DATA.find(l=>l.words.length);
+  openLesson(first.n);showModule(type);
 });
 
-$id("startLessonBtn").addEventListener("click", () => {
-  loadLesson();
-  showView("vocabView");
-});
-
-/* Vocabulary */
-function renderVocabulary(filter = "") {
-  const list = $id("vocabList");
-  if (!list) return;
-
-  const q = filter.trim().toLowerCase();
-  const filtered = currentWords.filter(w =>
-    `${w.chinese} ${w.pinyin} ${w.vietnamese}`.toLowerCase().includes(q)
-  );
-
-  list.innerHTML = filtered.map((w, idx) => `
-    <article class="vocab-item">
-      <div>
-        <div class="vocab-hanzi">${escapeHtml(w.chinese)}</div>
-        <div class="pinyin">${escapeHtml(w.pinyin)}</div>
-      </div>
-      <div>
-        <div class="meaning">${escapeHtml(w.vietnamese)}</div>
-        <div class="example">${escapeHtml(w.example)}</div>
-        <div class="muted">${escapeHtml(w.exampleVi)}</div>
-      </div>
-      <button class="btn ghost speak-btn" data-text="${escapeHtml(w.chinese)}">🔊 Nghe</button>
-    </article>
-  `).join("");
-
-  document.querySelectorAll(".speak-btn").forEach(btn => {
-    btn.addEventListener("click", () => speakChinese(btn.dataset.text));
-  });
-}
-
-$id("searchInput").addEventListener("input", e => renderVocabulary(e.target.value));
-
-function speakChinese(text) {
-  if (!("speechSynthesis" in window)) {
-    alert("Trình duyệt này chưa hỗ trợ chức năng đọc.");
-    return;
-  }
-
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = "zh-CN";
-  utter.rate = 0.85;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(utter);
-}
-
-/* Flashcards */
-function setupFlashcard() {
-  const card = $id("flashcard");
-  if (!card || !currentWords.length) return;
-  card.classList.remove("flipped");
-  renderFlashcard();
-  updateReviewCount();
-}
-
-function renderFlashcard() {
-  const word = currentWords[flashIndex];
-  if (!word) return;
-
-  $id("flashIndex").textContent = `${flashIndex + 1} / ${currentWords.length}`;
-  $id("flashHanzi").textContent = word.chinese;
-  $id("flashPinyin").textContent = word.pinyin;
-  $id("flashMeaning").textContent = word.vietnamese;
-  $id("flashExample").textContent = word.example;
-  $id("flashExampleVi").textContent = word.exampleVi;
-  $id("flashcard").classList.remove("flipped");
-}
-
-$id("flashcard").addEventListener("click", () => {
-  $id("flashcard").classList.toggle("flipped");
-});
-
-$id("prevCard").addEventListener("click", () => {
-  flashIndex = (flashIndex - 1 + currentWords.length) % currentWords.length;
-  renderFlashcard();
-});
-
-$id("nextCard").addEventListener("click", () => {
-  flashIndex = (flashIndex + 1) % currentWords.length;
-  renderFlashcard();
-});
-
-$id("knowBtn").addEventListener("click", () => {
-  const progress = getProgress();
-  const key = lessonKey();
-  progress.known[key] = progress.known[key] || [];
-  progress.review[key] = progress.review[key] || [];
-
-  const word = currentWords[flashIndex].chinese;
-  if (!progress.known[key].includes(word)) progress.known[key].push(word);
-  progress.review[key] = progress.review[key].filter(x => x !== word);
-
-  saveProgress(progress);
-  updateReviewCount();
-  flashIndex = (flashIndex + 1) % currentWords.length;
-  renderFlashcard();
-});
-
-$id("dontKnowBtn").addEventListener("click", () => {
-  const progress = getProgress();
-  const key = lessonKey();
-  progress.review[key] = progress.review[key] || [];
-
-  const word = currentWords[flashIndex].chinese;
-  if (!progress.review[key].includes(word)) progress.review[key].push(word);
-
-  saveProgress(progress);
-  updateReviewCount();
-  flashIndex = (flashIndex + 1) % currentWords.length;
-  renderFlashcard();
-});
-
-function updateReviewCount() {
-  const progress = getProgress();
-  const review = progress.review[lessonKey()] || [];
-  $id("reviewCount").textContent = review.length;
-}
-
-/* Quiz */
-function shuffle(array) {
-  return [...array].sort(() => Math.random() - 0.5);
-}
-
-function setupQuiz() {
-  if (!currentWords.length) return;
-  quizIndex = 0;
-  quizScoreValue = 0;
-  quizQuestions = shuffle(currentWords).map(word => {
-    const wrong = shuffle(currentWords.filter(w => w.chinese !== word.chinese))
-      .slice(0, Math.min(3, currentWords.length - 1))
-      .map(w => w.vietnamese);
-
-    const fallback = ["đi học", "mua đồ", "ăn cơm", "làm việc"];
-    while (wrong.length < 3) {
-      const f = fallback.find(x => !wrong.includes(x) && x !== word.vietnamese);
-      if (!f) break;
-      wrong.push(f);
-    }
-
-    return {
-      word,
-      options: shuffle([word.vietnamese, ...wrong]).slice(0, 4)
-    };
-  });
-
-  renderQuiz();
-}
-
-function renderQuiz() {
-  const item = quizQuestions[quizIndex];
-  if (!item) return;
-
-  $id("quizCounter").textContent = `Câu ${quizIndex + 1}/${quizQuestions.length}`;
-  $id("quizScore").textContent = `Điểm: ${quizScoreValue}`;
-  $id("quizQuestion").innerHTML = `“<strong>${escapeHtml(item.word.chinese)}</strong>” nghĩa là gì?`;
-  $id("quizFeedback").textContent = "";
-  $id("nextQuestionBtn").disabled = true;
-
-  $id("quizOptions").innerHTML = item.options.map(opt =>
-    `<button class="option">${escapeHtml(opt)}</button>`
-  ).join("");
-
-  document.querySelectorAll("#quizOptions .option").forEach(btn => {
-    btn.addEventListener("click", () => answerQuiz(btn, item.word.vietnamese));
-  });
-}
-
-function answerQuiz(button, correctAnswer) {
-  const options = document.querySelectorAll("#quizOptions .option");
-  options.forEach(btn => {
-    btn.disabled = true;
-    if (btn.textContent === correctAnswer) btn.classList.add("correct");
-  });
-
-  if (button.textContent === correctAnswer) {
-    quizScoreValue++;
-    $id("quizFeedback").textContent = "✅ Chính xác!";
-  } else {
-    button.classList.add("wrong");
-    $id("quizFeedback").textContent = `❌ Chưa đúng. Đáp án: ${correctAnswer}`;
-  }
-
-  $id("quizScore").textContent = `Điểm: ${quizScoreValue}`;
-  $id("nextQuestionBtn").disabled = false;
-}
-
-$id("nextQuestionBtn").addEventListener("click", () => {
-  if (quizIndex < quizQuestions.length - 1) {
-    quizIndex++;
-    renderQuiz();
-  } else {
-    const progress = getProgress();
-    progress.quiz[lessonKey()] = {
-      score: quizScoreValue,
-      total: quizQuestions.length,
-      updatedAt: new Date().toISOString()
-    };
-    saveProgress(progress);
-
-    $id("quizQuestion").textContent = "Hoàn thành!";
-    $id("quizOptions").innerHTML = "";
-    $id("quizFeedback").textContent =
-      `Bạn trả lời đúng ${quizScoreValue}/${quizQuestions.length} câu.`;
-    $id("nextQuestionBtn").disabled = true;
-  }
-});
-
-/* Translation */
-function setupTranslation() {
-  translateIndex = 0;
-  translateScoreValue = 0;
-  translateChecked = false;
-  renderTranslation();
-}
-
-function renderTranslation() {
-  const word = currentWords[translateIndex];
-  if (!word) return;
-
-  $id("translateCounter").textContent = `Câu ${translateIndex + 1}/${currentWords.length}`;
-  $id("translateScore").textContent = `Đúng: ${translateScoreValue}`;
-  $id("translatePrompt").textContent = word.translatePrompt;
-  $id("translateAnswer").value = "";
-  $id("translateFeedback").textContent = "";
-  translateChecked = false;
-}
-
-$id("checkTranslateBtn").addEventListener("click", () => {
-  if (translateChecked) return;
-
-  const word = currentWords[translateIndex];
-  const user = normalizeChinese($id("translateAnswer").value);
-  const correct = normalizeChinese(word.translateAnswer);
-
-  if (!user) {
-    $id("translateFeedback").textContent = "Hãy nhập câu trả lời trước.";
-    return;
-  }
-
-  if (user === correct) {
-    translateScoreValue++;
-    $id("translateFeedback").textContent = "✅ Chính xác!";
-  } else {
-    $id("translateFeedback").textContent =
-      `❌ Chưa trùng khớp. Đáp án gợi ý: ${word.translateAnswer}`;
-  }
-
-  translateChecked = true;
-  $id("translateScore").textContent = `Đúng: ${translateScoreValue}`;
-});
-
-$id("showAnswerBtn").addEventListener("click", () => {
-  const word = currentWords[translateIndex];
-  $id("translateFeedback").textContent = `Đáp án: ${word.translateAnswer}`;
-});
-
-$id("nextTranslateBtn").addEventListener("click", () => {
-  translateIndex = (translateIndex + 1) % currentWords.length;
-  renderTranslation();
-});
-
-/* Overall progress */
-function updateProgressPill() {
-  const progress = getProgress();
-  const known = progress.known[lessonKey()] || [];
-  const total = currentWords.length || 1;
-  const percent = Math.round((known.length / total) * 100);
-  const pill = $id("progressPill");
-  if (pill) pill.textContent = `Tiến độ: ${percent}%`;
-}
-
-/* Init */
-renderLevelButtons();
-renderLessonSelect();
-loadLesson();
+renderLessons();
