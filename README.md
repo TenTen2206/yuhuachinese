@@ -1,21 +1,24 @@
-# YuHua Chinese — HSK Learning Hub v26
+# YuHua Chinese — HSK Learning Hub v27
 
-## HSK 1
-- Đã thêm đủ 15 bài theo giáo trình New HSK Course 1.
-- Mỗi bài có danh sách từ vựng theo bài.
-- Mỗi bài có 3 bài khóa (đúng cấu trúc của giáo trình HSK 1).
-- Cấu trúc ôn tập tương tự HSK 3: Từ vựng → Bài khóa 1/2/3 → Flashcard → Điền từ → Mini quiz.
-- Có phát âm 2 tốc độ và hiện/ẩn pinyin.
-- Không tự thêm bài khóa ngoài nội dung giáo trình.
+Tính năng mới: tổng kết ôn tập theo từng cấp HSK.
 
-## HSK 2 / HSK 3
-Giữ nguyên dữ liệu của bản v25.
+Sau khi chọn HSK 1, HSK 2 hoặc HSK 3 sẽ có mục:
+- Ôn tập HSK 1
+- Ôn tập HSK 2
+- Ôn tập HSK 3
 
-## File cần upload GitHub
+Mỗi mục gồm:
+- Tổng hợp toàn bộ từ vựng của tất cả bài trong cấp đó.
+- Hán tự + pinyin + nghĩa tiếng Việt + phát âm.
+- Một bài tập chung 12 câu lấy ngẫu nhiên từ toàn bộ vốn từ.
+- 3 dạng câu: chọn nghĩa, chọn pinyin, chọn chữ Hán theo nghĩa.
+- Có nút tạo bộ câu hỏi mới.
+
+## Upload GitHub
 - index.html
 - style-v4.css
 - hsk1-data.js
 - hsk2-data.js
 - data-v4.js
-- app-v26.js
+- app-v27.js
 - hero-yuhua.png

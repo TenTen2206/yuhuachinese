@@ -604,3 +604,31 @@ button{font:inherit;border:0;border-radius:12px;padding:11px 15px;font-weight:75
   flex-wrap:wrap;
   margin-top:10px;
 }
+
+/* v27 Level-wide HSK review */
+.level-review-entry{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  padding:18px 20px;
+  margin:18px 0 24px;
+  border:1px solid #fed7aa;
+  background:#fffaf7;
+  border-radius:18px;
+}
+.level-review-entry h3{margin:3px 0 4px}
+.level-review-entry p{margin:0}
+.level-review-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 18px}
+.level-review-tabs .active-review-tab{background:#ef5b24;color:#fff;border-color:#ef5b24}
+.review-summary-bar{
+  display:flex;gap:14px;align-items:center;padding:12px 14px;border-radius:12px;
+  background:#f8fafc;border:1px solid var(--line);margin-bottom:16px
+}
+.level-vocab-groups{display:grid;gap:24px}
+.level-vocab-group{border-top:1px solid var(--line);padding-top:16px}
+.level-vocab-group:first-child{border-top:0;padding-top:0}
+.level-vocab-group h3{margin:0 0 12px;color:#ea580c}
+@media(max-width:720px){
+  .level-review-entry{flex-direction:column;align-items:flex-start}
+}
