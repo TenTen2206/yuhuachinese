@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YuHua Chinese HSK Learning Hub v32 – Tài khoản học sinh</title>
+  <title>YuHua Chinese YuHua Chinese v33 – Học HSK từ nền tảng</title>
   <style>
 
 *{box-sizing:border-box}:root{--o:#ef5b24;--os:#fff2ec;--ink:#202632;--muted:#6b7280;--line:#e6e7eb;--bg:#f7f8fb}
@@ -904,11 +904,89 @@ body.yuhua-auth-ok #yuhuaAuthGate { display: none !important; }
 .yuhua-logout{padding:7px 10px;background:#f1f5f9;color:#334155;font-size:12px;border-radius:8px}
 @media(max-width:670px){.yuhua-auth-gate{align-items:flex-start}.yuhua-user-header{justify-content:flex-start}.yuhua-user-badge{width:100%}.yuhua-user-identity{flex:1}}
 
+
+/* v33 — public landing + split-screen authentication, inspired by supplied layout examples. */
+:root { --yh-teal:#36b5a8; --yh-teal-dark:#197f79; --yh-beige:#f6f1ec; --yh-charcoal:#253344; }
+body { background:#f8fafb; }
+body:not(.yuhua-auth-ok) > main,
+body:not(.yuhua-auth-ok) > footer { display:none!important; }
+body.yuhua-auth-ok #yhLanding { display:none!important; }
+body:not(.yuhua-auth-ok) #yhLanding { display:block; }
+body:not(.yuhua-auth-ok) #yuhuaGuestActions { display:flex; }
+body.yuhua-auth-ok #yuhuaGuestActions { display:none!important; }
+#yuhuaAuthGate[hidden] { display:none!important; }
+body.yh-modal-open { overflow:hidden; }
+/* nav */
+header.top.yh-site-nav { position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid #e8efed;box-shadow:0 1px 6px rgba(0,0,0,.02);padding:13px max(22px,calc((100vw - 1250px)/2));min-height:75px;gap:22px;align-items:center; }
+.yh-brand { display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--yh-teal-dark);white-space:nowrap;flex-shrink:0; }
+.yh-brand-mark { width:41px;height:41px;border-radius:14px;background:linear-gradient(140deg,#3ac9b8,#167c8a);display:grid;place-items:center;color:white;font-size:22px;font-weight:900; }
+.yh-brand strong{font-size:24px;letter-spacing:-.7px;}
+.yh-nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,28px);flex:1;}
+.yh-nav-links button{background:transparent;border:0;color:#546277;padding:9px 4px;font-size:15px;white-space:nowrap;font-weight:750;}
+.yh-nav-links button:hover{color:var(--yh-teal-dark);}
+.yh-nav-guest{display:flex;align-items:center;gap:10px;}
+.yh-btn-outline{background:#fff!important;color:var(--yh-teal-dark)!important;border:1.5px solid var(--yh-teal)!important;padding:10px 15px!important;font-size:14px!important;white-space:nowrap;}
+.yh-btn-main{background:var(--yh-teal)!important;color:#fff!important;border:1.5px solid var(--yh-teal)!important;padding:10px 17px!important;font-size:14px!important;white-space:nowrap;}
+.yh-btn-main:hover{background:var(--yh-teal-dark)!important;}
+.yh-nav-account{display:flex;align-items:center;gap:8px;}
+.yh-nav-account .yuhua-user-badge{margin-left:0;}
+.yh-nav-account .stat{display:none;}
+/* landing public */
+#yhLanding{color:var(--yh-charcoal);background:var(--yh-beige);}
+.yh-landing-hero{padding:56px 22px 6px;text-align:center;overflow:hidden;max-width:1420px;margin:0 auto;}
+.yh-overline{display:inline-flex;align-items:center;gap:7px;border:1px solid #cdece4;background:rgba(255,255,255,.68);border-radius:99px;padding:8px 15px;color:#278f85;font-weight:800;font-size:13px;}
+.yh-landing-hero h1{font-size:clamp(38px,5.1vw,72px);letter-spacing:-1.6px;line-height:1.27;margin:25px 0 10px;font-weight:850;}
+.yh-landing-hero h1 em{font-style:italic;color:var(--yh-teal);font-weight:850;}
+.yh-landing-subtitle{max-width:850px;margin:0 auto 25px;font-size:clamp(16px,1.75vw,21px);line-height:1.7;color:#708096;}
+.yh-start{background:var(--yh-teal)!important;color:#fff!important;font-size:17px!important;padding:16px 27px!important;border-radius:14px!important;box-shadow:0 13px 24px rgba(47,173,158,.2);}
+.yh-start:hover{background:var(--yh-teal-dark)!important;transform:translateY(-2px);}
+.yh-hero-illustration{width:min(780px,100%);margin:18px auto -2px;}
+.yh-student-illustration{width:100%;height:auto;display:block;}
+.yh-public-section{background:#fff;padding:68px max(20px,calc((100vw - 1150px)/2));}
+.yh-public-section h2{font-size:clamp(26px,3vw,37px);text-align:center;margin:5px 0 12px;}
+.yh-public-section .yh-section-sub{text-align:center;color:#6d7a8a;margin:0 auto 34px;max-width:620px;line-height:1.7;}
+.yh-public-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+.yh-public-feature{padding:27px;border:1px solid #e5ebe9;border-radius:22px;box-shadow:0 8px 22px rgba(40,69,80,.035);background:#fff;text-align:left;}
+.yh-public-feature:hover{border-color:#89cec7;box-shadow:0 14px 27px rgba(50,100,102,.075);transform:translateY(-2px);}
+.yh-feature-icon{width:55px;height:55px;border-radius:15px;display:grid;place-items:center;background:#eaf8f4;color:#188f83;font-size:27px;margin-bottom:17px;}
+.yh-public-feature h3{font-size:20px;margin:0 0 10px;color:#2d3d4b;}
+.yh-public-feature p{font-size:14px;color:#73808c;line-height:1.65;margin:0;}
+.yh-footer-public{background:#fff;border-top:1px solid #edf0ed;text-align:center;color:#84909a;padding:22px 20px;font-size:13px;}
+/* auth modal */
+.yuhua-auth-gate{position:fixed;inset:0;z-index:10000;overflow-y:auto;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(18,31,43,.58);backdrop-filter:blur(6px);}
+.yuhua-auth-card{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch;width:min(100%,940px);max-height:calc(100vh - 48px);overflow-y:auto;padding:0;border-radius:25px;box-shadow:0 28px 85px rgba(16,36,51,.26);background:#fff;}
+.yh-auth-form-side{padding:clamp(24px,3.4vw,51px);min-width:0;align-self:center;}
+.yh-auth-form-side .yuhua-auth-brand{margin-bottom:14px;}
+.yuhua-auth-card h1{font-size:clamp(25px,3vw,32px);margin-bottom:10px;line-height:1.28;}
+.yuhua-auth-intro{font-size:14px;line-height:1.6;margin-bottom:18px;}
+.yuhua-auth-tabs{background:#eaf5f2;}
+.yuhua-auth-tabs button.on{color:#168d81;}
+.yuhua-auth-field input{border-color:#dce5e4;}
+.yuhua-auth-field input:focus{border-color:var(--yh-teal);box-shadow:0 0 0 3px #e3f8f5;}
+.yuhua-auth-submit{background:var(--yh-teal);padding:15px;font-size:16px;}
+.yuhua-auth-submit:hover{background:var(--yh-teal-dark);}
+.yuhua-forgot{color:var(--yh-teal-dark);}
+.yh-auth-art-side{display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(155deg,#e7f9f4,#f6f1eb 90%);min-width:0;padding:16px 12px;}
+.yh-auth-art-side .yh-student-illustration{width:100%;max-width:450px;}
+.yh-auth-art-label{font-weight:850;color:#2f766f;font-size:17px;margin-top:-8px;text-align:center;}
+.yh-auth-close{position:absolute;z-index:2;right:13px;top:12px;width:37px;height:37px;border-radius:50%;display:grid;place-items:center;font-size:23px;background:rgba(255,255,255,.94);color:#58717b;border:1px solid #dae9e6;padding:0;}
+.yh-auth-close:hover{background:#e9f8f5;}
+.yh-auth-top-message{margin:4px 0 16px;border-radius:10px;padding:10px 12px;background:#edf9f6;color:#176f67;font-weight:700;font-size:13px;}
+@media(max-width:1100px){header.top.yh-site-nav{flex-wrap:wrap;gap:10px;padding:11px 18px;}.yh-nav-links{order:3;width:100%;justify-content:flex-start;overflow-x:auto;gap:18px;}.yh-nav-links button{font-size:13px;}.yh-nav-account{margin-left:auto;}}
+@media(max-width:700px){.yh-brand strong{font-size:21px;}.yh-nav-account{width:auto;margin-left:auto;}.yh-nav-guest button{padding:7px 9px!important;font-size:12px!important;}.yh-nav-links{gap:15px;}.yh-landing-hero{padding:40px 16px 2px;}.yh-landing-hero h1{letter-spacing:-.5px;}.yh-public-grid{grid-template-columns:1fr;}.yh-public-section{padding:45px 18px;}.yuhua-auth-card{display:block;max-height:calc(100vh - 32px);}.yuhua-auth-gate{padding:16px 10px;align-items:flex-start;}.yh-auth-art-side{display:none;}.yh-auth-form-side{padding:30px 24px;}.yh-auth-close{right:9px;top:9px;}.yuhua-user-badge{width:auto;}.yuhua-user-identity small{max-width:105px;}}
+/* keep landing first for guests and returning signed-in learners until they enter the course */
+body:not(.yuhua-auth-ok) > header.top.yh-site-nav {display:flex!important;}
+body:not(.yh-study-open) > main {display:none!important;}
+body.yuhua-auth-ok:not(.yh-study-open) #yhLanding {display:block!important;}
+body.yuhua-auth-ok.yh-study-open #yhLanding {display:none!important;}
+
 </style>
 </head>
 <body>
-<div id="yuhuaAuthGate" class="yuhua-auth-gate" role="region" aria-label="Đăng nhập YuHua Chinese">
+<div id="yuhuaAuthGate" class="yuhua-auth-gate" role="dialog" aria-modal="true" aria-label="Đăng nhập YuHua Chinese" hidden>
   <div class="yuhua-auth-card">
+    <button id="yhAuthClose" class="yh-auth-close" type="button" aria-label="Đóng cửa sổ đăng nhập">×</button>
+    <div class="yh-auth-form-side">
     <div class="yuhua-auth-brand">
       <span class="yuhua-brand-icon" aria-hidden="true">语</span>
       <div><div class="yuhua-auth-school">YuHua Chinese</div><div class="yuhua-auth-slogan">Wings to the World of Chinese</div></div>
@@ -946,17 +1024,109 @@ body.yuhua-auth-ok #yuhuaAuthGate { display: none !important; }
       <p class="yuhua-auth-footnote">Tài khoản được xác thực bằng Firebase Authentication. Không chia sẻ mật khẩu với người khác.</p>
     </div>
     <div id="yuhuaAuthSetup" class="yuhua-auth-setup" hidden></div>
+    </div>
+    <div class="yh-auth-art-side" aria-hidden="true"><svg class="yh-student-illustration" viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh họa học sinh học tiếng Trung trên máy tính cùng sách và thẻ từ vựng">
+  <defs>
+    <linearGradient id="yhLaptop" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6f4ee"/><stop offset="1" stop-color="#69c7c2"/></linearGradient>
+    <linearGradient id="yhShirt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#47b7ae"/><stop offset="1" stop-color="#218e9d"/></linearGradient>
+    <linearGradient id="yhBg" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f8f7f2"/><stop offset="1" stop-color="#ece8e2"/></linearGradient>
+    <filter id="yhShadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#57736e" flood-opacity=".13"/></filter>
+  </defs>
+  <ellipse cx="465" cy="496" rx="350" ry="26" fill="#d9e1da" opacity=".7"/>
+  <circle cx="460" cy="278" r="202" fill="#e1f6ef" opacity=".58"/>
+  <circle cx="745" cy="144" r="58" fill="#fbe7d6" opacity=".72"/>
+  <!-- floating flashcards -->
+  <g transform="translate(130 112) rotate(-14)" filter="url(#yhShadow)">
+    <rect width="112" height="106" rx="13" fill="#fff"/>
+    <rect x="0" width="112" height="10" rx="6" fill="#ed796a"/>
+    <text x="56" y="66" text-anchor="middle" font-size="46" font-weight="700" fill="#253f50" font-family="Arial, 'Microsoft YaHei', sans-serif">学</text>
+    <text x="56" y="89" text-anchor="middle" font-size="13" fill="#6c8790">xué</text>
+  </g>
+  <g transform="translate(266 36) rotate(10)" filter="url(#yhShadow)">
+    <rect width="110" height="109" rx="13" fill="#fff"/>
+    <rect x="0" width="110" height="10" rx="6" fill="#45b7aa"/>
+    <text x="55" y="68" text-anchor="middle" font-size="45" font-weight="700" fill="#253f50" font-family="Arial, 'Microsoft YaHei', sans-serif">汉</text>
+    <text x="55" y="90" text-anchor="middle" font-size="13" fill="#6c8790">hàn</text>
+  </g>
+  <g transform="translate(422 65) rotate(-7)" filter="url(#yhShadow)">
+    <rect width="112" height="110" rx="13" fill="#fff"/>
+    <rect x="0" width="112" height="10" rx="6" fill="#f6be62"/>
+    <text x="56" y="68" text-anchor="middle" font-size="46" font-weight="700" fill="#253f50" font-family="Arial, 'Microsoft YaHei', sans-serif">语</text>
+    <text x="56" y="90" text-anchor="middle" font-size="13" fill="#6c8790">yǔ</text>
+  </g>
+  <!-- orange hanging lantern -->
+  <g transform="translate(660 20)">
+    <path d="M56 0V54" stroke="#587e7e" stroke-width="4" stroke-linecap="round"/>
+    <path d="M22 61Q56 38 90 61L90 115Q56 143 22 115Z" fill="#ed7558"/>
+    <path d="M33 63Q54 44 79 63M33 116Q56 133 79 115" fill="none" stroke="#fcb898" stroke-width="6"/>
+    <path d="M18 83H94M20 97H92" stroke="#dc624f" stroke-width="2" opacity=".5"/>
+    <rect x="43" y="43" width="26" height="8" rx="4" fill="#b44942"/>
+    <rect x="43" y="126" width="26" height="8" rx="4" fill="#b44942"/>
+    <path d="M56 134V162M47 148L56 167L65 148" stroke="#ed7558" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <!-- shelves of books -->
+  <g transform="translate(70 390) rotate(-7)">
+    <rect x="8" y="46" width="183" height="46" rx="8" fill="#ed796a"/>
+    <rect x="18" y="49" width="159" height="40" rx="5" fill="#fdf9eb"/>
+    <rect x="0" y="2" width="192" height="45" rx="8" fill="#46b5a6"/>
+    <rect x="12" y="5" width="165" height="38" rx="6" fill="#fff7e9"/>
+    <rect x="25" y="-29" width="170" height="31" rx="6" fill="#4d83b8"/>
+    <rect x="36" y="-25" width="145" height="23" rx="4" fill="#fff"/>
+    <path d="M63 2V41M123 48V87" stroke="#eccdb2" stroke-width="3"/>
+  </g>
+  <!-- desktop surface -->
+  <path d="M175 437H760Q770 437 770 449V460Q770 469 760 469H175Q165 469 165 460V449Q165 437 175 437Z" fill="#9ccac4"/>
+  <path d="M199 467L180 533H207L245 467M705 467L743 533H772L749 467" fill="#749c9b"/>
+  <!-- student body/chair -->
+  <g>
+    <rect x="540" y="339" width="146" height="179" rx="34" fill="#31566b"/>
+    <path d="M541 418Q646 383 698 425L727 498Q730 519 704 524L546 520Z" fill="#335979"/>
+    <path d="M507 356Q544 317 585 334Q646 351 658 419L655 475H439L454 403Q468 369 507 356Z" fill="url(#yhShirt)"/>
+    <path d="M533 358Q520 383 509 413M619 369Q642 406 639 439" fill="none" stroke="#1f7e8a" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+    <rect x="529" y="315" width="45" height="70" rx="19" fill="#ffd0a6"/>
+    <!-- face -->
+    <path d="M485 233Q484 175 543 170Q608 172 612 246Q618 317 557 344Q511 348 490 310Z" fill="#ffd2af"/>
+    <path d="M493 264Q481 222 499 198Q522 166 560 169Q617 171 624 232Q618 239 610 241Q589 217 574 204Q550 237 504 231Q503 248 493 264Z" fill="#20394f"/>
+    <path d="M500 226Q480 234 480 260Q484 273 494 269" fill="#ffd2af"/>
+    <path d="M523 270q12-9 23 0M564 268q11-8 21 0" fill="none" stroke="#2a3c4b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M542 298Q553 309 566 297" fill="none" stroke="#b45d50" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="515" cy="284" rx="15" ry="8" fill="#f8a39e" opacity=".62"/>
+    <ellipse cx="586" cy="282" rx="12" ry="7" fill="#f8a39e" opacity=".62"/>
+  </g>
+  <!-- hands and laptop -->
+  <g transform="translate(250 315)">
+    <path d="M223 80Q251 79 287 108L269 139L213 128Z" fill="#ffd0aa"/>
+    <path d="M314 94Q346 79 365 104L353 140L302 132Z" fill="#ffd0aa"/>
+    <path d="M32 10H292Q302 10 299 23L257 143H62Z" fill="url(#yhLaptop)" stroke="#468e9a" stroke-width="5"/>
+    <rect x="69" y="23" width="200" height="106" rx="7" fill="#f8fffd"/>
+    <rect x="83" y="38" width="155" height="9" rx="4" fill="#d5e8e4"/>
+    <rect x="83" y="57" width="133" height="8" rx="4" fill="#d5e8e4"/>
+    <rect x="83" y="76" width="102" height="28" rx="6" fill="#66c5b4"/>
+    <text x="134" y="95" fill="#fff" text-anchor="middle" font-size="17" font-weight="800">HSK</text>
+    <path d="M3 142H342L370 155Q374 162 361 164H-4Q-20 161 3 142Z" fill="#729fa9"/>
+  </g>
+  <!-- small highlights / shapes -->
+  <g fill="#f2b763"><circle cx="87" cy="272" r="8"/><circle cx="824" cy="296" r="8"/><path d="M750 231l9 20 20 9-20 9-9 20-9-20-20-9 20-9Z"/></g>
+  <path d="M72 346q19-32 42 0M784 377q14-22 29 0" fill="none" stroke="#76c9b3" stroke-width="6" stroke-linecap="round"/>
+</svg><div class="yh-auth-art-label">Cùng YuHua khám phá tiếng Trung</div></div>
   </div>
 </div>
 
-<header class="top">
-  <div>
-    <div class="kicker">YuHua Chinese • HSK Learning Hub</div>
-    <h1>HSK Learning Hub</h1>
-    <p>HSK 3.0 & HSK 2.0 • HSK 1–6 • Từ vựng • Bài khóa • Flashcard • Bài tập</p>
-  </div>
-  <div class="yuhua-user-header">
-    <div class="stat" id="globalStat">YuHua v32</div>
+<header class="top yh-site-nav">
+  <a class="yh-brand" href="#" onclick="YUHUA_NAV('home');return false;" aria-label="Trang chủ YuHua Chinese"><span class="yh-brand-mark">语</span><strong>YuHua Chinese</strong></a>
+  <nav class="yh-nav-links" aria-label="Điều hướng website">
+    <button type="button" onclick="YUHUA_NAV('curriculum')">Giáo trình</button>
+    <button type="button" onclick="YUHUA_NAV('review')">Ôn tập HSK</button>
+    <button type="button" onclick="YUHUA_NAV('vocab')">Từ vựng</button>
+    <button type="button" onclick="YUHUA_NAV('test')">Đề kiểm tra</button>
+    <button type="button" onclick="YUHUA_NAV('about')">Giới thiệu</button>
+  </nav>
+  <div class="yh-nav-account">
+    <span class="stat" id="globalStat" hidden>YuHua v33</span>
+    <div id="yuhuaGuestActions" class="yh-nav-guest">
+      <button type="button" class="yh-btn-outline" onclick="YUHUA_OPEN_AUTH('login')">Đăng nhập</button>
+      <button type="button" class="yh-btn-main" onclick="YUHUA_OPEN_AUTH('register')">Đăng ký</button>
+    </div>
     <div class="yuhua-user-badge" id="yuhuaUserBadge" hidden>
       <span class="yuhua-user-avatar">学</span>
       <div class="yuhua-user-identity"><b id="yuhuaUserName">Học sinh</b><small id="yuhuaUserEmail"></small></div>
@@ -964,6 +1134,109 @@ body.yuhua-auth-ok #yuhuaAuthGate { display: none !important; }
     </div>
   </div>
 </header>
+<section id="yhLanding" aria-label="Trang giới thiệu YuHua Chinese">
+  <div class="yh-landing-hero">
+    <div class="yh-overline">✦ YuHua Chinese · Wings to the World of Chinese</div>
+    <h1>Học HSK <em>vững nền tảng</em><br> Tự tin <em>chinh phục tiếng Trung</em></h1>
+    <p class="yh-landing-subtitle">Ôn tập theo giáo trình HSK 3.0 và HSK 2.0: từ vựng, bài khóa, flashcard, luyện dịch và bài kiểm tra. Học theo tiến trình phù hợp với bạn.</p>
+    <button type="button" class="yh-start" onclick="YUHUA_ENTER()">Bắt đầu học ngay →</button>
+    <div class="yh-hero-illustration"><svg class="yh-student-illustration" viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh họa học sinh học tiếng Trung trên máy tính cùng sách và thẻ từ vựng">
+  <defs>
+    <linearGradient id="yhLaptop" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6f4ee"/><stop offset="1" stop-color="#69c7c2"/></linearGradient>
+    <linearGradient id="yhShirt" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#47b7ae"/><stop offset="1" stop-color="#218e9d"/></linearGradient>
+    <linearGradient id="yhBg" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#f8f7f2"/><stop offset="1" stop-color="#ece8e2"/></linearGradient>
+    <filter id="yhShadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#57736e" flood-opacity=".13"/></filter>
+  </defs>
+  <ellipse cx="465" cy="496" rx="350" ry="26" fill="#d9e1da" opacity=".7"/>
+  <circle cx="460" cy="278" r="202" fill="#e1f6ef" opacity=".58"/>
+  <circle cx="745" cy="144" r="58" fill="#fbe7d6" opacity=".72"/>
+  <!-- floating flashcards -->
+  <g transform="translate(130 112) rotate(-14)" filter="url(#yhShadow)">
+    <rect width="112" height="106" rx="13" fill="#fff"/>
+    <rect x="0" width="112" height="10" rx="6" fill="#ed796a"/>
+    <text x="56" y="66" text-anchor="middle" font-size="46" font-weight="700" fill="#253f50" font-family="Arial, 'Microsoft YaHei', sans-serif">学</text>
+    <text x="56" y="89" text-anchor="middle" font-size="13" fill="#6c8790">xué</text>
+  </g>
+  <g transform="translate(266 36) rotate(10)" filter="url(#yhShadow)">
+    <rect width="110" height="109" rx="13" fill="#fff"/>
+    <rect x="0" width="110" height="10" rx="6" fill="#45b7aa"/>
+    <text x="55" y="68" text-anchor="middle" font-size="45" font-weight="700" fill="#253f50" font-family="Arial, 'Microsoft YaHei', sans-serif">汉</text>
+    <text x="55" y="90" text-anchor="middle" font-size="13" fill="#6c8790">hàn</text>
+  </g>
+  <g transform="translate(422 65) rotate(-7)" filter="url(#yhShadow)">
+    <rect width="112" height="110" rx="13" fill="#fff"/>
+    <rect x="0" width="112" height="10" rx="6" fill="#f6be62"/>
+    <text x="56" y="68" text-anchor="middle" font-size="46" font-weight="700" fill="#253f50" font-family="Arial, 'Microsoft YaHei', sans-serif">语</text>
+    <text x="56" y="90" text-anchor="middle" font-size="13" fill="#6c8790">yǔ</text>
+  </g>
+  <!-- orange hanging lantern -->
+  <g transform="translate(660 20)">
+    <path d="M56 0V54" stroke="#587e7e" stroke-width="4" stroke-linecap="round"/>
+    <path d="M22 61Q56 38 90 61L90 115Q56 143 22 115Z" fill="#ed7558"/>
+    <path d="M33 63Q54 44 79 63M33 116Q56 133 79 115" fill="none" stroke="#fcb898" stroke-width="6"/>
+    <path d="M18 83H94M20 97H92" stroke="#dc624f" stroke-width="2" opacity=".5"/>
+    <rect x="43" y="43" width="26" height="8" rx="4" fill="#b44942"/>
+    <rect x="43" y="126" width="26" height="8" rx="4" fill="#b44942"/>
+    <path d="M56 134V162M47 148L56 167L65 148" stroke="#ed7558" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <!-- shelves of books -->
+  <g transform="translate(70 390) rotate(-7)">
+    <rect x="8" y="46" width="183" height="46" rx="8" fill="#ed796a"/>
+    <rect x="18" y="49" width="159" height="40" rx="5" fill="#fdf9eb"/>
+    <rect x="0" y="2" width="192" height="45" rx="8" fill="#46b5a6"/>
+    <rect x="12" y="5" width="165" height="38" rx="6" fill="#fff7e9"/>
+    <rect x="25" y="-29" width="170" height="31" rx="6" fill="#4d83b8"/>
+    <rect x="36" y="-25" width="145" height="23" rx="4" fill="#fff"/>
+    <path d="M63 2V41M123 48V87" stroke="#eccdb2" stroke-width="3"/>
+  </g>
+  <!-- desktop surface -->
+  <path d="M175 437H760Q770 437 770 449V460Q770 469 760 469H175Q165 469 165 460V449Q165 437 175 437Z" fill="#9ccac4"/>
+  <path d="M199 467L180 533H207L245 467M705 467L743 533H772L749 467" fill="#749c9b"/>
+  <!-- student body/chair -->
+  <g>
+    <rect x="540" y="339" width="146" height="179" rx="34" fill="#31566b"/>
+    <path d="M541 418Q646 383 698 425L727 498Q730 519 704 524L546 520Z" fill="#335979"/>
+    <path d="M507 356Q544 317 585 334Q646 351 658 419L655 475H439L454 403Q468 369 507 356Z" fill="url(#yhShirt)"/>
+    <path d="M533 358Q520 383 509 413M619 369Q642 406 639 439" fill="none" stroke="#1f7e8a" stroke-width="5" stroke-linecap="round" opacity=".35"/>
+    <rect x="529" y="315" width="45" height="70" rx="19" fill="#ffd0a6"/>
+    <!-- face -->
+    <path d="M485 233Q484 175 543 170Q608 172 612 246Q618 317 557 344Q511 348 490 310Z" fill="#ffd2af"/>
+    <path d="M493 264Q481 222 499 198Q522 166 560 169Q617 171 624 232Q618 239 610 241Q589 217 574 204Q550 237 504 231Q503 248 493 264Z" fill="#20394f"/>
+    <path d="M500 226Q480 234 480 260Q484 273 494 269" fill="#ffd2af"/>
+    <path d="M523 270q12-9 23 0M564 268q11-8 21 0" fill="none" stroke="#2a3c4b" stroke-width="4" stroke-linecap="round"/>
+    <path d="M542 298Q553 309 566 297" fill="none" stroke="#b45d50" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="515" cy="284" rx="15" ry="8" fill="#f8a39e" opacity=".62"/>
+    <ellipse cx="586" cy="282" rx="12" ry="7" fill="#f8a39e" opacity=".62"/>
+  </g>
+  <!-- hands and laptop -->
+  <g transform="translate(250 315)">
+    <path d="M223 80Q251 79 287 108L269 139L213 128Z" fill="#ffd0aa"/>
+    <path d="M314 94Q346 79 365 104L353 140L302 132Z" fill="#ffd0aa"/>
+    <path d="M32 10H292Q302 10 299 23L257 143H62Z" fill="url(#yhLaptop)" stroke="#468e9a" stroke-width="5"/>
+    <rect x="69" y="23" width="200" height="106" rx="7" fill="#f8fffd"/>
+    <rect x="83" y="38" width="155" height="9" rx="4" fill="#d5e8e4"/>
+    <rect x="83" y="57" width="133" height="8" rx="4" fill="#d5e8e4"/>
+    <rect x="83" y="76" width="102" height="28" rx="6" fill="#66c5b4"/>
+    <text x="134" y="95" fill="#fff" text-anchor="middle" font-size="17" font-weight="800">HSK</text>
+    <path d="M3 142H342L370 155Q374 162 361 164H-4Q-20 161 3 142Z" fill="#729fa9"/>
+  </g>
+  <!-- small highlights / shapes -->
+  <g fill="#f2b763"><circle cx="87" cy="272" r="8"/><circle cx="824" cy="296" r="8"/><path d="M750 231l9 20 20 9-20 9-9 20-9-20-20-9 20-9Z"/></g>
+  <path d="M72 346q19-32 42 0M784 377q14-22 29 0" fill="none" stroke="#76c9b3" stroke-width="6" stroke-linecap="round"/>
+</svg></div>
+  </div>
+  <section class="yh-public-section" id="yhPublicFeatures">
+    <div class="yh-overline" style="display:flex;width:fit-content;margin:0 auto">Lộ trình học tập</div>
+    <h2>Học tiếng Trung cùng YuHua</h2>
+    <p class="yh-section-sub">Nội dung được chia theo cấp độ. Tạo tài khoản để truy cập bài học, ghi nhớ từ vựng và theo dõi quá trình ôn tập.</p>
+    <div class="yh-public-grid">
+      <button type="button" class="yh-public-feature" onclick="YUHUA_NAV('curriculum')"><div class="yh-feature-icon">📚</div><h3>Giáo trình HSK</h3><p>Khám phá hệ HSK 3.0 và HSK 2.0, chọn cấp độ từ HSK 1 đến HSK 6.</p></button>
+      <button type="button" class="yh-public-feature" onclick="YUHUA_NAV('review')"><div class="yh-feature-icon">🗂️</div><h3>Ôn tập theo bài</h3><p>Học từ vựng, lật flashcard, luyện đọc và kiểm tra kiến thức từng bài.</p></button>
+      <button type="button" class="yh-public-feature" onclick="YUHUA_NAV('test')"><div class="yh-feature-icon">✓</div><h3>Kiểm tra cuối khóa</h3><p>Thử sức với các bộ câu hỏi tổng hợp và xem đáp án sau khi nộp.</p></button>
+    </div>
+  </section>
+  <div class="yh-footer-public">© YuHua Chinese · Wings to the World of Chinese</div>
+</section>
 <main>
 <section id="home" class="view active">
   <div class="breadcrumb">YuHua Chinese / HSK</div>
@@ -1068,7 +1341,7 @@ body.yuhua-auth-ok #yuhuaAuthGate { display: none !important; }
   <div id="moduleContent" class="content-card"></div>
 </section>
 </main>
-<footer>YuHua Chinese • Wings to the World of Chinese • v32</footer>
+<footer>YuHua Chinese • Wings to the World of Chinese • v33</footer>
 <script async src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
 <script>
 const HSK1_DATA = [
@@ -19209,6 +19482,8 @@ openFromLocation();
     if(user){
       window.YUHUA_ACTIVE_UID=user.uid;
       document.body.classList.add("yuhua-auth-ok");
+      $a("yuhuaAuthGate").hidden=true;
+      document.body.classList.remove("yh-modal-open");
       $a("yuhuaAuthGate").setAttribute("aria-hidden","true");
       $a("yuhuaUserBadge").hidden=false;
       $a("yuhuaUserName").textContent=user.displayName||"Học sinh";
@@ -19218,7 +19493,10 @@ openFromLocation();
     } else {
       window.YUHUA_ACTIVE_UID=null;
       document.body.classList.remove("yuhua-auth-ok");
-      $a("yuhuaAuthGate").removeAttribute("aria-hidden");
+      document.body.classList.remove("yh-study-open");
+      $a("yuhuaAuthGate").hidden=true;
+      document.body.classList.remove("yh-modal-open");
+      $a("yuhuaAuthGate").setAttribute("aria-hidden","true");
       $a("yuhuaUserBadge").hidden=true;
       $a("yuhuaAuthUI").hidden=false;
       $a("yuhuaAuthLoading").hidden=true;
@@ -19239,6 +19517,9 @@ openFromLocation();
     $a("yuhuaAuthSetup").hidden=false;
     $a("yuhuaAuthSetup").textContent=detail;
     document.body.classList.remove("yuhua-auth-ok");
+    // The public homepage remains accessible; the error appears when login is opened.
+    $a("yuhuaAuthGate").hidden=true;
+    document.body.classList.remove("yh-modal-open");
   }
   function setBusy(busy){$a("yuhuaAuthSubmit").disabled=busy;$a("yuhuaAuthSubmit").textContent=busy?"Đang xử lý…":(mode==="register"?"Tạo tài khoản và bắt đầu học":"Đăng nhập để học");}
   async function submitAuth(evt){
@@ -19272,7 +19553,55 @@ openFromLocation();
       message("Nếu email tồn tại trong hệ thống, hướng dẫn đặt lại mật khẩu sẽ được gửi đến hộp thư.","success");
     }catch(e){message(explain(e));}
   }
+
+  window.YUHUA_OPEN_AUTH=(desiredMode="login")=>{
+    if(window.YUHUA_ACTIVE_UID){window.YUHUA_ENTER();return;}
+    window.YUHUA_ENTER_AFTER_LOGIN=true;
+    const gate=$a("yuhuaAuthGate");
+    gate.hidden=false;
+    gate.removeAttribute("aria-hidden");
+    document.body.classList.add("yh-modal-open");
+    if(!$a("yuhuaAuthSetup").hidden){$a("yuhuaAuthSetup").scrollIntoView({block:"nearest"});}
+    else {setMode(desiredMode==="register"?"register":"login");$a("yuhuaEmail").focus();}
+  };
+  window.YUHUA_CLOSE_AUTH=()=>{
+    $a("yuhuaAuthGate").hidden=true;
+    $a("yuhuaAuthGate").setAttribute("aria-hidden","true");
+    document.body.classList.remove("yh-modal-open");
+  };
+  window.YUHUA_ENTER=()=>{
+    if(!window.YUHUA_ACTIVE_UID){window.YUHUA_OPEN_AUTH("register");return;}
+    document.body.classList.add("yh-study-open");
+    if($a("lesson"))$a("lesson").classList.remove("active");
+    if($a("home"))$a("home").classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+  window.YUHUA_NAV=(where)=>{
+    if(where==="home"){
+      document.body.classList.remove("yh-study-open");
+      window.scrollTo({top:0,behavior:"smooth"});
+      return;
+    }
+    if(!window.YUHUA_ACTIVE_UID){
+      if(where==="about"){
+        $a("yhPublicFeatures")?.scrollIntoView({behavior:"smooth",block:"start"});
+      }else if(where==="curriculum"){
+        $a("yhPublicFeatures")?.scrollIntoView({behavior:"smooth",block:"start"});
+      }else window.YUHUA_OPEN_AUTH("register");
+      return;
+    }
+    document.body.classList.add("yh-study-open");
+    if($a("lesson"))$a("lesson").classList.remove("active");
+    if($a("home"))$a("home").classList.add("active");
+    if(where==="about" && typeof openHomePanel==="function") openHomePanel("teacher");
+    else if(typeof openHomePanel==="function") openHomePanel("review");
+    if(where==="vocab")$a("globalSearch")?.focus();
+    window.scrollTo({top:where==="vocab"?240:document.documentElement.scrollHeight/5,behavior:"smooth"});
+  };
   function init(){
+    $a("yhAuthClose").addEventListener("click",window.YUHUA_CLOSE_AUTH);
+    $a("yuhuaAuthGate").addEventListener("click",e=>{if(e.target===$a("yuhuaAuthGate"))window.YUHUA_CLOSE_AUTH();});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$a("yuhuaAuthGate").hidden)window.YUHUA_CLOSE_AUTH();});
     $a("yuhuaModeLogin").addEventListener("click",()=>setMode("login"));
     $a("yuhuaModeRegister").addEventListener("click",()=>setMode("register"));
     $a("yuhuaAuthForm").addEventListener("submit",submitAuth);
