@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YuHua Chinese v36 – YCT 1–6 giáo trình PDF & HSK</title>
+  <title>YuHua Chinese v37 – Game YCT 1–6 & HSK</title>
   <style>
 
 *{box-sizing:border-box}:root{--o:#ef5b24;--os:#fff2ec;--ink:#202632;--muted:#6b7280;--line:#e6e7eb;--bg:#f7f8fb}
@@ -1079,6 +1079,75 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
 @media(max-width:760px){.yh36-chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.yh36-pdf-hero{grid-template-columns:105px minmax(0,1fr);gap:16px;padding:15px}.yh36-pdf-bookcover b{font-size:24px}.yh36-pdf-bookcover span{font-size:54px}.yh36-pdf-bookcover small{font-size:12px}.yh36-pdf-viewer iframe{height:65vh;min-height:450px}}
 @media(max-width:460px){.yh36-chapter-grid{grid-template-columns:1fr}.yh36-pdf-hero{grid-template-columns:1fr}.yh36-pdf-bookcover{width:108px}.yh36-pdf-actions>*{flex:1}.yh36-pdf-viewer iframe{min-height:420px;height:60vh}.yh36-chapter{min-height:0}}
 
+
+/* v37 - Four child-friendly games for YCT1-6 */
+.yh35-yct-steps{grid-template-columns:repeat(4,minmax(0,1fr))}
+.yh37-textbook-games{display:flex;align-items:center;justify-content:space-between;gap:15px;background:#f1fcf8;border:1px solid #c4e9dc;border-radius:15px;padding:18px;margin:6px 0 22px}
+.yh37-textbook-games b,.yh37-textbook-games small{display:block}.yh37-textbook-games small{margin-top:6px;color:#667f7b;font-size:13px}
+.yh35-section-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
+.yh37-game-main-tab.active{border-color:#a58ef2;background:#f4f0ff}
+.yh37-game-heading{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #daf0e6;border-radius:21px;background:linear-gradient(105deg,#eefbf3,#eff8ff);padding:22px 24px;margin-bottom:16px}
+.yh37-game-heading h3,.yh37-playing-heading h3{margin:5px 0 7px;font-size:clamp(21px,2.5vw,29px)}
+.yh37-game-heading p,.yh37-playing-heading p{margin:0;color:#607981;line-height:1.7}
+.yh37-eyebrow{font-size:11px;letter-spacing:.09em;color:#218878;font-weight:850}
+.yh37-game-mascot{font-size:64px;line-height:1;flex:0 0 auto}
+.yh37-game-toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 0 18px}
+.yh37-game-toolbar label{font-size:14px;font-weight:800;color:#294d55}
+.yh37-game-toolbar select{min-width:270px;max-width:100%;background:#fff;border:1px solid #cee6df;border-radius:12px;padding:11px 12px;font:inherit;color:#194950}
+.yh37-game-toolbar>span{color:#5a7782;font-size:12px}
+.yh37-games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.yh37-game-card{background:var(--game-bg,#eefbf7);border:1px solid #dceae9;border-radius:20px;min-height:186px;padding:24px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:8px;transition:.18s ease;cursor:pointer;color:#2e4350}
+.yh37-game-card:hover{transform:translateY(-3px);box-shadow:0 14px 26px #1b615124}
+.yh37-game-icon{display:block;font-size:33px}
+.yh37-game-card strong{font-size:19px}
+.yh37-game-card small{font-size:13px;color:#60727c;line-height:1.5}
+.yh37-game-start{margin-top:auto;font-size:13px;font-weight:850;color:#167c71}
+.yh37-game-record{border-radius:15px;background:#fffdf5;border:1px solid #efe5bd;padding:18px;margin-top:22px;color:#7d5a24}
+.yh37-game-record>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0}
+.yh37-game-record span{background:#fff;border:1px solid #f2e9d1;padding:12px;border-radius:11px;font-size:13px}
+.yh37-game-record small{color:#85745a}
+.yh37-game-source{background:#f7fafb;border:1px dashed #cadfdf;border-radius:14px;padding:15px;margin:20px 0;line-height:1.7;color:#5a7680;font-size:13px}
+.yh37-game-footnav,.yh37-game-bottom,.yh37-win-buttons{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:15px}
+.yh37-back{margin-bottom:20px}
+.yh37-playing-heading{display:flex;gap:10px;justify-content:space-between;align-items:center;border-bottom:1px solid #e4eeee;padding-bottom:19px;margin-bottom:20px}
+.yh37-play-badge{background:#eaf9f3;color:#167965;padding:9px 14px;border-radius:30px;font-size:13px;font-weight:850;white-space:nowrap}
+.yh37-feedback{min-height:50px;padding:13px 15px;border-radius:12px;margin:15px 0;background:#f8fafc;color:#44616a;font-weight:750;line-height:1.5}
+.yh37-feedback.good{background:#e7f9ed;color:#146d47}.yh37-feedback.bad{background:#fff3e7;color:#984b22}
+.yh37-feedback:empty{padding:0;min-height:0}
+.yh37-match-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.yh37-match-col{display:flex;flex-direction:column;gap:9px}
+.yh37-match-col h4{font-size:14px;color:#546d74;margin:0 0 8px}
+.yh37-match-pill{min-height:60px;padding:11px;border:2px solid #d6e7f0;border-radius:13px;background:#f3faff;color:#244a63;font-size:22px;font-weight:850;overflow-wrap:anywhere;line-height:1.3;transition:.12s}
+.yh37-match-pill.meaning{background:#fffaf4;border-color:#f2e1ce;font-size:16px;color:#875f40}
+.yh37-match-pill.chosen{border-color:#1c9b88;box-shadow:0 0 0 3px #1c9b8830;background:#e2f6ec}
+.yh37-match-pill.solved{background:#e8f9ee;border-color:#d5eedf;color:#9aada6;text-decoration:line-through;cursor:default}
+.yh37-memory-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.yh37-memory-tile{display:grid;place-items:center;border:2px solid #dbe5f5;background:linear-gradient(145deg,#ddecff,#f9ebff);color:#4b5480;min-height:94px;padding:9px;border-radius:13px;font-size:26px;font-weight:850;overflow-wrap:anywhere;transition:.16s}
+.yh37-memory-tile.flipped{background:#fff9e9;border-color:#e6cfa7;color:#605537;font-size:20px}
+.yh37-memory-tile.found{background:#e5f8ee;border-color:#addfbe;color:#3f8060}
+.yh37-listen-stage{text-align:center;background:#f6fbff;padding:24px;border-radius:18px;border:1px solid #deebf7}
+.yh37-sound-icon{font-size:62px;margin-bottom:12px}
+.yh37-listen-replay{display:inline-flex;align-items:center;gap:9px;border:0;background:#2d87b9;color:white;padding:16px 24px;border-radius:40px;font-size:18px;font-weight:850}
+.yh37-listen-stage p{margin:18px 0 24px;color:#54788a}
+.yh37-listen-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.yh37-listen-option{background:white;border:2px solid #d1e1ec;border-radius:13px;min-height:88px;font-size:27px;font-weight:850;color:#244d60}
+.yh37-listen-option.right{background:#e3f9e9;border-color:#38b77a}.yh37-listen-option.wrong{background:#fff0ec;border-color:#f28d7c}
+.yh37-next{display:block;margin:23px auto 0}
+.yh37-sentence-stage{border:1px solid #e5def7;background:#faf8ff;padding:22px;border-radius:20px}
+.yh37-sentence-prompt{color:#645875;font-size:14px;line-height:1.6;margin:0 0 17px}
+.yh37-sentence-answer,.yh37-sentence-bank{min-height:105px;background:white;border:2px dashed #bcb2da;border-radius:14px;padding:16px;display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.yh37-sentence-bank{border:1px solid #e9e1f8;background:#f1edfc}
+.yh37-ghost-text{color:#9489aa;font-size:14px}
+.yh37-chunk{background:white;border:2px solid #d8cceb;border-radius:11px;padding:11px 14px;font-size:19px;font-weight:750;color:#4b386e;min-height:48px}
+.yh37-chunk.selected{background:#e0f8f0;border-color:#b7dccc;color:#27725b}
+.yh37-sentence-controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.yh37-win{text-align:center;background:linear-gradient(140deg,#eef9ed,#e7f5ff);border-radius:24px;padding:40px 15px}
+.yh37-win-emoji{font-size:66px}.yh37-win h3{font-size:27px;margin:9px 0}
+.yh37-big-score{font-size:44px;color:#218879;font-weight:900}
+.yh37-win p{color:#526e72;line-height:1.6}
+@media(max-width:800px){.yh35-yct-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.yh35-section-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.yh37-memory-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:580px){.yh35-yct-steps{grid-template-columns:1fr}.yh37-textbook-games{flex-direction:column;align-items:flex-start}.yh37-games-grid{grid-template-columns:1fr}.yh37-game-card{min-height:0;padding:18px}.yh37-game-mascot{font-size:48px}.yh37-game-heading{padding:17px}.yh37-memory-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.yh37-memory-tile{font-size:21px;min-height:84px}.yh37-match-grid{gap:8px}.yh37-match-pill{font-size:20px;min-height:69px}.yh37-match-pill.meaning{font-size:13px}.yh37-game-record>div{grid-template-columns:1fr}.yh37-playing-heading{align-items:flex-start;flex-direction:column}.yh37-game-toolbar select{min-width:100%;width:100%}.yh37-listen-stage,.yh37-sentence-stage{padding:15px}.yh37-listen-option{min-height:78px;font-size:22px}}
+
 </style>
 </head>
 <body>
@@ -1411,7 +1480,7 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
   <header class="yh35-study-header">
     <div><span class="yh34-eyebrow">TIẾNG TRUNG TRẺ EM · YCT</span>
       <h2 id="yh35StudyLevel">YCT 1</h2>
-      <p>Học theo ba phần: giáo trình, từ vựng và luyện tập. Nội dung sẽ được hiển thị đúng theo dữ liệu YCT của từng cấp.</p>
+      <p>Học theo giáo trình, ôn từ vựng và khám phá các trò chơi tiếng Trung dành cho trẻ em.</p>
     </div>
     <div class="yh35-study-icon" aria-hidden="true">童</div>
   </header>
@@ -1420,11 +1489,12 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
     <button type="button" class="yh35-main-tab active" data-yct-tab="textbook" onclick="YCT_SHOW_SECTION('textbook')"><span aria-hidden="true">📚</span><strong>Giáo trình</strong><small>Bài học và bài khóa</small></button>
     <button type="button" class="yh35-main-tab" data-yct-tab="vocab" onclick="YCT_SHOW_SECTION('vocab')"><span aria-hidden="true">🧩</span><strong>Từ vựng</strong><small>Flashcard · Ôn tập</small></button>
     <button type="button" class="yh35-main-tab" data-yct-tab="practice" onclick="YCT_SHOW_SECTION('practice')"><span aria-hidden="true">✏️</span><strong>Luyện tập</strong><small>Trắc nghiệm · Điền từ · Dịch câu</small></button>
+    <button type="button" class="yh35-main-tab yh37-game-main-tab" data-yct-tab="games" onclick="YCT_SHOW_SECTION('games')"><span aria-hidden="true">🎮</span><strong>Game YCT</strong><small>4 trò chơi theo bài</small></button>
   </div>
   <div id="yh35YctContent" class="yh35-content" aria-live="polite"></div>
 </section>
 </main>
-<footer>YuHua Chinese • Wings to the World of Chinese • v35</footer>
+<footer>YuHua Chinese • Wings to the World of Chinese • v37</footer>
 <script async src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
 <script>
 const HSK1_DATA = [
@@ -19752,11 +19822,12 @@ openFromLocation();
       $("yh34DetailSub").textContent="Chọn quyển YCT từ 1 đến 6; xem PDF giáo trình hoặc chuyển sang Từ vựng và Luyện tập.";
       $("yh34DetailContent").innerHTML=`
         <div class="yh35-yct-catalog">
-          <div class="yh35-yct-summary"><span aria-hidden="true">🎒</span><div><h3>Khám phá tiếng Trung cùng YCT</h3><p>Mỗi cấp độ có giáo trình, từ vựng (danh sách, flashcard, ôn tập) và luyện tập riêng.</p></div></div>
+          <div class="yh35-yct-summary"><span aria-hidden="true">🎒</span><div><h3>Khám phá tiếng Trung cùng YCT</h3><p>Mỗi cấp có giáo trình, từ vựng, luyện tập và 4 trò chơi ôn tập tiếng Trung.</p></div></div>
           <div class="yh35-yct-steps">
             <div><span aria-hidden="true">📚</span>Giáo trình PDF · Mục lục</div>
             <div><span aria-hidden="true">🃏</span>Từ vựng · Flashcard · Ôn tập</div>
             <div><span aria-hidden="true">✏️</span>Luyện tập và kiểm tra</div>
+            <div><span aria-hidden="true">🎮</span>Game học tiếng Trung</div>
           </div>
           <div class="yh35-yct-public-levels" id="yh35PublicYctLevels" aria-label="Các cấp độ YCT"></div>
         </div>`;
@@ -19811,6 +19882,16 @@ openFromLocation();
   window.YUHUA_YCT_DATA = window.YUHUA_YCT_DATA || Object.fromEntries(
     Array.from({length:6},(_,i)=>[i+1,{lessons:[],words:[],exercises:{translations:[],fill:[]}}])
   );
+  /* Verified selections from the user-supplied YCT 1–6 textbook pages (Let's learn & Key Sentences).
+     The first four lessons of each book are represented, NOT the entire textbook vocabulary. */
+  const YCT_GAME_BANK = {"1":[{"n":1,"title":"你好！","page":3,"words":[{"hanzi":"你","pinyin":"nǐ","vi":"bạn","lesson":1,"page":3},{"hanzi":"好","pinyin":"hǎo","vi":"tốt, khỏe","lesson":1,"page":3},{"hanzi":"老师","pinyin":"lǎoshī","vi":"giáo viên","lesson":1,"page":3},{"hanzi":"再见","pinyin":"zàijiàn","vi":"tạm biệt","lesson":1,"page":3},{"hanzi":"一","pinyin":"yī","vi":"một","lesson":1,"page":3},{"hanzi":"二","pinyin":"èr","vi":"hai","lesson":1,"page":3},{"hanzi":"三","pinyin":"sān","vi":"ba","lesson":1,"page":3},{"hanzi":"四","pinyin":"sì","vi":"bốn","lesson":1,"page":3},{"hanzi":"五","pinyin":"wǔ","vi":"năm","lesson":1,"page":3},{"hanzi":"六","pinyin":"liù","vi":"sáu","lesson":1,"page":3},{"hanzi":"七","pinyin":"qī","vi":"bảy","lesson":1,"page":3},{"hanzi":"八","pinyin":"bā","vi":"tám","lesson":1,"page":3},{"hanzi":"九","pinyin":"jiǔ","vi":"chín","lesson":1,"page":3},{"hanzi":"十","pinyin":"shí","vi":"mười","lesson":1,"page":3}],"sentences":[{"text":"你好！","tokens":["你","好！"],"lesson":1,"page":3},{"text":"再见！","tokens":["再","见！"],"lesson":1,"page":3}]},{"n":2,"title":"你叫什么？","page":7,"words":[{"hanzi":"我","pinyin":"wǒ","vi":"tôi","lesson":2,"page":7},{"hanzi":"叫","pinyin":"jiào","vi":"tên là, gọi là","lesson":2,"page":7},{"hanzi":"什么","pinyin":"shénme","vi":"cái gì","lesson":2,"page":7},{"hanzi":"认识","pinyin":"rènshi","vi":"quen, biết","lesson":2,"page":7},{"hanzi":"很","pinyin":"hěn","vi":"rất","lesson":2,"page":7},{"hanzi":"高兴","pinyin":"gāoxìng","vi":"vui mừng","lesson":2,"page":7},{"hanzi":"她","pinyin":"tā","vi":"cô ấy","lesson":2,"page":7},{"hanzi":"吗","pinyin":"ma","vi":"trợ từ nghi vấn","lesson":2,"page":7},{"hanzi":"不","pinyin":"bù","vi":"không","lesson":2,"page":7}],"sentences":[{"text":"你叫什么？","tokens":["你","叫","什么","？"],"lesson":2,"page":7},{"text":"你认识她吗？","tokens":["你","认识","她","吗","？"],"lesson":2,"page":7}]},{"n":3,"title":"他是谁？","page":11,"words":[{"hanzi":"他","pinyin":"tā","vi":"anh ấy","lesson":3,"page":11},{"hanzi":"是","pinyin":"shì","vi":"là","lesson":3,"page":11},{"hanzi":"谁","pinyin":"shéi","vi":"ai","lesson":3,"page":11},{"hanzi":"哪","pinyin":"nǎ","vi":"nào","lesson":3,"page":11},{"hanzi":"国","pinyin":"guó","vi":"nước, quốc gia","lesson":3,"page":11},{"hanzi":"人","pinyin":"rén","vi":"người","lesson":3,"page":11},{"hanzi":"中国人","pinyin":"Zhōngguórén","vi":"người Trung Quốc","lesson":3,"page":11}],"sentences":[{"text":"他是谁？","tokens":["他","是","谁","？"],"lesson":3,"page":11},{"text":"成龙是哪国人？","tokens":["成龙","是","哪","国","人","？"],"lesson":3,"page":11}]},{"n":4,"title":"我家有四口人。","page":16,"words":[{"hanzi":"爸爸","pinyin":"bàba","vi":"bố","lesson":4,"page":16},{"hanzi":"妈妈","pinyin":"māma","vi":"mẹ","lesson":4,"page":16},{"hanzi":"家","pinyin":"jiā","vi":"nhà, gia đình","lesson":4,"page":16},{"hanzi":"哥哥","pinyin":"gēge","vi":"anh trai","lesson":4,"page":16},{"hanzi":"姐姐","pinyin":"jiějie","vi":"chị gái","lesson":4,"page":16},{"hanzi":"妹妹","pinyin":"mèimei","vi":"em gái","lesson":4,"page":16},{"hanzi":"有","pinyin":"yǒu","vi":"có","lesson":4,"page":16},{"hanzi":"几","pinyin":"jǐ","vi":"mấy","lesson":4,"page":16},{"hanzi":"口","pinyin":"kǒu","vi":"lượng từ cho thành viên gia đình","lesson":4,"page":16},{"hanzi":"和","pinyin":"hé","vi":"và","lesson":4,"page":16},{"hanzi":"没有","pinyin":"méiyǒu","vi":"không có","lesson":4,"page":16},{"hanzi":"个","pinyin":"gè","vi":"lượng từ phổ biến","lesson":4,"page":16}],"sentences":[{"text":"你家有几口人？","tokens":["你","家","有","几","口","人","？"],"lesson":4,"page":16},{"text":"你有姐姐吗？","tokens":["你","有","姐姐","吗","？"],"lesson":4,"page":16}]}],"2":[{"n":1,"title":"我可以坐这儿吗？","page":5,"words":[{"hanzi":"可以","pinyin":"kěyǐ","vi":"có thể","lesson":1,"page":5},{"hanzi":"坐","pinyin":"zuò","vi":"ngồi","lesson":1,"page":5},{"hanzi":"请","pinyin":"qǐng","vi":"mời, xin vui lòng","lesson":1,"page":5},{"hanzi":"不客气","pinyin":"bú kèqi","vi":"không có gì","lesson":1,"page":5},{"hanzi":"不要","pinyin":"bú yào","vi":"đừng","lesson":1,"page":5},{"hanzi":"说话","pinyin":"shuōhuà","vi":"nói chuyện","lesson":1,"page":5},{"hanzi":"对不起","pinyin":"duìbuqǐ","vi":"xin lỗi","lesson":1,"page":5},{"hanzi":"没关系","pinyin":"méi guānxi","vi":"không sao","lesson":1,"page":5}],"sentences":[{"text":"我可以坐这儿吗？","tokens":["我","可以","坐","这儿","吗","？"],"lesson":1,"page":5},{"text":"请不要说话。","tokens":["请","不要","说话","。"],"lesson":1,"page":5}]},{"n":2,"title":"你早上几点起床？","page":10,"words":[{"hanzi":"起床","pinyin":"qǐchuáng","vi":"thức dậy","lesson":2,"page":10},{"hanzi":"睡觉","pinyin":"shuìjiào","vi":"ngủ","lesson":2,"page":10},{"hanzi":"早上","pinyin":"zǎoshang","vi":"buổi sáng","lesson":2,"page":10},{"hanzi":"晚上","pinyin":"wǎnshang","vi":"buổi tối","lesson":2,"page":10},{"hanzi":"到","pinyin":"dào","vi":"đến, tới","lesson":2,"page":10},{"hanzi":"呢","pinyin":"ne","vi":"trợ từ ngữ khí","lesson":2,"page":10},{"hanzi":"要","pinyin":"yào","vi":"muốn, cần","lesson":2,"page":10}],"sentences":[{"text":"我早上七点起床。","tokens":["我","早上","七点","起床","。"],"lesson":2,"page":10},{"text":"今天晚上我可以不睡觉吗？","tokens":["今天晚上","我","可以","不","睡觉","吗","？"],"lesson":2,"page":10}]},{"n":3,"title":"你的铅笔呢？","page":15,"words":[{"hanzi":"床","pinyin":"chuáng","vi":"giường","lesson":3,"page":15},{"hanzi":"房间","pinyin":"fángjiān","vi":"phòng","lesson":3,"page":15},{"hanzi":"电视","pinyin":"diànshì","vi":"ti vi","lesson":3,"page":15},{"hanzi":"桌子","pinyin":"zhuōzi","vi":"bàn","lesson":3,"page":15},{"hanzi":"椅子","pinyin":"yǐzi","vi":"ghế","lesson":3,"page":15},{"hanzi":"铅笔","pinyin":"qiānbǐ","vi":"bút chì","lesson":3,"page":15},{"hanzi":"书包","pinyin":"shūbāo","vi":"cặp sách","lesson":3,"page":15},{"hanzi":"里","pinyin":"lǐ","vi":"bên trong","lesson":3,"page":15},{"hanzi":"上","pinyin":"shàng","vi":"bên trên","lesson":3,"page":15},{"hanzi":"矮","pinyin":"ǎi","vi":"thấp","lesson":3,"page":15}],"sentences":[{"text":"你的铅笔呢？","tokens":["你","的","铅笔","呢","？"],"lesson":3,"page":15},{"text":"我的书包在桌子上。","tokens":["我的","书包","在","桌子","上","。"],"lesson":3,"page":15}]},{"n":4,"title":"书包里有两本书。","page":20,"words":[{"hanzi":"红色","pinyin":"hóngsè","vi":"màu đỏ","lesson":4,"page":20},{"hanzi":"黄色","pinyin":"huángsè","vi":"màu vàng","lesson":4,"page":20},{"hanzi":"绿色","pinyin":"lǜsè","vi":"màu xanh lá","lesson":4,"page":20},{"hanzi":"只","pinyin":"zhī","vi":"lượng từ cho con vật","lesson":4,"page":20},{"hanzi":"名字","pinyin":"míngzi","vi":"tên","lesson":4,"page":20},{"hanzi":"漂亮","pinyin":"piàoliang","vi":"xinh đẹp","lesson":4,"page":20},{"hanzi":"颜色","pinyin":"yánsè","vi":"màu sắc","lesson":4,"page":20},{"hanzi":"两","pinyin":"liǎng","vi":"hai","lesson":4,"page":20},{"hanzi":"本","pinyin":"běn","vi":"lượng từ cho sách","lesson":4,"page":20}],"sentences":[{"text":"书包里有两本书。","tokens":["书包","里","有","两","本","书","。"],"lesson":4,"page":20},{"text":"一只是绿色的。","tokens":["一只","是","绿色","的","。"],"lesson":4,"page":20}]}],"3":[{"n":1,"title":"我三年级。","page":5,"words":[{"hanzi":"年级","pinyin":"niánjí","vi":"khối lớp","lesson":1,"page":5},{"hanzi":"课","pinyin":"kè","vi":"tiết học, bài học","lesson":1,"page":5},{"hanzi":"都","pinyin":"dōu","vi":"đều","lesson":1,"page":5},{"hanzi":"班","pinyin":"bān","vi":"lớp học","lesson":1,"page":5},{"hanzi":"张","pinyin":"zhāng","vi":"họ Trương","lesson":1,"page":5},{"hanzi":"还","pinyin":"hái","vi":"còn, cũng","lesson":1,"page":5},{"hanzi":"新","pinyin":"xīn","vi":"mới","lesson":1,"page":5},{"hanzi":"男","pinyin":"nán","vi":"nam","lesson":1,"page":5},{"hanzi":"女","pinyin":"nǚ","vi":"nữ","lesson":1,"page":5}],"sentences":[{"text":"我们都有汉语课。","tokens":["我们","都","有","汉语课","。"],"lesson":1,"page":5},{"text":"还有一个是女老师。","tokens":["还","有","一个","是","女老师","。"],"lesson":1,"page":5}]},{"n":2,"title":"你喜欢什么运动？","page":10,"words":[{"hanzi":"游泳","pinyin":"yóuyǒng","vi":"bơi","lesson":2,"page":10},{"hanzi":"运动","pinyin":"yùndòng","vi":"thể thao, vận động","lesson":2,"page":10},{"hanzi":"打篮球","pinyin":"dǎ lánqiú","vi":"chơi bóng rổ","lesson":2,"page":10},{"hanzi":"踢足球","pinyin":"tī zúqiú","vi":"đá bóng","lesson":2,"page":10},{"hanzi":"太","pinyin":"tài","vi":"quá, rất","lesson":2,"page":10},{"hanzi":"每","pinyin":"měi","vi":"mỗi","lesson":2,"page":10},{"hanzi":"一起","pinyin":"yìqǐ","vi":"cùng nhau","lesson":2,"page":10},{"hanzi":"欢迎","pinyin":"huānyíng","vi":"hoan nghênh","lesson":2,"page":10}],"sentences":[{"text":"太好了！","tokens":["太","好","了","！"],"lesson":2,"page":10},{"text":"我和你们一起踢，好吗？","tokens":["我","和","你们","一起","踢","，","好吗","？"],"lesson":2,"page":10}]},{"n":3,"title":"我在画画儿呢。","page":15,"words":[{"hanzi":"太阳","pinyin":"tàiyáng","vi":"mặt trời","lesson":3,"page":15},{"hanzi":"月亮","pinyin":"yuèliang","vi":"mặt trăng","lesson":3,"page":15},{"hanzi":"跑步","pinyin":"pǎobù","vi":"chạy bộ","lesson":3,"page":15},{"hanzi":"爷爷","pinyin":"yéye","vi":"ông nội","lesson":3,"page":15},{"hanzi":"奶奶","pinyin":"nǎinai","vi":"bà nội","lesson":3,"page":15},{"hanzi":"唱歌","pinyin":"chànggē","vi":"hát","lesson":3,"page":15},{"hanzi":"跳舞","pinyin":"tiàowǔ","vi":"nhảy múa","lesson":3,"page":15},{"hanzi":"让","pinyin":"ràng","vi":"để, cho phép","lesson":3,"page":15}],"sentences":[{"text":"我在画画儿呢。","tokens":["我","在","画画儿","呢","。"],"lesson":3,"page":15},{"text":"让我看看。","tokens":["让","我","看看","。"],"lesson":3,"page":15}]},{"n":4,"title":"喂，您好！","page":20,"words":[{"hanzi":"喂","pinyin":"wéi","vi":"a lô","lesson":4,"page":20},{"hanzi":"您","pinyin":"nín","vi":"ngài (lịch sự)","lesson":4,"page":20},{"hanzi":"找","pinyin":"zhǎo","vi":"tìm","lesson":4,"page":20},{"hanzi":"回","pinyin":"huí","vi":"trở về","lesson":4,"page":20},{"hanzi":"问题","pinyin":"wèntí","vi":"vấn đề, câu hỏi","lesson":4,"page":20},{"hanzi":"问","pinyin":"wèn","vi":"hỏi","lesson":4,"page":20}],"sentences":[{"text":"喂，您好！","tokens":["喂","，","您好","！"],"lesson":4,"page":20},{"text":"我找我妈妈。","tokens":["我","找","我","妈妈","。"],"lesson":4,"page":20}]}],"4":[{"n":1,"title":"我们有一百零八个学生。","page":10,"words":[{"hanzi":"手机","pinyin":"shǒujī","vi":"điện thoại di động","lesson":1,"page":10},{"hanzi":"电脑","pinyin":"diànnǎo","vi":"máy tính","lesson":1,"page":10},{"hanzi":"零","pinyin":"líng","vi":"số không","lesson":1,"page":10},{"hanzi":"上网","pinyin":"shàngwǎng","vi":"lên mạng","lesson":1,"page":10},{"hanzi":"百","pinyin":"bǎi","vi":"trăm","lesson":1,"page":10},{"hanzi":"千","pinyin":"qiān","vi":"nghìn","lesson":1,"page":10},{"hanzi":"少","pinyin":"shǎo","vi":"ít","lesson":1,"page":10}],"sentences":[{"text":"我们有一百零八个学生。","tokens":["我们","有","一百零八","个","学生","。"],"lesson":1,"page":10},{"text":"我们学校有一千八百多个学生。","tokens":["我们学校","有","一千八百多","个","学生","。"],"lesson":1,"page":10}]},{"n":2,"title":"你学汉语多长时间了？","page":15,"words":[{"hanzi":"时间","pinyin":"shíjiān","vi":"thời gian","lesson":2,"page":15},{"hanzi":"半","pinyin":"bàn","vi":"một nửa","lesson":2,"page":15},{"hanzi":"读","pinyin":"dú","vi":"đọc","lesson":2,"page":15},{"hanzi":"难","pinyin":"nán","vi":"khó","lesson":2,"page":15},{"hanzi":"小时","pinyin":"xiǎoshí","vi":"giờ, tiếng đồng hồ","lesson":2,"page":15},{"hanzi":"题","pinyin":"tí","vi":"đề, câu hỏi","lesson":2,"page":15},{"hanzi":"懂","pinyin":"dǒng","vi":"hiểu","lesson":2,"page":15}],"sentences":[{"text":"你学汉语多长时间了？","tokens":["你","学","汉语","多长时间","了","？"],"lesson":2,"page":15},{"text":"一个半小时是90分钟。","tokens":["一个半小时","是","90","分钟","。"],"lesson":2,"page":15}]},{"n":3,"title":"早上八点半就开门。","page":20,"words":[{"hanzi":"开","pinyin":"kāi","vi":"mở","lesson":3,"page":20},{"hanzi":"关","pinyin":"guān","vi":"đóng","lesson":3,"page":20},{"hanzi":"门","pinyin":"mén","vi":"cửa","lesson":3,"page":20},{"hanzi":"杯子","pinyin":"bēizi","vi":"cốc, ly","lesson":3,"page":20},{"hanzi":"中午","pinyin":"zhōngwǔ","vi":"buổi trưa","lesson":3,"page":20},{"hanzi":"卖","pinyin":"mài","vi":"bán","lesson":3,"page":20},{"hanzi":"完","pinyin":"wán","vi":"xong, hết","lesson":3,"page":20},{"hanzi":"就","pinyin":"jiù","vi":"đã, ngay, liền","lesson":3,"page":20}],"sentences":[{"text":"早上八点半就开门。","tokens":["早上","八点半","就","开门","。"],"lesson":3,"page":20},{"text":"老虎杯子都卖完了。","tokens":["老虎杯子","都","卖完","了","。"],"lesson":3,"page":20}]},{"n":4,"title":"我感冒了。","page":25,"words":[{"hanzi":"身体","pinyin":"shēntǐ","vi":"cơ thể, sức khỏe","lesson":4,"page":25},{"hanzi":"舒服","pinyin":"shūfu","vi":"thoải mái, dễ chịu","lesson":4,"page":25},{"hanzi":"生病","pinyin":"shēngbìng","vi":"bị bệnh","lesson":4,"page":25},{"hanzi":"感冒","pinyin":"gǎnmào","vi":"cảm cúm","lesson":4,"page":25},{"hanzi":"休息","pinyin":"xiūxi","vi":"nghỉ ngơi","lesson":4,"page":25},{"hanzi":"疼","pinyin":"téng","vi":"đau","lesson":4,"page":25},{"hanzi":"药","pinyin":"yào","vi":"thuốc","lesson":4,"page":25},{"hanzi":"一点儿","pinyin":"yìdiǎnr","vi":"một chút","lesson":4,"page":25}],"sentences":[{"text":"我感冒了。","tokens":["我","感冒","了","。"],"lesson":4,"page":25},{"text":"我吃了一点儿面包，喝了一点儿水。","tokens":["我","吃了","一点儿","面包","，","喝了","一点儿","水","。"],"lesson":4,"page":25}]}],"5":[{"n":1,"title":"你对中国功夫感兴趣吗？","page":8,"words":[{"hanzi":"功夫","pinyin":"gōngfu","vi":"võ thuật, công phu","lesson":1,"page":8},{"hanzi":"感兴趣","pinyin":"gǎn xìngqù","vi":"cảm thấy hứng thú","lesson":1,"page":8},{"hanzi":"非常","pinyin":"fēicháng","vi":"vô cùng, rất","lesson":1,"page":8},{"hanzi":"飞","pinyin":"fēi","vi":"bay","lesson":1,"page":8},{"hanzi":"当然","pinyin":"dāngrán","vi":"đương nhiên","lesson":1,"page":8},{"hanzi":"特别","pinyin":"tèbié","vi":"đặc biệt","lesson":1,"page":8},{"hanzi":"厉害","pinyin":"lìhai","vi":"giỏi, lợi hại","lesson":1,"page":8},{"hanzi":"帮助","pinyin":"bāngzhù","vi":"giúp đỡ","lesson":1,"page":8},{"hanzi":"别人","pinyin":"biérén","vi":"người khác","lesson":1,"page":8}],"sentences":[{"text":"你对中国功夫感兴趣吗？","tokens":["你","对","中国功夫","感兴趣","吗","？"],"lesson":1,"page":8},{"text":"我也想和阿宝一样。","tokens":["我","也","想","和阿宝","一样","。"],"lesson":1,"page":8}]},{"n":2,"title":"兔子更可爱。","page":16,"words":[{"hanzi":"大象","pinyin":"dàxiàng","vi":"voi","lesson":2,"page":16},{"hanzi":"兔子","pinyin":"tùzi","vi":"thỏ","lesson":2,"page":16},{"hanzi":"蝴蝶","pinyin":"húdié","vi":"bướm","lesson":2,"page":16},{"hanzi":"虫子","pinyin":"chóngzi","vi":"côn trùng","lesson":2,"page":16},{"hanzi":"尾巴","pinyin":"wěiba","vi":"đuôi","lesson":2,"page":16},{"hanzi":"矮","pinyin":"ǎi","vi":"thấp","lesson":2,"page":16},{"hanzi":"胖","pinyin":"pàng","vi":"béo","lesson":2,"page":16},{"hanzi":"短","pinyin":"duǎn","vi":"ngắn","lesson":2,"page":16},{"hanzi":"更","pinyin":"gèng","vi":"càng, hơn nữa","lesson":2,"page":16},{"hanzi":"讨厌","pinyin":"tǎoyàn","vi":"ghét","lesson":2,"page":16},{"hanzi":"告诉","pinyin":"gàosu","vi":"nói cho biết","lesson":2,"page":16},{"hanzi":"将来","pinyin":"jiānglái","vi":"tương lai","lesson":2,"page":16}],"sentences":[{"text":"大象的鼻子长长的。","tokens":["大象","的","鼻子","长长的","。"],"lesson":2,"page":16},{"text":"兔子更可爱。","tokens":["兔子","更","可爱","。"],"lesson":2,"page":16}]},{"n":3,"title":"电梯坏了。","page":24,"words":[{"hanzi":"楼","pinyin":"lóu","vi":"tòa nhà, tầng lầu","lesson":3,"page":24},{"hanzi":"电梯","pinyin":"diàntī","vi":"thang máy","lesson":3,"page":24},{"hanzi":"空调","pinyin":"kōngtiáo","vi":"máy điều hòa","lesson":3,"page":24},{"hanzi":"窗户","pinyin":"chuānghu","vi":"cửa sổ","lesson":3,"page":24},{"hanzi":"沙发","pinyin":"shāfā","vi":"ghế sofa","lesson":3,"page":24},{"hanzi":"洗手间","pinyin":"xǐshǒujiān","vi":"nhà vệ sinh","lesson":3,"page":24},{"hanzi":"等","pinyin":"děng","vi":"đợi","lesson":3,"page":24},{"hanzi":"住","pinyin":"zhù","vi":"ở, cư trú","lesson":3,"page":24},{"hanzi":"层","pinyin":"céng","vi":"tầng","lesson":3,"page":24},{"hanzi":"还是","pinyin":"háishi","vi":"hay là","lesson":3,"page":24},{"hanzi":"放","pinyin":"fàng","vi":"đặt, để","lesson":3,"page":24}],"sentences":[{"text":"你住3层还是4层？","tokens":["你","住","3层","还是","4层","？"],"lesson":3,"page":24},{"text":"窗户下边放了一个大沙发。","tokens":["窗户","下边","放了","一个","大沙发","。"],"lesson":3,"page":24}]},{"n":4,"title":"每个人都有自己的习惯。","page":32,"words":[{"hanzi":"邻居","pinyin":"línjū","vi":"hàng xóm","lesson":4,"page":32},{"hanzi":"习惯","pinyin":"xíguàn","vi":"thói quen","lesson":4,"page":32},{"hanzi":"一会儿","pinyin":"yíhuìr","vi":"một lát","lesson":4,"page":32},{"hanzi":"以前","pinyin":"yǐqián","vi":"trước đây","lesson":4,"page":32},{"hanzi":"周末","pinyin":"zhōumò","vi":"cuối tuần","lesson":4,"page":32},{"hanzi":"带","pinyin":"dài","vi":"mang theo, dẫn đi","lesson":4,"page":32},{"hanzi":"奇怪","pinyin":"qíguài","vi":"kỳ lạ","lesson":4,"page":32},{"hanzi":"咖啡","pinyin":"kāfēi","vi":"cà phê","lesson":4,"page":32},{"hanzi":"钢琴","pinyin":"gāngqín","vi":"đàn piano","lesson":4,"page":32},{"hanzi":"公园","pinyin":"gōngyuán","vi":"công viên","lesson":4,"page":32},{"hanzi":"散步","pinyin":"sànbù","vi":"đi dạo","lesson":4,"page":32},{"hanzi":"爬山","pinyin":"páshān","vi":"leo núi","lesson":4,"page":32}],"sentences":[{"text":"她每天早上弹一会儿钢琴。","tokens":["她","每天早上","弹","一会儿","钢琴","。"],"lesson":4,"page":32},{"text":"每个人都有自己的习惯。","tokens":["每个人","都","有","自己的","习惯","。"],"lesson":4,"page":32}]}],"6":[{"n":1,"title":"我属猴。","page":10,"words":[{"hanzi":"勇敢","pinyin":"yǒnggǎn","vi":"dũng cảm","lesson":1,"page":10},{"hanzi":"聪明","pinyin":"cōngming","vi":"thông minh","lesson":1,"page":10},{"hanzi":"另外","pinyin":"lìngwài","vi":"ngoài ra","lesson":1,"page":10},{"hanzi":"属","pinyin":"shǔ","vi":"cầm tinh (con giáp)","lesson":1,"page":10},{"hanzi":"收到","pinyin":"shōudào","vi":"nhận được","lesson":1,"page":10},{"hanzi":"祝贺","pinyin":"zhùhè","vi":"chúc mừng","lesson":1,"page":10},{"hanzi":"初中","pinyin":"chūzhōng","vi":"trung học cơ sở","lesson":1,"page":10},{"hanzi":"挂","pinyin":"guà","vi":"treo","lesson":1,"page":10},{"hanzi":"节日","pinyin":"jiérì","vi":"ngày lễ","lesson":1,"page":10},{"hanzi":"猴子","pinyin":"hóuzi","vi":"con khỉ","lesson":1,"page":10},{"hanzi":"毕业","pinyin":"bìyè","vi":"tốt nghiệp","lesson":1,"page":10},{"hanzi":"信封","pinyin":"xìnfēng","vi":"phong bì","lesson":1,"page":10},{"hanzi":"春节","pinyin":"Chūnjié","vi":"Tết âm lịch","lesson":1,"page":10},{"hanzi":"灯笼","pinyin":"dēnglong","vi":"đèn lồng","lesson":1,"page":10}],"sentences":[{"text":"猴子又聪明又可爱。","tokens":["猴子","又","聪明","又","可爱","。"],"lesson":1,"page":10},{"text":"姐姐拿着一只小猴子。","tokens":["姐姐","拿着","一只","小猴子","。"],"lesson":1,"page":10}]},{"n":2,"title":"他数学好极了。","page":18,"words":[{"hanzi":"容易","pinyin":"róngyì","vi":"dễ","lesson":2,"page":18},{"hanzi":"刚才","pinyin":"gāngcái","vi":"vừa rồi","lesson":2,"page":18},{"hanzi":"了不起","pinyin":"liǎobuqǐ","vi":"tuyệt vời","lesson":2,"page":18},{"hanzi":"讲","pinyin":"jiǎng","vi":"giảng, nói","lesson":2,"page":18},{"hanzi":"明白","pinyin":"míngbai","vi":"hiểu rõ","lesson":2,"page":18},{"hanzi":"骑","pinyin":"qí","vi":"đi, cưỡi (xe, ngựa)","lesson":2,"page":18},{"hanzi":"希望","pinyin":"xīwàng","vi":"hy vọng","lesson":2,"page":18},{"hanzi":"参加","pinyin":"cānjiā","vi":"tham gia","lesson":2,"page":18},{"hanzi":"万","pinyin":"wàn","vi":"vạn, mười nghìn","lesson":2,"page":18},{"hanzi":"加","pinyin":"jiā","vi":"cộng, thêm","lesson":2,"page":18},{"hanzi":"减","pinyin":"jiǎn","vi":"trừ, bớt","lesson":2,"page":18},{"hanzi":"数学","pinyin":"shùxué","vi":"môn toán","lesson":2,"page":18},{"hanzi":"比赛","pinyin":"bǐsài","vi":"cuộc thi, thi đấu","lesson":2,"page":18},{"hanzi":"自行车","pinyin":"zìxíngchē","vi":"xe đạp","lesson":2,"page":18}],"sentences":[{"text":"他数学好极了。","tokens":["他","数学","好极了","。"],"lesson":2,"page":18},{"text":"他能讲明白。","tokens":["他","能","讲","明白","。"],"lesson":2,"page":18}]},{"n":3,"title":"小鸟正在唱歌。","page":26,"words":[{"hanzi":"醒","pinyin":"xǐng","vi":"tỉnh dậy","lesson":3,"page":26},{"hanzi":"刻","pinyin":"kè","vi":"khắc (15 phút)","lesson":3,"page":26},{"hanzi":"响","pinyin":"xiǎng","vi":"reo, vang lên","lesson":3,"page":26},{"hanzi":"开会","pinyin":"kāihuì","vi":"họp","lesson":3,"page":26},{"hanzi":"着急","pinyin":"zháojí","vi":"lo lắng, sốt ruột","lesson":3,"page":26},{"hanzi":"耽误","pinyin":"dānwu","vi":"làm chậm trễ","lesson":3,"page":26},{"hanzi":"上班","pinyin":"shàngbān","vi":"đi làm","lesson":3,"page":26},{"hanzi":"以为","pinyin":"yǐwéi","vi":"tưởng rằng","lesson":3,"page":26},{"hanzi":"正在","pinyin":"zhèngzài","vi":"đang","lesson":3,"page":26},{"hanzi":"安静","pinyin":"ānjìng","vi":"yên tĩnh","lesson":3,"page":26},{"hanzi":"校园","pinyin":"xiàoyuán","vi":"khuôn viên trường","lesson":3,"page":26},{"hanzi":"树","pinyin":"shù","vi":"cây","lesson":3,"page":26},{"hanzi":"声音","pinyin":"shēngyīn","vi":"âm thanh","lesson":3,"page":26}],"sentences":[{"text":"小鸟正在唱歌。","tokens":["小鸟","正在","唱歌","。"],"lesson":3,"page":26},{"text":"兔子一边吃东西一边听小鸟唱歌。","tokens":["兔子","一边","吃东西","一边","听","小鸟","唱歌","。"],"lesson":3,"page":26}]},{"n":4,"title":"你打扫一下房间好吗？","page":34,"words":[{"hanzi":"面粉","pinyin":"miànfěn","vi":"bột mì","lesson":4,"page":34},{"hanzi":"接","pinyin":"jiē","vi":"đón, nhận","lesson":4,"page":34},{"hanzi":"够","pinyin":"gòu","vi":"đủ","lesson":4,"page":34},{"hanzi":"打扫","pinyin":"dǎsǎo","vi":"quét dọn","lesson":4,"page":34},{"hanzi":"一下","pinyin":"yíxià","vi":"một chút","lesson":4,"page":34},{"hanzi":"干净","pinyin":"gānjìng","vi":"sạch sẽ","lesson":4,"page":34},{"hanzi":"修剪","pinyin":"xiūjiǎn","vi":"cắt tỉa","lesson":4,"page":34},{"hanzi":"照顾","pinyin":"zhàogù","vi":"chăm sóc","lesson":4,"page":34},{"hanzi":"睡着","pinyin":"shuìzháo","vi":"ngủ thiếp đi","lesson":4,"page":34},{"hanzi":"互相","pinyin":"hùxiāng","vi":"lẫn nhau","lesson":4,"page":34},{"hanzi":"生活","pinyin":"shēnghuó","vi":"cuộc sống","lesson":4,"page":34},{"hanzi":"斤","pinyin":"jīn","vi":"cân (Trung Quốc)","lesson":4,"page":34},{"hanzi":"葡萄","pinyin":"pútao","vi":"nho","lesson":4,"page":34},{"hanzi":"草地","pinyin":"cǎodì","vi":"bãi cỏ","lesson":4,"page":34}],"sentences":[{"text":"我还是打扫房间吧。","tokens":["我","还是","打扫","房间","吧","。"],"lesson":4,"page":34},{"text":"盘子洗干净了，房间也打扫干净了。","tokens":["盘子","洗干净了","，","房间","也","打扫干净了","。"],"lesson":4,"page":34}]}]};
+  for(const [level,lessons] of Object.entries(YCT_GAME_BANK)){
+    const original=window.YUHUA_YCT_DATA[level]||{lessons:[],words:[],exercises:{}};
+    const selected=lessons.flatMap(l=>l.words);
+    const known=new Set((original.words||[]).map(w=>w.hanzi+'|'+(w.pinyin||'')));
+    selected.forEach(w=>{if(!known.has(w.hanzi+'|'+w.pinyin)){(original.words||(original.words=[])).push({...w});known.add(w.hanzi+'|'+w.pinyin)}});
+    window.YUHUA_YCT_DATA[level]=original;
+  }
   let yctLevel=1, yctSection="textbook", yctSubtab="list", yctExerciseTab="quiz";
   const YCT_PDF_BOOKS={"1":{"pages":60,"sizeMiB":5.3,"file":"YCT1.pdf","chapters":[{"title":"你好！","page":3,"number":1},{"title":"你叫什么？","page":7,"number":2},{"title":"他是谁？","page":11,"number":3},{"title":"我家有四口人。","page":16,"number":4},{"title":"我6岁。","page":21,"number":5},{"title":"你的个子真高！","page":26,"number":6},{"title":"这是谁的狗？","page":31,"number":7},{"title":"我去商店。","page":36,"number":8},{"title":"今天星期几？","page":41,"number":9},{"title":"现在几点？","page":46,"number":10},{"title":"你吃什么？","page":51,"number":11},{"title":"复习 · Ôn tập","page":56,"number":12}]},"2":{"pages":59,"sizeMiB":5.5,"file":"YCT2.pdf","chapters":[{"title":"我可以坐这儿吗？","page":5,"number":1},{"title":"你早上几点起床？","page":10,"number":2},{"title":"你的铅笔呢？","page":15,"number":3},{"title":"书包里有两本书。","page":20,"number":4},{"title":"你会不会做饭？","page":25,"number":5},{"title":"包子多少钱一个？","page":30,"number":6},{"title":"今天比昨天热。","page":35,"number":7},{"title":"马丁比我大三岁。","page":40,"number":8},{"title":"你今天做什么了？","page":45,"number":9},{"title":"你怎么了？","page":49,"number":10},{"title":"我来北京一年了。","page":54,"number":11},{"title":"复习 · Ôn tập","number":12,"page":57}]},"3":{"pages":64,"sizeMiB":5.8,"file":"YCT3.pdf","chapters":[{"title":"我三年级。","page":5,"number":1},{"title":"你喜欢什么运动？","page":10,"number":2},{"title":"我在画画儿呢。","page":15,"number":3},{"title":"喂，您好！","page":20,"number":4},{"title":"再吃几个。","page":25,"number":5},{"title":"我能自己穿。","page":30,"number":6},{"title":"生日快乐！","page":35,"number":7},{"title":"下雪了。","page":40,"number":8},{"title":"笑一笑！","page":45,"number":9},{"title":"谁跑得快？","page":50,"number":10},{"title":"妈妈把糖给弟弟了。","page":55,"number":11},{"title":"复习 · Ôn tập","page":60,"number":12}]},"4":{"pages":75,"sizeMiB":20.7,"file":"YCT4.pdf","chapters":[{"title":"我们有一百零八个学生。","page":10,"number":1},{"title":"你学汉语多长时间了？","page":15,"number":2},{"title":"早上八点半就开门。","page":20,"number":3},{"title":"我感冒了。","page":25,"number":4},{"title":"把门关上。","page":30,"number":5},{"title":"你去过我们的新教室吗？","page":35,"number":6},{"title":"你们每天怎么去学校？","page":40,"number":7},{"title":"要下雨了。","page":45,"number":8},{"title":"你是什么时候去的？","page":50,"number":9},{"title":"爸爸为什么不休息？","page":55,"number":10},{"title":"它长得很快。","page":60,"number":11},{"title":"复习 · Ôn tập","page":65,"number":12}]},"5":{"pages":135,"sizeMiB":18.7,"file":"YCT5.pdf","chapters":[{"title":"你对中国功夫感兴趣吗？","page":8,"number":1},{"title":"兔子更可爱。","page":16,"number":2},{"title":"电梯坏了。","page":24,"number":3},{"title":"每个人都有自己的习惯。","page":32,"number":4},{"title":"他们多么年轻啊！","page":40,"number":5},{"title":"站着的还是坐着的？","page":48,"number":6},{"title":"我经常去体育馆锻炼身体。","page":56,"number":7},{"title":"北京一共有四个季节。","page":64,"number":8},{"title":"冰激凌既好吃又便宜。","page":72,"number":9},{"title":"你的汉语会越来越好。","page":80,"number":10},{"title":"来一盘羊肉饺子。","page":88,"number":11},{"title":"坐飞机或者坐火车都可以。","page":96,"number":12},{"title":"我先帮你补牙。","page":104,"number":13},{"title":"我打算去中国旅游。","page":112,"number":14},{"title":"复习 · Ôn tập","page":120,"number":15}]},"6":{"pages":135,"sizeMiB":18.9,"file":"YCT6.pdf","chapters":[{"title":"我属猴。","page":10,"number":1},{"title":"他数学好极了。","page":18,"number":2},{"title":"小鸟正在唱歌。","page":26,"number":3},{"title":"你打扫一下房间好吗？","page":34,"number":4},{"title":"你太马虎了！","page":42,"number":5},{"title":"你扮演什么？","page":50,"number":6},{"title":"他们不是双胞胎。","page":58,"number":7},{"title":"小鱼被小猫吃了。","page":66,"number":8},{"title":"他家搬到动物园附近了。","page":74,"number":9},{"title":"月亮离我们多远？","page":82,"number":10},{"title":"我用帽子换你的盘子。","page":90,"number":11},{"title":"以后要注意。","page":98,"number":12},{"title":"我爱吃辣的。","page":106,"number":13},{"title":"有的熊猫一直睡觉。","page":114,"number":14},{"title":"复习 · Ôn tập","page":122,"number":15}]}};
 
@@ -19838,7 +19919,7 @@ openFromLocation();
     container.innerHTML=Array.from({length:6},(_,i)=>{const lv=i+1;return `
       <button type="button" class="yh35-yct-level-card" onclick="YH_OPEN_YCT_LEVEL(${lv})" aria-label="YCT ${lv}">
         <span class="yh35-yct-cover c${lv}"><span class="big">${yctHanzi[i]}</span><small>YCT ${lv}</small></span>
-        <span class="yh35-yct-level-desc"><strong>YCT ${lv}</strong><span>${yctLabels[i]}</span><small>Giáo trình · Từ vựng · Luyện tập</small></span>
+        <span class="yh35-yct-level-desc"><strong>YCT ${lv}</strong><span>${yctLabels[i]}</span><small>Giáo trình · Từ vựng · Luyện tập · Game</small></span>
         <span class="yh35-yct-arrow" aria-hidden="true">→</span>
       </button>`}).join("");
   };
@@ -19847,6 +19928,7 @@ openFromLocation();
     if(!window.YUHUA_ACTIVE_UID){window.YH_PENDING_YCT=n;window.YH_PENDING_HSK=null;window.YUHUA_OPEN_AUTH("login");return;}
     window.YH_PENDING_YCT=null;
     yctLevel=n; yctFlashIndex=0;yctFlashBack=false;yctOnlyForgotten=false;
+    if(typeof window.YCT_GAME_RESET_STATE==="function")window.YCT_GAME_RESET_STATE();
     document.body.classList.add("yh-study-open");
     $("home")?.classList.remove("active");$("lesson")?.classList.remove("active");
     $("yctStudy")?.classList.add("active");
@@ -19857,11 +19939,12 @@ openFromLocation();
   };
   window.YCT_SHOW_SECTION=(section)=>{
     if(!window.YUHUA_ACTIVE_UID){window.YUHUA_OPEN_AUTH("login");return;}
-    if(!["textbook","vocab","practice"].includes(section))return;
+    if(!["textbook","vocab","practice","games"].includes(section))return;
     yctSection=section;
     document.querySelectorAll("#yh35YctSectionTabs [data-yct-tab]").forEach(b=>b.classList.toggle("active",b.dataset.yctTab===section));
     if(section==="textbook")renderYctTextbook();
     else if(section==="vocab")window.YCT_SHOW_VOCAB_TAB(yctSubtab);
+    else if(section==="games")window.YCT_SHOW_GAMES();
     else window.YCT_SHOW_PRACTICE_TAB(yctExerciseTab);
   };
   function renderYctTextbook(){
@@ -19886,12 +19969,13 @@ openFromLocation();
       <h3 class="yh36-chapter-heading">Mục lục giáo trình YCT ${yctLevel}</h3>
       <p class="muted">Chọn một bài để mở đúng vị trí trong tài liệu PDF.</p>
       <div class="yh36-chapter-grid">${book.chapters.map(x=>`<button class="yh36-chapter" type="button" onclick="YCT_OPEN_PDF(${x.page})"><b>Bài ${x.number}</b><span>${safe(x.title)}</span><small>Trang PDF ${x.page}</small></button>`).join("")}</div>
+      <div class="yh37-textbook-games"><div><b>🎮 Chơi game sau khi học</b><small>Ghép từ, lật thẻ, luyện nghe và xếp câu trong 4 bài đầu.</small></div><button class="primary" type="button" onclick="YCT_GAME_GO(0)">Vào Game YCT →</button></div>
       <div class="yh36-pdf-viewer" id="yh36PdfViewer" hidden>
         <div class="yh36-pdf-viewer-toolbar"><b>📖 Đọc giáo trình YCT ${yctLevel} <span id="yh36PdfPageLabel"></span></b><div><a id="yh36PdfOpenTab" href="${url}" target="_blank" rel="noopener noreferrer">Mở riêng ↗</a><button type="button" class="secondary" onclick="YCT_HIDE_PDF()">Ẩn PDF</button></div></div>
         <iframe id="yh36PdfFrame" title="Giáo trình YCT ${yctLevel} PDF" loading="lazy" allowfullscreen></iframe>
         <p class="yh36-mobile-note">Nếu thiết bị không hiển thị trình đọc bên dưới, hãy chọn <b>Mở PDF</b> để xem bằng trình duyệt.</p>
       </div>
-      ${ls.length?`<h3 class="yh36-chapter-heading">Bài học tương tác đã biên soạn</h3>${ls.map((l,i)=>`<div class="yh35-lesson-row"><div><strong>Bài ${i+1} – ${safe(l.title||`Bài ${i+1}`)}</strong><br><small class="muted">${arr(l.words).length} từ · ${arr(l.texts).length} bài khóa</small></div><button class="secondary" onclick="YCT_OPEN_TEXT(${i})">Xem bài</button></div>`).join("")}`:`<p class="yh36-digitization-note"><b>Lưu ý:</b> Giáo trình PDF đã được tích hợp. Từ vựng, flashcard và luyện tập tương tác cần được nhập dữ liệu riêng từ giáo trình; chúng không tự tạo khi thêm PDF.</p>`}
+      ${ls.length?`<h3 class="yh36-chapter-heading">Bài học tương tác đã biên soạn</h3>${ls.map((l,i)=>`<div class="yh35-lesson-row"><div><strong>Bài ${i+1} – ${safe(l.title||`Bài ${i+1}`)}</strong><br><small class="muted">${arr(l.words).length} từ · ${arr(l.texts).length} bài khóa</small></div><button class="secondary" onclick="YCT_OPEN_TEXT(${i})">Xem bài</button></div>`).join("")}`:`<p class="yh36-digitization-note"><b>Lưu ý:</b> 4 bài đầu đã có dữ liệu từ vựng chọn lọc để chơi game và dùng flashcard. Các bài còn lại vẫn đọc qua PDF, chưa được số hóa tương tác đầy đủ.</p>`}
     `;
   }
   window.YCT_OPEN_PDF=(requestedPage=1)=>{
@@ -19916,7 +20000,7 @@ openFromLocation();
     if(!["list","flash","review"].includes(tab))tab="list";
     yctSubtab=tab;
     const words=allWords(),memory=readMemory();
-    $("yh35YctContent").innerHTML=`<h3>🧩 Từ vựng YCT ${yctLevel}</h3><p class="muted">${words.length} mục từ · Hán tự, pinyin, nghĩa tiếng Việt và phát âm</p>
+    $("yh35YctContent").innerHTML=`<h3>🧩 Từ vựng YCT ${yctLevel}</h3><p class="muted">${words.length} từ vựng đã đối chiếu từ 4 bài đầu của giáo trình · Hán tự, pinyin, nghĩa tiếng Việt và phát âm. Đây chưa phải toàn bộ vốn từ của quyển sách.</p>
     ${subTabs([["list","Danh sách từ vựng"],["flash","Flashcard"],["review","Ôn tập từ vựng"]],tab,"YCT_SHOW_VOCAB_TAB")}
     <div id="yh35VocabBody"></div>`;
     const body=$("yh35VocabBody");
@@ -20014,6 +20098,215 @@ openFromLocation();
     body.innerHTML=trans.map((x,i)=>`<div class="yh35-practice-item"><label>Câu ${i+1}. ${safe(x.vi||x.question||"")}</label><textarea id="yctTranslate${i}" rows="2" placeholder="Viết câu tiếng Trung của em"></textarea></div>`).join("")+
       `<button class="primary" onclick="YCT_CHECK_TRANSLATE()">Xem đáp án gợi ý</button><div id="yh35PracticeResult"></div>`;
   };
+
+  /* ===== v37 · YCT learning games: match, memory, listening, sentence order ===== */
+  const gameIcons={match:"🧩",memory:"🃏",listen:"🎧",sentence:"🧱"};
+  const gameNames={match:"Ghép từ với nghĩa",memory:"Lật thẻ trí nhớ",listen:"Nghe và chọn chữ Hán",sentence:"Sắp xếp câu"};
+  let gameLesson=0,gameMode="",gameState=null,gameVoiceWarned=false;
+  const yg=(id)=>document.getElementById(id);
+  const gameShuffle=(xs)=>{
+    const a=[...xs];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;
+  };
+  const gameLessons=()=>YCT_GAME_BANK[yctLevel]||[];
+  const gameWords=()=>gameLessons().filter(l=>!gameLesson||l.n===gameLesson).flatMap(l=>l.words);
+  const gameSentences=()=>gameLessons().filter(l=>!gameLesson||l.n===gameLesson).flatMap(l=>l.sentences);
+  const gameScoreKey=()=>window.YUHUA_ACTIVE_UID?`yuhua_yct_game_v37_${window.YUHUA_ACTIVE_UID}_${yctLevel}`:null;
+  function getGameRecords(){try{return JSON.parse(localStorage.getItem(gameScoreKey())||"{}")||{}}catch{return {}}}
+  function saveGameRecord(mode,score,total){
+    const k=gameScoreKey();if(!k)return;
+    try{
+      const r=getGameRecords(),id=`${mode}_${gameLesson||"all"}`,old=r[id]||{};
+      r[id]={best:Math.max(old.best||0,score),bestPct:Math.max(old.bestPct||0,Math.round(score/total*100)),attempts:(old.attempts||0)+1,latest:score,total,updated:new Date().toISOString()};
+      localStorage.setItem(k,JSON.stringify(r));
+    }catch(e){console.warn('YCT game progress not saved',e)}
+  }
+  window.YCT_GAME_RESET_STATE=()=>{gameLesson=0;gameMode="";gameState=null;};
+  window.YCT_GAME_GO=(lesson=0)=>{gameLesson=Number(lesson)||0;window.YCT_SHOW_SECTION('games');};
+  window.YCT_SHOW_GAMES=()=>{
+    gameMode="";gameState=null;
+    const ls=gameLessons();
+    yg("yh35YctContent").innerHTML=`
+      <div class="yh37-game-heading">
+        <div><span class="yh37-eyebrow">🌟 HỌC MÀ CHƠI · YCT ${yctLevel}</span><h3>Thế giới trò chơi tiếng Trung</h3><p>Vừa chơi vừa nhớ chữ Hán, phát âm và mẫu câu theo giáo trình.</p></div>
+        <div class="yh37-game-mascot" aria-hidden="true">🐼</div>
+      </div>
+      <div class="yh37-game-toolbar"><label for="yh37LessonChoice">Chọn nội dung</label><select id="yh37LessonChoice" onchange="YCT_GAME_CHOOSE_LESSON(this.value)">
+        <option value="0" ${gameLesson===0?"selected":""}>Ôn tập chung · Bài 1–4</option>
+        ${ls.map(l=>`<option value="${l.n}" ${gameLesson===l.n?"selected":""}>Bài ${l.n} · ${safe(l.title)}</option>`).join("")}
+      </select><span>${gameWords().length} từ đã đối chiếu</span></div>
+      <div class="yh37-games-grid">
+        ${[
+          ["match","🔗","Ghép đôi","Nối chữ Hán với nghĩa tiếng Việt.","#edf9ed"],
+          ["memory","🃏","Lật thẻ ký ức","Lật và tìm hai thẻ cùng nghĩa.","#fff2e4"],
+          ["listen","🎧","Tai nghe tinh tường","Nghe tiếng Trung rồi chọn chữ đúng.","#eef1ff"],
+          ["sentence","🧱","Xếp câu thần tốc","Chạm các mảnh để ghép câu đúng.","#fff0f4"]
+        ].map(([mode,ic,title,desc,bg])=>`<button class="yh37-game-card" type="button" style="--game-bg:${bg}" onclick="YCT_GAME_START('${mode}')"><span class="yh37-game-icon">${ic}</span><strong>${title}</strong><small>${desc}</small><span class="yh37-game-start">Chơi ngay →</span></button>`).join("")}
+      </div>
+      <div class="yh37-game-record" id="yh37GameRecords"></div>
+      <p class="yh37-game-source">📖 Các câu hỏi được xây dựng từ phần <b>Let's learn</b> và <b>Key Sentences</b>, bài 1–4 của YCT Standard Course ${yctLevel}. Bấm “Trang giáo trình” để xem bản PDF gốc. Đây là học liệu thực hành bổ sung, chưa bao phủ toàn bộ từ vựng của 6 quyển.</p>
+      <div class="yh37-game-footnav"><button class="secondary" type="button" onclick="YCT_SHOW_SECTION('textbook')">📚 Trang giáo trình</button><button class="secondary" type="button" onclick="YCT_SHOW_SECTION('vocab')">🗂 Ôn Flashcard</button></div>
+    `;
+    const records=getGameRecords();
+    yg("yh37GameRecords").innerHTML=`<b>🏆 Thành tích của em</b><div>${Object.keys(gameIcons).map(mode=>{const x=records[`${mode}_${gameLesson||"all"}`];return `<span>${gameIcons[mode]} ${x?`Tốt nhất ${x.bestPct}% · ${x.attempts} lượt`:'Chưa chơi'}</span>`}).join("")}</div><small>Lưu trên trình duyệt theo tài khoản hiện tại.</small>`;
+  };
+  window.YCT_GAME_CHOOSE_LESSON=n=>{gameLesson=Number(n)||0;window.YCT_SHOW_GAMES();};
+  function gameShell(mode,detail){
+    yg("yh35YctContent").innerHTML=`<div class="yh37-playing">
+      <button class="yh37-back secondary" type="button" onclick="YCT_SHOW_GAMES()">← Tất cả game</button>
+      <div class="yh37-playing-heading"><div><span class="yh37-eyebrow">YCT ${yctLevel} · ${gameLesson?`Bài ${gameLesson}`:"Ôn tập bài 1–4"}</span><h3>${gameIcons[mode]} ${gameNames[mode]}</h3><p>${detail}</p></div><span class="yh37-play-badge" id="yh37RoundInfo"></span></div>
+      <div id="yh37GameBoard" aria-live="polite"></div><div id="yh37GameFeedback" role="status" aria-live="polite"></div>
+      <div class="yh37-game-bottom"><button type="button" class="secondary" onclick="YCT_GAME_START('${mode}')">↻ Chơi lại</button><button type="button" class="secondary" onclick="YCT_SHOW_GAMES()">🎮 Chọn game khác</button></div>
+    </div>`;
+  }
+  function gameFeedback(text,kind="neutral"){
+    const x=yg("yh37GameFeedback");if(x){x.className=`yh37-feedback ${kind}`;x.textContent=text;}
+  }
+  function gameFinished(){
+    if(!gameState||gameState.finished)return;
+    const s=gameState; s.finished=true;saveGameRecord(s.mode,s.score,s.total);
+    const pct=Math.round(s.score/s.total*100);
+    yg("yh37GameBoard").innerHTML=`<div class="yh37-win"><span class="yh37-win-emoji">${pct===100?'🏆':'🎉'}</span><h3>Hoàn thành rồi!</h3><div class="yh37-big-score">${s.score} / ${s.total}</div><p>Em đạt ${pct}% · ${pct>=80?'Rất giỏi, tiếp tục phát huy nhé!':'Hãy luyện thêm một lần để nhớ lâu hơn nhé!'}</p><div class="yh37-win-buttons"><button class="primary" type="button" onclick="YCT_GAME_START('${s.mode}')">Chơi lại</button><button class="secondary" type="button" onclick="YCT_SHOW_GAMES()">Chọn trò khác</button></div></div>`;
+    yg("yh37RoundInfo").textContent="Hoàn thành";
+    gameFeedback("Kết quả được lưu trên thiết bị của em.","good");
+  }
+  function chooseGameWords(n){
+    const w=gameWords().filter(x=>x.hanzi&&x.vi);
+    const unique=[];const hanzi=new Set(),meaning=new Set();
+    gameShuffle(w).forEach(x=>{if(!hanzi.has(x.hanzi)&&!meaning.has(x.vi)){unique.push(x);hanzi.add(x.hanzi);meaning.add(x.vi)}});
+    return unique.slice(0,Math.min(n,unique.length));
+  }
+  window.YCT_GAME_START=mode=>{
+    if(!window.YUHUA_ACTIVE_UID){window.YUHUA_OPEN_AUTH("login");return;}
+    if(!gameIcons[mode])return;
+    gameMode=mode;
+    const descriptions={match:"Chọn một thẻ chữ Hán rồi chọn nghĩa tương ứng. Ghép đúng để nhận một ngôi sao.",memory:"Lật hai thẻ. Nếu một thẻ chữ Hán và một thẻ nghĩa khớp nhau, em đã tìm được một cặp!",listen:"Bấm nút loa để nghe giọng phổ thông và chọn chữ Hán chính xác.",sentence:"Chạm lần lượt các mảnh câu theo đúng thứ tự trong sách, sau đó kiểm tra."};
+    gameShell(mode,descriptions[mode]);
+    if(mode==="match"){
+      const items=chooseGameWords(6);if(items.length<2)return gameFeedback("Bài này chưa đủ từ để tạo game.","bad");
+      gameState={mode,total:items.length,score:0,items,solved:[],chosenH:null,chosenV:null,finished:false};
+      renderMatch();
+    }else if(mode==="memory"){
+      const items=chooseGameWords(5);if(items.length<2)return gameFeedback("Chưa đủ từ cho game trí nhớ.","bad");
+      const cards=gameShuffle(items.flatMap((w,i)=>[{id:`h${i}`,pair:i,side:'h',text:w.hanzi},{id:`v${i}`,pair:i,side:'v',text:w.vi}]));
+      gameState={mode,total:items.length,score:0,cards,opened:[],solved:[],busy:false,finished:false,nonce:Date.now()};
+      renderMemory();
+    }else if(mode==="listen"){
+      const items=chooseGameWords(9);if(items.length<3)return gameFeedback("Chưa đủ từ để tạo bài nghe.","bad");
+      gameState={mode,total:Math.min(7,items.length),score:0,items,index:0,choices:[],answered:false,finished:false};
+      renderListen();
+    }else if(mode==="sentence"){
+      const items=gameShuffle(gameSentences().filter(x=>x.tokens?.length>2));
+      if(!items.length)return gameFeedback("Chưa có mẫu câu trong giáo trình.","bad");
+      gameState={mode,total:Math.min(6,items.length),score:0,items,index:0,selected:[],available:[],attempts:0,finished:false};
+      prepareSentence();renderSentence();
+    }
+  };
+  function renderMatch(){
+    const s=gameState,done=s.solved.length;yg("yh37RoundInfo").textContent=`⭐ ${done}/${s.total} cặp`;
+    const left=s.items.map((w,i)=>({i,value:w.hanzi}));
+    if(!s.order) s.order=gameShuffle(s.items.map((_,i)=>i));
+    const right=s.order.map(i=>({i,value:s.items[i].vi}));
+    yg("yh37GameBoard").innerHTML=`<div class="yh37-match-grid"><div class="yh37-match-col"><h4>🇨🇳 Chữ Hán</h4>${left.map(x=>`<button type="button" class="yh37-match-pill ${s.solved.includes(x.i)?'solved':''} ${s.chosenH===x.i?'chosen':''}" ${s.solved.includes(x.i)?'disabled':''} onclick="YCT_MATCH_PICK('h',${x.i})">${safe(x.value)}</button>`).join("")}</div><div class="yh37-match-col"><h4>🇻🇳 Nghĩa tiếng Việt</h4>${right.map(x=>`<button type="button" class="yh37-match-pill meaning ${s.solved.includes(x.i)?'solved':''} ${s.chosenV===x.i?'chosen':''}" ${s.solved.includes(x.i)?'disabled':''} onclick="YCT_MATCH_PICK('v',${x.i})">${safe(x.value)}</button>`).join("")}</div></div>`;
+  }
+  window.YCT_MATCH_PICK=(side,i)=>{
+    const s=gameState;if(!s||s.mode!=="match"||s.finished||s.solved.includes(i))return;
+    if(side==='h')s.chosenH=i;else s.chosenV=i;
+    if(s.chosenH!==null&&s.chosenV!==null){
+      if(s.chosenH===s.chosenV){s.solved.push(i);s.score++;gameFeedback("⭐ Chính xác! Tìm cặp tiếp theo nào!","good");}
+      else gameFeedback("Thử lại nhé! Hai thẻ này chưa khớp.","bad");
+      s.chosenH=null;s.chosenV=null;
+    }
+    if(s.solved.length===s.total)return gameFinished();
+    renderMatch();
+  };
+  function renderMemory(){
+    const s=gameState;yg("yh37RoundInfo").textContent=`🃏 ${s.score}/${s.total} cặp`;
+    yg("yh37GameBoard").innerHTML=`<div class="yh37-memory-grid">${s.cards.map((c,i)=>{
+      const shown=s.opened.includes(i)||s.solved.includes(c.pair);
+      return `<button type="button" aria-label="${shown?safe(c.text):'Thẻ chưa mở'}" class="yh37-memory-tile ${shown?'flipped':''} ${s.solved.includes(c.pair)?'found':''}" ${s.solved.includes(c.pair)?'disabled':''} onclick="YCT_MEMORY_FLIP(${i})">${shown?safe(c.text):'❔'}</button>`;
+    }).join("")}</div>`;
+  }
+  window.YCT_MEMORY_FLIP=i=>{
+    const s=gameState;if(!s||s.mode!=="memory"||s.finished||s.busy||s.opened.includes(i)||s.solved.includes(s.cards[i].pair))return;
+    s.opened.push(i);renderMemory();
+    if(s.opened.length===2){
+      const a=s.cards[s.opened[0]],b=s.cards[s.opened[1]];
+      if(a.pair===b.pair&&a.side!==b.side){
+        s.solved.push(a.pair);s.score++;s.opened=[];gameFeedback("🌟 Đúng rồi!",'good');
+        if(s.score===s.total){gameFinished();return;}renderMemory();
+      }else{
+        s.busy=true;gameFeedback("Hãy ghi nhớ vị trí hai thẻ nhé!",'neutral');
+        const nonce=s.nonce;
+        setTimeout(()=>{if(gameState!==s||gameState.nonce!==nonce)return;s.opened=[];s.busy=false;renderMemory();},900);
+      }
+    }
+  };
+  function yctSpeakGame(text){
+    if(!('speechSynthesis' in window)){gameFeedback('Thiết bị không hỗ trợ đọc tiếng Trung tự động.','bad');return;}
+    try{
+      speechSynthesis.cancel();
+      const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=.82;u.pitch=1.08;
+      const voices=speechSynthesis.getVoices();
+      const cn=voices.filter(v=>/zh[-_]CN|Chinese.*China|Mandarin/i.test(v.lang+' '+v.name));
+      const female=cn.find(v=>/Xiaoxiao|Huihui|Tingting|Meijia|Lili|Female|女|Yaoyao/i.test(v.name));
+      if(female||cn[0])u.voice=female||cn[0];
+      speechSynthesis.speak(u);
+    }catch(e){gameFeedback('Chưa thể phát âm thanh. Em có thể thử trên Chrome hoặc Safari.','bad')}
+  }
+  window.YCT_LISTEN_REPEAT=()=>{if(gameState?.mode==='listen')yctSpeakGame(gameState.items[gameState.index].hanzi);};
+  function renderListen(){
+    const s=gameState;if(s.index>=s.total)return gameFinished();
+    s.answered=false;
+    const right=s.items[s.index],others=gameShuffle(s.items.filter(x=>x.hanzi!==right.hanzi)).slice(0,3);
+    s.choices=gameShuffle([right,...others]);
+    yg("yh37RoundInfo").textContent=`🎯 ${s.index+1}/${s.total}`;
+    yg("yh37GameBoard").innerHTML=`<div class="yh37-listen-stage"><div class="yh37-sound-icon" aria-hidden="true">🎧</div><button type="button" class="yh37-listen-replay" onclick="YCT_LISTEN_REPEAT()">🔊 Nghe tiếng Trung</button><p>Nghe kỹ rồi chọn chữ đúng</p><div class="yh37-listen-choices">${s.choices.map((x,i)=>`<button type="button" class="yh37-listen-option" onclick="YCT_LISTEN_ANSWER(${i})">${safe(x.hanzi)}</button>`).join("")}</div><button type="button" class="secondary yh37-next" id="yh37ListenNext" hidden onclick="YCT_LISTEN_NEXT()">Tiếp theo →</button></div>`;
+    gameFeedback('',"neutral");
+  }
+  window.YCT_LISTEN_ANSWER=i=>{
+    const s=gameState;if(!s||s.mode!=='listen'||s.answered)return;
+    s.answered=true;
+    const chosen=s.choices[i],correct=s.items[s.index],ok=chosen.hanzi===correct.hanzi;
+    if(ok)s.score++;
+    yg("yh37GameBoard").querySelectorAll('.yh37-listen-option').forEach((b,j)=>{b.disabled=true;if(s.choices[j].hanzi===correct.hanzi)b.classList.add('right');else if(j===i)b.classList.add('wrong')});
+    gameFeedback(ok?'🎉 Chính xác!':`Đáp án là ${correct.hanzi} · ${correct.pinyin} (${correct.vi}).`,ok?'good':'bad');
+    yg('yh37ListenNext').hidden=false;
+    yg('yh37ListenNext').textContent=s.index+1===s.total?'Xem điểm →':'Câu tiếp theo →';
+  };
+  window.YCT_LISTEN_NEXT=()=>{const s=gameState;if(!s?.answered)return;s.index++;if(s.index>=s.total)return gameFinished();renderListen();};
+  function prepareSentence(){
+    const s=gameState;const q=s.items[s.index];
+    s.selected=[];s.available=gameShuffle(q.tokens.map((token,id)=>({id,token})));s.attempts=0;
+    if(s.available.every((x,i)=>x.id===i)&&s.available.length>=2){[s.available[0],s.available[1]]=[s.available[1],s.available[0]]}
+  }
+  function renderSentence(){
+    const s=gameState;if(s.index>=s.total)return gameFinished();
+    yg('yh37RoundInfo').textContent=`🧱 ${s.index+1}/${s.total}`;
+    const current=s.items[s.index],selected=new Set(s.selected);
+    yg('yh37GameBoard').innerHTML=`<div class="yh37-sentence-stage"><p class="yh37-sentence-prompt">Xếp câu theo mẫu trong giáo trình. Chạm các mảnh để thêm vào dòng trả lời.</p>
+      <div class="yh37-sentence-answer">${s.selected.length?s.selected.map((id,i)=>`<button type="button" class="yh37-chunk selected" onclick="YCT_SENTENCE_REMOVE(${i})">${safe(s.available.find(x=>x.id===id)?.token||'')}</button>`).join(''):'<span class="yh37-ghost-text">Chạm các mảnh phía dưới…</span>'}</div>
+      <div class="yh37-sentence-bank">${s.available.filter(c=>!selected.has(c.id)).map(c=>`<button type="button" class="yh37-chunk" onclick="YCT_SENTENCE_ADD(${c.id})">${safe(c.token)}</button>`).join('')}</div>
+      <div class="yh37-sentence-controls"><button class="secondary" type="button" onclick="YCT_SENTENCE_CLEAR()">Xóa để xếp lại</button><button class="primary" type="button" onclick="YCT_SENTENCE_CHECK()">Kiểm tra</button></div>
+      <button class="secondary yh37-next" id="yh37SentenceNext" hidden onclick="YCT_SENTENCE_NEXT()">Câu tiếp theo →</button>
+    </div>`;
+  }
+  window.YCT_SENTENCE_ADD=id=>{const s=gameState;if(!s||s.mode!=='sentence'||s.done)return;s.selected.push(id);renderSentence();};
+  window.YCT_SENTENCE_REMOVE=index=>{const s=gameState;if(!s||s.mode!=='sentence'||s.done)return;s.selected.splice(index,1);renderSentence();};
+  window.YCT_SENTENCE_CLEAR=()=>{const s=gameState;if(!s||s.done)return;s.selected=[];renderSentence();};
+  window.YCT_SENTENCE_CHECK=()=>{
+    const s=gameState;if(!s||s.mode!=='sentence'||s.done)return;
+    if(!s.selected.length){gameFeedback('Hãy chọn các mảnh câu trước nhé.','neutral');return;}
+    const q=s.items[s.index],attempt=s.selected.map(i=>s.available.find(x=>x.id===i)?.token||'').join('');
+    if(attempt===q.text){
+      s.score++;s.done=true;gameFeedback(`🌟 Đúng rồi! ${q.text}`,'good');
+      const btn=yg('yh37SentenceNext');btn.hidden=false;btn.textContent=s.index+1===s.total?'Xem điểm →':'Câu tiếp theo →';
+      yg('yh37GameBoard').querySelectorAll('.yh37-chunk,.yh37-sentence-controls button').forEach(el=>el.disabled=true);
+    }else{
+      s.attempts++;gameFeedback('Thứ tự chưa đúng. Hãy thử lại một lần nữa nhé!','bad');
+    }
+  };
+  window.YCT_SENTENCE_NEXT=()=>{const s=gameState;if(!s?.done)return;s.index++;s.done=false;if(s.index>=s.total)return gameFinished();prepareSentence();renderSentence();gameFeedback('','neutral');};
+
   window.YCT_CHECK_FILL=()=>{const d=levelData(),items=[...arr(d.exercises?.fill),...arr(d.lessons).flatMap(l=>arr(l.exercises?.fill))];let count=0;const details=items.map((x,i)=>{const val=$("yctFill"+i)?.value||"",ans=x.answer||"";if(compact(val)===compact(ans))count++;return `Câu ${i+1}: ${safe(ans)}`}).join(" · ");$("yh35PracticeResult").innerHTML=`<div class="yh35-score">Đúng ${count}/${items.length}. Đáp án: ${details}</div>`};
   window.YCT_CHECK_TRANSLATE=()=>{const d=levelData(),items=[...arr(d.exercises?.translations),...arr(d.lessons).flatMap(l=>arr(l.translations))];$("yh35PracticeResult").innerHTML=`<div class="yh35-score">Đáp án gợi ý (cách dịch khác vẫn có thể đúng): ${items.map((x,i)=>`<div>Câu ${i+1}: ${safe(x.zh||x.answer||"")}</div>`).join("")}</div>`};
   window.YUHUA_ENTER=()=>$("yh34Programs")?.scrollIntoView({behavior:"smooth",block:"start"});
