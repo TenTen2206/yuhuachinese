@@ -1,10 +1,10 @@
 
 window.YUHUA_FIREBASE_CONFIG = {
-  apiKey: "DAN_API_KEY_TU_FIREBASE",
+  apiKey: "AIzaSyAfF0UOAr9mIxJsfqyQHkvoiaewMijaa7M",
   authDomain: "yuhua-chinese.firebaseapp.com",
   projectId: "yuhua-chinese",
-  storageBucket: "DAN_STORAGE_BUCKET_TU_FIREBASE",
-  messagingSenderId: "DAN_MESSAGING_SENDER_ID",
-  appId: "DAN_APP_ID_TU_FIREBASE",
-  measurementId: "DAN_MEASUREMENT_ID"
+  storageBucket: "yuhua-chinese.firebasestorage.app",
+  messagingSenderId: "648866954720",
+  appId: "1:648866954720:web:8b14a8fc88511389d43f85",
+  measurementId: "G-DHHVWJ5YLH"
 };
