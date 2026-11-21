@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YuHua Chinese v34 – Tiếng Trung YCT & HSK</title>
+  <title>YuHua Chinese v35 – YCT 1–6 & HSK 1–6</title>
   <style>
 
 *{box-sizing:border-box}:root{--o:#ef5b24;--os:#fff2ec;--ink:#202632;--muted:#6b7280;--line:#e6e7eb;--bg:#f7f8fb}
@@ -1005,6 +1005,67 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
 @media(max-width:750px){.yh34-hero{grid-template-columns:1fr;padding:48px 20px 12px}.yh34-hero-art{height:230px}.yh34-hero-art svg{max-height:260px}.yh34-programs,.yh34-program-detail{padding:44px 15px}.yh34-program-grid,.yh34-public-levels,.yh34-study-home .level-grid{grid-template-columns:1fr}.yh34-program-card{display:grid;grid-template-columns:38% 1fr;min-height:0}.yh34-program-illustration{min-height:230px}.yh34-program-info{padding:18px 15px}.yh34-card-hanzi{font-size:17px}.yh34-emoji-kid{font-size:72px;left:14%;bottom:37px}.yh34-book-emoji{font-size:45px;bottom:13px}.yh34-program-info h3{font-size:19px}.yh34-program-info p{font-size:13px}.yh34-course-cover{width:95px;height:95px}.yh34-study-hero{padding:22px}.yh34-study-stamp{display:none}.yh34-study-home .system-grid{grid-template-columns:1fr}}
 @media(max-width:490px){.yh34-hero h1{font-size:36px}.yh34-program-grid{gap:14px}.yh34-program-card{grid-template-columns:34% 1fr}.yh34-program-illustration{min-height:220px}.yh34-emoji-kid{font-size:61px}.yh34-card-hanzi{left:5px;top:12px;padding:6px}.yh34-sun{font-size:30px}.yh34-book-stack{font-size:59px;bottom:26px}.yh34-hanzi-paper{font-size:19px;right:4px;top:36px;padding:8px}.yh34-pencil{font-size:30px}.yh34-public-level-card{gap:12px;padding:9px}.yh34-course-cover{width:77px;height:87px}.yh34-course-cover>span{font-size:32px}.yh34-course-text strong{font-size:18px}.yh34-course-text>span{font-size:12px}.yh34-course-text small{font-size:11px}.yh34-course-chevron{margin-right:0}.yh34-study-home .level-card.yh34-level-card .yh34-level-thumb{width:80px;height:90px}.yh34-yct-banner>span{font-size:48px}.yh34-study-hero h2{font-size:28px}}
 
+
+/* v35 – YCT six levels, three learning areas, Flashcard and revision */
+.yh35-yct-catalog{display:grid;gap:20px}
+.yh35-yct-summary{border:1px solid #d5ecdb;background:linear-gradient(110deg,#e5f8ed,#edf8fb);border-radius:21px;padding:21px 24px;display:flex;align-items:center;gap:18px}
+.yh35-yct-summary>span{font-size:44px;flex:0 0 auto}
+.yh35-yct-summary h3{margin:0 0 4px;font-size:23px;color:#23545b}
+.yh35-yct-summary p{margin:0;color:#58717a;line-height:1.55}
+.yh35-yct-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.yh35-yct-steps>div{padding:16px;border-radius:16px;background:#fff;border:1px solid #e1eae7;display:flex;align-items:center;gap:10px;color:#33595f;font-weight:750}
+.yh35-yct-steps span{font-size:24px}
+.yh35-yct-public-levels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.yh35-yct-level-card{display:flex;align-items:center;gap:17px;min-width:0;text-align:left;background:white;border:1px solid #dfeae7;border-radius:20px;padding:13px;transition:transform .18s,border-color .18s}
+.yh35-yct-level-card:hover{transform:translateY(-2px);border-color:#53b8aa;box-shadow:0 10px 25px #43aa9230}
+.yh35-yct-cover{width:103px;height:112px;flex:0 0 103px;border-radius:15px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(140deg,#f6e6fb,#e1f7f3);color:#317d83}
+.yh35-yct-cover .big{font-size:43px;font-weight:900;line-height:1.18}
+.yh35-yct-cover small{font-size:12px;border-radius:20px;background:#ffffffb8;padding:4px 10px;font-weight:800}
+.yh35-yct-cover.c2{background:linear-gradient(140deg,#d8ecfd,#e7f7e4)}
+.yh35-yct-cover.c3{background:linear-gradient(140deg,#ffedc9,#ffdef0)}
+.yh35-yct-cover.c4{background:linear-gradient(140deg,#e6e3ff,#dff8f3)}
+.yh35-yct-cover.c5{background:linear-gradient(140deg,#dff5e7,#ffeccd)}
+.yh35-yct-cover.c6{background:linear-gradient(140deg,#e0efff,#ffe2d8)}
+.yh35-yct-level-desc{flex:1;display:flex;flex-direction:column;gap:7px;min-width:0}
+.yh35-yct-level-desc strong{font-size:21px;color:#293f4a}
+.yh35-yct-level-desc>span{font-size:13px;color:#637887;line-height:1.55}
+.yh35-yct-level-desc small{color:#198578;font-size:12px;font-weight:750}
+.yh35-yct-arrow{color:#239c90;font-size:24px;font-weight:850;margin-right:6px}
+.yh35-yct-study{padding-bottom:34px}
+.yh35-study-header{border:1px solid #d5e9d9;background:linear-gradient(120deg,#fff5e4,#e3f7ed);border-radius:22px;padding:26px;display:flex;justify-content:space-between;gap:20px;align-items:center;margin-top:16px}
+.yh35-study-header h2{font-size:38px;margin:7px 0 10px;color:#2d5c61}
+.yh35-study-header p{margin:0;max-width:720px;line-height:1.7;color:#647884}
+.yh35-study-icon{font-size:65px;font-weight:900;color:#32a79a;background:#fff9;border-radius:22px;width:110px;height:110px;display:grid;place-items:center;flex:0 0 110px}
+.yh35-level-nav{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.yh35-level-nav button{padding:9px 17px;background:#fff;border:1px solid #dde9e6;color:#425962}
+.yh35-level-nav button.active{color:white;background:#229c8d;border-color:#229c8d}
+.yh35-section-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0 17px}
+.yh35-main-tab{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;padding:18px;background:white;border:1px solid #dae7e5;border-radius:16px;color:#3b535f}
+.yh35-main-tab>span{font-size:28px}.yh35-main-tab>strong{font-size:19px}.yh35-main-tab small{color:#75848a;font-size:12px;text-align:center}
+.yh35-main-tab.active{border-color:#2eae9d;background:#eaf9f4;box-shadow:0 0 0 1px #2eae9d33}
+.yh35-content{background:white;border:1px solid #e1eae7;border-radius:19px;padding:25px;min-height:270px}
+.yh35-content h3{font-size:23px;margin:0 0 7px}
+.yh35-subtabs{display:flex;gap:9px;flex-wrap:wrap;margin:19px 0}
+.yh35-subtabs button{border:1px solid #d6e7e2;background:#fff;color:#3a6c68;font-size:13px}
+.yh35-subtabs button.active{background:#259c8d;color:white;border-color:#259c8d}
+.yh35-empty{border:1px dashed #c7e1d7;background:#f8fdfb;border-radius:17px;padding:31px 20px;text-align:center;color:#577278;margin-top:18px}
+.yh35-empty>span{display:block;font-size:43px;margin-bottom:9px}.yh35-empty strong{display:block;font-size:18px;color:#36565e}.yh35-empty p{margin:9px auto 0;max-width:550px;line-height:1.65}
+.yh35-lesson-row,.yh35-word-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:14px;border:1px solid #e1eae7;border-radius:13px;margin:10px 0;background:#fff}
+.yh35-lesson-row>button{white-space:nowrap}
+.yh35-text-content{white-space:pre-line;line-height:2;font-size:20px;background:#f6fcfa;padding:18px;border:1px solid #dfeee8;border-radius:15px;margin-top:12px}
+.yh35-word-row{grid-template-columns:50px minmax(70px,1fr) minmax(90px,1fr) minmax(110px,1.3fr) auto}
+.yh35-word-row strong{font-size:23px}.yh35-word-row em{font-style:normal;color:#148b7c}.yh35-word-row button{font-size:12px}
+.yh35-flashcard{min-height:260px;border-radius:22px;border:2px solid #c6e6df;background:linear-gradient(130deg,#faf9ff,#e8faf6);display:grid;place-content:center;text-align:center;cursor:pointer;padding:30px;gap:10px}
+.yh35-flashcard .hanzi{font-size:clamp(38px,6vw,65px)}.yh35-flashcard p{margin:0;color:#5f7a80}.yh35-flashcard em{font-style:normal;color:#148c80;font-size:22px;font-weight:750}
+.yh35-flash-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0}
+.yh35-flash-actions .remember{background:#dcfce7;color:#166534}.yh35-flash-actions .again{background:#ffedd5;color:#9a3412}
+.yh35-mini-score{padding:14px;margin-top:13px;background:#eefbf5;border-radius:13px;font-weight:750;color:#196c60}
+.yh35-quiz-q{background:#fbfdfd;border:1px solid #e0eee9;border-radius:15px;padding:17px;margin:12px 0}
+.yh35-quiz-q strong{display:block;margin-bottom:12px}.yh35-quiz-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.yh35-quiz-choices label{padding:11px;border:1px solid #dce9e4;border-radius:10px;display:flex;gap:8px;align-items:center;cursor:pointer}.yh35-quiz-choices input{width:auto}
+.yh35-score{padding:18px;background:#e9f9ef;color:#176942;border-radius:13px;margin-top:15px;font-weight:750}
+.yh35-practice-item{border:1px solid #dce9e4;background:#fbfefd;border-radius:12px;padding:15px;margin:12px 0}.yh35-practice-item>label{display:block;margin-bottom:9px;font-weight:750}
+@media(max-width:760px){.yh35-yct-public-levels{grid-template-columns:1fr}.yh35-yct-steps{grid-template-columns:1fr}.yh35-section-tabs{gap:7px}.yh35-main-tab{padding:13px 7px}.yh35-main-tab>strong{font-size:15px}.yh35-main-tab small{font-size:11px}.yh35-study-header{padding:18px}.yh35-study-icon{display:none}.yh35-content{padding:16px}.yh35-word-row{grid-template-columns:26px 1fr 1fr}.yh35-word-row .yh35-meaning{grid-column:2 / 4}.yh35-word-row button{grid-column:2 / 4}.yh35-quiz-choices{grid-template-columns:1fr}}
+@media(max-width:450px){.yh35-yct-level-card{gap:10px;padding:10px}.yh35-yct-cover{width:78px;flex-basis:78px;height:100px}.yh35-yct-cover .big{font-size:36px}.yh35-yct-level-desc strong{font-size:18px}.yh35-yct-arrow{font-size:18px}.yh35-study-header h2{font-size:31px}}
 </style>
 </head>
 <body>
@@ -1331,8 +1392,26 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
   </div>
   <div id="moduleContent" class="content-card"></div>
 </section>
+
+<section id="yctStudy" class="view yh35-yct-study" aria-label="Khu vực học YCT" data-test-id="yct-study">
+  <button class="yh34-return" type="button" onclick="YUHUA_NAV('yct')">← Danh sách YCT 1–6</button>
+  <header class="yh35-study-header">
+    <div><span class="yh34-eyebrow">TIẾNG TRUNG TRẺ EM · YCT</span>
+      <h2 id="yh35StudyLevel">YCT 1</h2>
+      <p>Học theo ba phần: giáo trình, từ vựng và luyện tập. Nội dung sẽ được hiển thị đúng theo dữ liệu YCT của từng cấp.</p>
+    </div>
+    <div class="yh35-study-icon" aria-hidden="true">童</div>
+  </header>
+  <div class="yh35-level-nav" id="yh35YctLevelNav" aria-label="Chọn cấp độ YCT"></div>
+  <div class="yh35-section-tabs" id="yh35YctSectionTabs" role="group" aria-label="Nội dung YCT">
+    <button type="button" class="yh35-main-tab active" data-yct-tab="textbook" onclick="YCT_SHOW_SECTION('textbook')"><span aria-hidden="true">📚</span><strong>Giáo trình</strong><small>Bài học và bài khóa</small></button>
+    <button type="button" class="yh35-main-tab" data-yct-tab="vocab" onclick="YCT_SHOW_SECTION('vocab')"><span aria-hidden="true">🧩</span><strong>Từ vựng</strong><small>Flashcard · Ôn tập</small></button>
+    <button type="button" class="yh35-main-tab" data-yct-tab="practice" onclick="YCT_SHOW_SECTION('practice')"><span aria-hidden="true">✏️</span><strong>Luyện tập</strong><small>Trắc nghiệm · Điền từ · Dịch câu</small></button>
+  </div>
+  <div id="yh35YctContent" class="yh35-content" aria-live="polite"></div>
+</section>
 </main>
-<footer>YuHua Chinese • Wings to the World of Chinese • v33</footer>
+<footer>YuHua Chinese • Wings to the World of Chinese • v35</footer>
 <script async src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
 <script>
 const HSK1_DATA = [
@@ -19491,6 +19570,9 @@ openFromLocation();
       if(window.YH_PENDING_HSK){const target=window.YH_PENDING_HSK;
         setTimeout(()=>{if(window.YUHUA_ACTIVE_UID&&typeof window.YH_OPEN_HSK_LEVEL==="function")window.YH_OPEN_HSK_LEVEL(target.system,target.level);},0);
       }
+      if(window.YH_PENDING_YCT){const target=window.YH_PENDING_YCT;
+        setTimeout(()=>{if(window.YUHUA_ACTIVE_UID&&typeof window.YH_OPEN_YCT_LEVEL==="function")window.YH_OPEN_YCT_LEVEL(target);},0);
+      }
     } else {
       window.YUHUA_ACTIVE_UID=null;
       document.body.classList.remove("yuhua-auth-ok");
@@ -19506,6 +19588,7 @@ openFromLocation();
       setMode("login");
       // If one learner signs out, don't leave the previous learner's lesson in memory/UI.
       if($a("lesson"))$a("lesson").classList.remove("active");
+      if($a("yctStudy"))$a("yctStudy").classList.remove("active");
       if($a("home"))$a("home").classList.add("active");
       const panel=$a("homePanel"); if(panel){panel.classList.add("hidden");panel.innerHTML="";}
       if(typeof currentLesson!=="undefined")currentLesson=null;
@@ -19651,13 +19734,20 @@ openFromLocation();
     const d=$("yh34ProgramDetail");
     d.hidden=false;
     if(program==="YCT"){
-      $("yh34DetailEyebrow").textContent="TIẾNG TRUNG CHO TRẺ EM";
-      $("yh34DetailTitle").textContent="Chương trình YCT";
-      $("yh34DetailSub").textContent="Không gian học tiếng Trung dành riêng cho trẻ nhỏ.";
-      $("yh34DetailContent").innerHTML=`<div class="yh34-yct-details">
-        <div class="yh34-yct-banner"><span aria-hidden="true">🎒</span><div><h3>YCT – Học tiếng Trung thật vui!</h3><p>Học từ vựng, làm quen chữ Hán và luyện giao tiếp qua các chủ đề phù hợp lứa tuổi. Nội dung giáo trình sẽ được bổ sung sau.</p></div></div>
-        <div class="yh34-empty-yct"><div aria-hidden="true">🧩</div><h3>Chưa có bài học YCT được nhập</h3><p>Đây là khu vực dành riêng cho YCT. Chưa có từ vựng, bài khóa hoặc bài tập được sao chép từ HSK sang.</p></div>
-      </div>`;
+      $("yh34DetailEyebrow").textContent="TIẾNG TRUNG DÀNH CHO TRẺ EM";
+      $("yh34DetailTitle").textContent="Chương trình YCT 1–6";
+      $("yh34DetailSub").textContent="Chọn cấp độ YCT, sau đó học theo Giáo trình · Từ vựng · Luyện tập.";
+      $("yh34DetailContent").innerHTML=`
+        <div class="yh35-yct-catalog">
+          <div class="yh35-yct-summary"><span aria-hidden="true">🎒</span><div><h3>Khám phá tiếng Trung cùng YCT</h3><p>Mỗi cấp độ có giáo trình, từ vựng (danh sách, flashcard, ôn tập) và luyện tập riêng.</p></div></div>
+          <div class="yh35-yct-steps">
+            <div><span aria-hidden="true">📚</span>Giáo trình · Bài khóa</div>
+            <div><span aria-hidden="true">🃏</span>Từ vựng · Flashcard · Ôn tập</div>
+            <div><span aria-hidden="true">✏️</span>Luyện tập và kiểm tra</div>
+          </div>
+          <div class="yh35-yct-public-levels" id="yh35PublicYctLevels" aria-label="Các cấp độ YCT"></div>
+        </div>`;
+      window.YH_RENDER_YCT_LEVELS();
     }else{
       $("yh34DetailEyebrow").textContent="TIẾNG TRUNG HSK";
       $("yh34DetailTitle").textContent="Danh sách khóa học HSK";
@@ -19694,6 +19784,7 @@ openFromLocation();
     if(!window.YUHUA_ACTIVE_UID){window.YH_PENDING_HSK={system,level};window.YUHUA_OPEN_AUTH("login");return;}
     window.YH_PENDING_HSK=null;
     document.body.classList.add("yh-study-open");
+    $("yctStudy")?.classList.remove("active");
     $("lesson")?.classList.remove("active");
     $("home")?.classList.add("active");
     if(typeof renderHomeReview==="function")renderHomeReview();
@@ -19701,10 +19792,184 @@ openFromLocation();
     if(typeof selectHSKLevel==="function")selectHSKLevel(level,false);
     window.scrollTo({top:0,behavior:"smooth"});
   };
+
+  /* YCT 1–6: independent data placeholders. Add real curriculum/vocabulary to
+   * window.YUHUA_YCT_DATA in the future. HSK data is never reused here. */
+  window.YUHUA_YCT_DATA = window.YUHUA_YCT_DATA || Object.fromEntries(
+    Array.from({length:6},(_,i)=>[i+1,{lessons:[],words:[],exercises:{translations:[],fill:[]}}])
+  );
+  let yctLevel=1, yctSection="textbook", yctSubtab="list", yctExerciseTab="quiz";
+  let yctFlashIndex=0, yctFlashBack=false, yctOnlyForgotten=false, yctReviewQuestions=[];
+  const yctLabels=["Khởi đầu vui vẻ","Khám phá từ mới","Bước tiếp cùng tiếng Trung","Luyện tập mỗi ngày","Tăng cường kỹ năng","Tổng kết và vận dụng"];
+  const yctHanzi=["你","好","学","习","中","文"];
+  const safe=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const arr=x=>Array.isArray(x)?x:[];
+  const levelData=()=>window.YUHUA_YCT_DATA[yctLevel]||{lessons:[],words:[],exercises:{}};
+  const allWords=()=>{
+    const d=levelData(),w=[...arr(d.words),...arr(d.lessons).flatMap(l=>arr(l.words))];
+    const seen=new Set();
+    return w.filter(x=>{if(!x?.hanzi)return false;let k=x.hanzi+"|"+(x.pinyin||"");if(seen.has(k))return false;seen.add(k);return true;});
+  };
+  const yctStorageKey=()=>window.YUHUA_ACTIVE_UID?`yuhua_yct_memory_${window.YUHUA_ACTIVE_UID}_${yctLevel}`:null;
+  const readMemory=()=>{try{return JSON.parse(localStorage.getItem(yctStorageKey())||"{}")||{}}catch{return {}}};
+  const writeMemory=record=>{try{const k=yctStorageKey();if(k)localStorage.setItem(k,JSON.stringify(record))}catch(e){console.warn("Unable to store YCT flashcard progress",e)}};
+  const wordKey=w=>(w.hanzi||"")+"|"+(w.pinyin||"");
+  const empty=(icon,title,desc)=>`<div class="yh35-empty"><span aria-hidden="true">${icon}</span><strong>${title}</strong><p>${desc}</p></div>`;
+  const subTabs=(items,active,handler)=>`<div class="yh35-subtabs">${items.map(x=>`<button type="button" class="${active===x[0]?"active":""}" onclick="${handler}('${x[0]}')">${x[1]}</button>`).join("")}</div>`;
+  const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+  const compact=s=>String(s??"").trim().replace(/[\s，。！？、,.!?；;：:（）()\-]/g,"");
+  window.YH_RENDER_YCT_LEVELS=()=>{
+    const container=$("yh35PublicYctLevels");if(!container)return;
+    container.innerHTML=Array.from({length:6},(_,i)=>{const lv=i+1;return `
+      <button type="button" class="yh35-yct-level-card" onclick="YH_OPEN_YCT_LEVEL(${lv})" aria-label="YCT ${lv}">
+        <span class="yh35-yct-cover c${lv}"><span class="big">${yctHanzi[i]}</span><small>YCT ${lv}</small></span>
+        <span class="yh35-yct-level-desc"><strong>YCT ${lv}</strong><span>${yctLabels[i]}</span><small>Giáo trình · Từ vựng · Luyện tập</small></span>
+        <span class="yh35-yct-arrow" aria-hidden="true">→</span>
+      </button>`}).join("");
+  };
+  window.YH_OPEN_YCT_LEVEL=(level)=>{
+    const n=Number(level);if(!Number.isInteger(n)||n<1||n>6)return;
+    if(!window.YUHUA_ACTIVE_UID){window.YH_PENDING_YCT=n;window.YH_PENDING_HSK=null;window.YUHUA_OPEN_AUTH("login");return;}
+    window.YH_PENDING_YCT=null;
+    yctLevel=n; yctFlashIndex=0;yctFlashBack=false;yctOnlyForgotten=false;
+    document.body.classList.add("yh-study-open");
+    $("home")?.classList.remove("active");$("lesson")?.classList.remove("active");
+    $("yctStudy")?.classList.add("active");
+    $("yh35StudyLevel").textContent=`YCT ${n}`;
+    $("yh35YctLevelNav").innerHTML=Array.from({length:6},(_,i)=>`<button class="${i+1===n?"active":""}" onclick="YH_OPEN_YCT_LEVEL(${i+1})">YCT ${i+1}</button>`).join("");
+    window.YCT_SHOW_SECTION("textbook");
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
+  window.YCT_SHOW_SECTION=(section)=>{
+    if(!window.YUHUA_ACTIVE_UID){window.YUHUA_OPEN_AUTH("login");return;}
+    if(!["textbook","vocab","practice"].includes(section))return;
+    yctSection=section;
+    document.querySelectorAll("#yh35YctSectionTabs [data-yct-tab]").forEach(b=>b.classList.toggle("active",b.dataset.yctTab===section));
+    if(section==="textbook")renderYctTextbook();
+    else if(section==="vocab")window.YCT_SHOW_VOCAB_TAB(yctSubtab);
+    else window.YCT_SHOW_PRACTICE_TAB(yctExerciseTab);
+  };
+  function renderYctTextbook(){
+    const d=levelData(),ls=arr(d.lessons);
+    const content=$("yh35YctContent");
+    content.innerHTML=`<h3>📚 Giáo trình YCT ${yctLevel}</h3><p class="muted">Bài học, bài khóa và hội thoại theo từng bài trong giáo trình.</p>
+    ${ls.length?ls.map((l,i)=>`<div class="yh35-lesson-row"><div><strong>Bài ${i+1} – ${safe(l.title||`Bài ${i+1}`)}</strong><br><small class="muted">${arr(l.words).length} từ · ${arr(l.texts).length} bài khóa</small></div><button class="secondary" onclick="YCT_OPEN_TEXT(${i})">Xem bài</button></div>`).join(""):empty("📖",`Chưa nhập giáo trình YCT ${yctLevel}`,`Các bài học và bài khóa YCT ${yctLevel} sẽ xuất hiện ở đây khi có tài liệu nguồn.`)}`;
+  }
+  window.YCT_OPEN_TEXT=i=>{
+    const l=arr(levelData().lessons)[Number(i)];if(!l)return;
+    const texts=arr(l.texts);
+    $("yh35YctContent").innerHTML=`<button class="secondary" onclick="YCT_SHOW_SECTION('textbook')">← Trở lại giáo trình</button><h3 style="margin-top:16px">${safe(l.title||`Bài ${Number(i)+1}`)}</h3>
+       ${texts.length?texts.map((t,j)=>`<div class="yh35-text-content"><b>课文 ${j+1}</b>\n${safe(typeof t==="string"?t:t.content||"")}</div>`).join(""):empty("📖","Chưa nhập bài khóa","Bài này chưa có bài khóa YCT được nhập.")}`;
+  };
+  window.YCT_SHOW_VOCAB_TAB=tab=>{
+    if(!["list","flash","review"].includes(tab))tab="list";
+    yctSubtab=tab;
+    const words=allWords(),memory=readMemory();
+    $("yh35YctContent").innerHTML=`<h3>🧩 Từ vựng YCT ${yctLevel}</h3><p class="muted">${words.length} mục từ · Hán tự, pinyin, nghĩa tiếng Việt và phát âm</p>
+    ${subTabs([["list","Danh sách từ vựng"],["flash","Flashcard"],["review","Ôn tập từ vựng"]],tab,"YCT_SHOW_VOCAB_TAB")}
+    <div id="yh35VocabBody"></div>`;
+    const body=$("yh35VocabBody");
+    if(!words.length){body.innerHTML=empty("🧸","Chưa có từ vựng YCT",`Cần bổ sung từ mới từ giáo trình YCT ${yctLevel} trước khi sử dụng flashcard và bài ôn tập.`);return;}
+    if(tab==="list"){
+      body.innerHTML=words.map((w,i)=>`<div class="yh35-word-row"><span class="muted">${i+1}</span><strong>${safe(w.hanzi)}</strong><em>${safe(w.pinyin)}</em><span class="yh35-meaning">${safe(w.vi)}</span><button class="secondary" onclick="YCT_SPEAK_WORD(${i})">🔊 Nghe</button></div>`).join("");
+    }else if(tab==="flash")renderYctFlash();
+    else {yctReviewQuestions=makeQuiz(words,Math.min(10,words.length));renderYctQuiz("review");}
+  };
+  window.YCT_SPEAK_WORD=i=>{const w=allWords()[Number(i)];if(w){if(typeof window.speak==="function")window.speak(w.hanzi,"slow");else if("speechSynthesis" in window){let u=new SpeechSynthesisUtterance(w.hanzi);u.lang="zh-CN";u.rate=.8;speechSynthesis.speak(u)}}};
+  function renderYctFlash(){
+    const words=allWords(),memory=readMemory();
+    const pool=yctOnlyForgotten?words.filter(w=>memory[wordKey(w)]==="again"):words;
+    const body=$("yh35VocabBody");
+    if(!pool.length){body.innerHTML=empty("🎉","Không có từ cần ôn lại","Bạn có thể chọn Tất cả thẻ để ôn lại toàn bộ từ.")+`<div class="yh35-flash-actions"><button onclick="YCT_FLASH_FILTER(false)">Tất cả thẻ</button></div>`;return;}
+    yctFlashIndex%=pool.length;
+    const w=pool[yctFlashIndex];
+    const known=words.filter(x=>memory[wordKey(x)]==="known").length,again=words.filter(x=>memory[wordKey(x)]==="again").length;
+    body.innerHTML=`<div class="muted" style="margin:12px 0">Thẻ ${yctFlashIndex+1}/${pool.length} · Nhớ rồi: ${known} · Cần ôn: ${again}</div>
+    <div class="yh35-flashcard" role="button" tabindex="0" onclick="YCT_FLASH_FLIP()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();YCT_FLASH_FLIP()}">
+      <small>${yctFlashBack?"Mặt sau":"Mặt trước – đoán nghĩa và cách đọc"}</small>
+      <div class="hanzi">${safe(w.hanzi)}</div>
+      ${yctFlashBack?`<em>${safe(w.pinyin)}</em><strong>${safe(w.vi)}</strong>`:`<p>Nhấn vào thẻ để lật</p>`}
+    </div>
+    <div class="yh35-flash-actions">
+      <button class="secondary" onclick="YCT_FLASH_MOVE(-1)">← Trước</button>
+      <button class="secondary" onclick="YCT_FLASH_FLIP()">Lật thẻ</button>
+      <button class="secondary" onclick="YCT_FLASH_MOVE(1)">Tiếp →</button>
+      <button onclick="YCT_SPEAK_WORD(${words.indexOf(w)})">🔊 Nghe</button>
+    </div>
+    <div class="yh35-flash-actions">
+      <button class="remember" onclick="YCT_FLASH_MARK('known')">✓ Nhớ rồi</button>
+      <button class="again" onclick="YCT_FLASH_MARK('again')">↻ Chưa nhớ</button>
+      <button class="secondary" onclick="YCT_FLASH_FILTER(${yctOnlyForgotten?'false':'true'})">${yctOnlyForgotten?'Tất cả thẻ':'Ôn từ chưa nhớ'}</button>
+    </div>`;
+  }
+  window.YCT_FLASH_FLIP=()=>{yctFlashBack=!yctFlashBack;renderYctFlash();};
+  window.YCT_FLASH_MOVE=n=>{const words=allWords(),mem=readMemory(),pool=yctOnlyForgotten?words.filter(w=>mem[wordKey(w)]==="again"):words;if(!pool.length)return;yctFlashIndex=(yctFlashIndex+Number(n)+pool.length)%pool.length;yctFlashBack=false;renderYctFlash();};
+  window.YCT_FLASH_MARK=status=>{const words=allWords(),mem=readMemory(),pool=yctOnlyForgotten?words.filter(w=>mem[wordKey(w)]==="again"):words;const w=pool[yctFlashIndex];if(!w)return;mem[wordKey(w)]=status;writeMemory(mem);if(yctOnlyForgotten){yctFlashIndex=0;yctFlashBack=false;renderYctFlash();}else window.YCT_FLASH_MOVE(1);};
+  window.YCT_FLASH_FILTER=flag=>{yctOnlyForgotten=!!flag;yctFlashIndex=0;yctFlashBack=false;renderYctFlash();};
+  function makeQuiz(words,n){
+    if(words.length<2)return [];
+    const chosen=shuffle(words).slice(0,n);
+    return chosen.map(w=>{
+      const correct=String(w.vi||"").trim();
+      const others=[...new Set(words.filter(x=>x!==w).map(x=>String(x.vi||"").trim()).filter(x=>x&&x!==correct))];
+      const choices=shuffle([correct,...shuffle(others).slice(0,3)]);
+      return {prompt:`“${w.hanzi}” nghĩa là gì?`,answer:correct,choices};
+    });
+  }
+  function renderYctQuiz(type){
+    const body=type==="review"?$("yh35VocabBody"):$("yh35PracticeBody");
+    const questions=type==="review"?yctReviewQuestions:yctPracticeQuiz;
+    if(!questions.length){body.innerHTML=empty("🧠","Chưa đủ từ vựng để tạo đề","Cần ít nhất hai từ vựng có nghĩa để tạo câu hỏi trắc nghiệm.");return;}
+    const name=type==="review"?"review":"practice";
+    body.innerHTML=`<div class="muted">${questions.length} câu trắc nghiệm lấy từ từ vựng của YCT ${yctLevel}.</div>
+    ${questions.map((q,i)=>`<div class="yh35-quiz-q"><strong>Câu ${i+1}. ${safe(q.prompt)}</strong><div class="yh35-quiz-choices">${q.choices.map((c,j)=>`<label><input type="radio" name="yct${name}${i}" value="${j}"/><span>${safe(c)}</span></label>`).join("")}</div></div>`).join("")}
+    <button class="primary" onclick="YCT_GRADE_QUIZ('${name}')">Nộp bài</button>
+    <button class="secondary" onclick="YCT_REMAKE_QUIZ('${name}')">Đề khác</button>
+    <div id="yh35QuizResult"></div>`;
+  }
+  let yctPracticeQuiz=[];
+  window.YCT_GRADE_QUIZ=(type)=>{
+    const qs=type==="review"?yctReviewQuestions:yctPracticeQuiz;
+    let correct=0;
+    const details=qs.map((q,i)=>{
+      const input=document.querySelector(`input[name="yct${type}${i}"]:checked`);
+      const selected=input?q.choices[Number(input.value)]:null;
+      const ok=selected===q.answer;if(ok)correct++;
+      return ok?"":`<div>Câu ${i+1}: ${safe(q.answer)}</div>`;
+    }).join("");
+    const box=$("yh35QuizResult");if(box)box.innerHTML=`<div class="yh35-score">Kết quả: ${correct}/${qs.length} câu đúng${details?`<hr/>Đáp án cần xem lại:${details}`:""}</div>`;
+  };
+  window.YCT_REMAKE_QUIZ=type=>{if(type==="review"){yctReviewQuestions=makeQuiz(allWords(),10);renderYctQuiz("review")}else{yctPracticeQuiz=makeQuiz(allWords(),10);renderYctQuiz("practice")}};
+  window.YCT_SHOW_PRACTICE_TAB=tab=>{
+    if(!["quiz","fill","translate"].includes(tab))tab="quiz";
+    yctExerciseTab=tab;
+    $("yh35YctContent").innerHTML=`<h3>✏️ Luyện tập YCT ${yctLevel}</h3><p class="muted">Câu hỏi theo từ vựng và bài khóa YCT của từng cấp.</p>
+    ${subTabs([["quiz","Trắc nghiệm"],["fill","Điền từ"],["translate","Dịch câu"]],tab,"YCT_SHOW_PRACTICE_TAB")}
+    <div id="yh35PracticeBody"></div>`;
+    const body=$("yh35PracticeBody"),d=levelData();
+    if(tab==="quiz"){
+      if(!allWords().length){body.innerHTML=empty("✏️","Chưa có đề luyện tập",`Khi cập nhật từ vựng YCT ${yctLevel}, phần này sẽ tự tạo câu hỏi trắc nghiệm.`);return;}
+      yctPracticeQuiz=makeQuiz(allWords(),10);renderYctQuiz("practice");return;
+    }
+    if(tab==="fill"){
+      const items=[...arr(d.exercises?.fill),...arr(d.lessons).flatMap(l=>arr(l.exercises?.fill))];
+      if(!items.length){body.innerHTML=empty("🧩","Chưa có bài điền từ","Bài tập điền từ sẽ được bổ sung theo nội dung giáo trình YCT của cấp này.");return;}
+      body.innerHTML=items.map((x,i)=>`<div class="yh35-practice-item"><label>Câu ${i+1}. ${safe(x.question||"")}</label><input id="yctFill${i}" autocomplete="off" placeholder="Nhập từ còn thiếu"/></div>`).join("")+
+        `<button class="primary" onclick="YCT_CHECK_FILL()">Kiểm tra</button><div id="yh35PracticeResult"></div>`;
+      return;
+    }
+    const trans=[...arr(d.exercises?.translations),...arr(d.lessons).flatMap(l=>arr(l.translations))];
+    if(!trans.length){body.innerHTML=empty("💬","Chưa có bài luyện dịch","Các câu dịch sẽ hiển thị khi có bài tập YCT được nhập theo giáo trình.");return;}
+    body.innerHTML=trans.map((x,i)=>`<div class="yh35-practice-item"><label>Câu ${i+1}. ${safe(x.vi||x.question||"")}</label><textarea id="yctTranslate${i}" rows="2" placeholder="Viết câu tiếng Trung của em"></textarea></div>`).join("")+
+      `<button class="primary" onclick="YCT_CHECK_TRANSLATE()">Xem đáp án gợi ý</button><div id="yh35PracticeResult"></div>`;
+  };
+  window.YCT_CHECK_FILL=()=>{const d=levelData(),items=[...arr(d.exercises?.fill),...arr(d.lessons).flatMap(l=>arr(l.exercises?.fill))];let count=0;const details=items.map((x,i)=>{const val=$("yctFill"+i)?.value||"",ans=x.answer||"";if(compact(val)===compact(ans))count++;return `Câu ${i+1}: ${safe(ans)}`}).join(" · ");$("yh35PracticeResult").innerHTML=`<div class="yh35-score">Đúng ${count}/${items.length}. Đáp án: ${details}</div>`};
+  window.YCT_CHECK_TRANSLATE=()=>{const d=levelData(),items=[...arr(d.exercises?.translations),...arr(d.lessons).flatMap(l=>arr(l.translations))];$("yh35PracticeResult").innerHTML=`<div class="yh35-score">Đáp án gợi ý (cách dịch khác vẫn có thể đúng): ${items.map((x,i)=>`<div>Câu ${i+1}: ${safe(x.zh||x.answer||"")}</div>`).join("")}</div>`};
   window.YUHUA_ENTER=()=>$("yh34Programs")?.scrollIntoView({behavior:"smooth",block:"start"});
   window.YUHUA_NAV=(where)=>{
     if(where==="home"){
       document.body.classList.remove("yh-study-open");
+      $("yctStudy")?.classList.remove("active");
       $("lesson")?.classList.remove("active");
       $("home")?.classList.add("active");
       window.scrollTo({top:0,behavior:"smooth"});
@@ -19718,6 +19983,10 @@ openFromLocation();
       return;
     }
     if(["vocab","test"].includes(where)){
+      if($("yctStudy")?.classList.contains("active")){
+        window.YCT_SHOW_SECTION(where==="vocab"?"vocab":"practice");
+        window.scrollTo({top:0,behavior:"smooth"});return;
+      }
       if(!window.YUHUA_ACTIVE_UID){window.YUHUA_SHOW_PROGRAM("HSK");return;}
       window.YH_OPEN_HSK_LEVEL("3.0",typeof selectedHSKLevel==="number"&&selectedHSKLevel<=4?selectedHSKLevel:3);
       if(where==="vocab")$("globalSearch")?.focus();
