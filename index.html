@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YuHua Chinese HSK Learning Hub v31</title>
+  <title>YuHua Chinese HSK Learning Hub v32 – Tài khoản học sinh</title>
   <style>
 
 *{box-sizing:border-box}:root{--o:#ef5b24;--os:#fff2ec;--ink:#202632;--muted:#6b7280;--line:#e6e7eb;--bg:#f7f8fb}
@@ -868,16 +868,101 @@ button{font:inherit;border:0;border-radius:12px;padding:11px 15px;font-weight:75
 .home-dashboard-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.home-info-card{min-width:0}
 @media(max-width:800px){.home-dashboard-grid{grid-template-columns:1fr}.system-grid{grid-template-columns:1fr}.level-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
+
+/* v32 – account required. Fail closed while Firebase is loading/not configured. */
+body:not(.yuhua-auth-ok) > header.top,
+body:not(.yuhua-auth-ok) > main,
+body:not(.yuhua-auth-ok) > footer { display: none !important; }
+body.yuhua-auth-ok #yuhuaAuthGate { display: none !important; }
+#yuhuaAuthGate [hidden]{display:none!important;}
+.yuhua-auth-gate{position:fixed;inset:0;overflow-y:auto;z-index:10000;display:flex;align-items:center;justify-content:center;padding:24px 12px;background:radial-gradient(circle at top left,#ffecdc,#fff 45%,#e9f2ff);}
+.yuhua-auth-card{width:min(100%,475px);background:#fff;border:1px solid #e5e7eb;border-radius:25px;box-shadow:0 20px 60px rgba(15,23,42,.12);padding:clamp(24px,4vw,38px);}
+.yuhua-auth-brand{display:flex;align-items:center;gap:13px;margin-bottom:24px;}
+.yuhua-brand-icon{width:50px;height:50px;display:grid;place-items:center;border-radius:16px;background:linear-gradient(135deg,#fa7e3d,#ec4e23);color:#fff;font-size:25px;font-weight:900;}
+.yuhua-auth-school{font-size:20px;font-weight:900;letter-spacing:.2px}.yuhua-auth-slogan{font-size:12px;color:#64748b;margin-top:3px}
+.yuhua-auth-card h1{font-size:clamp(22px,3vw,27px);line-height:1.3;margin:0 0 10px;color:#1f2937}
+.yuhua-auth-intro{color:#64748b;font-size:14px;line-height:1.7;margin:0 0 19px}
+.yuhua-auth-loading{padding:13px;border-radius:12px;background:#f8fafc;color:#475569;text-align:center}
+.yuhua-auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:7px;background:#f1f5f9;border-radius:13px;padding:5px;margin-bottom:20px}
+.yuhua-auth-tabs button{padding:12px 4px;background:transparent;border-radius:9px;color:#64748b;font-weight:800}
+.yuhua-auth-tabs button.on{color:#c2410c;background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.yuhua-auth-field{margin-bottom:15px}.yuhua-auth-field label{display:block;margin-bottom:6px;font-size:14px;font-weight:800;color:#334155}
+.yuhua-auth-field input{font-size:15px;padding:12px 14px;width:100%}
+.yuhua-auth-submit{display:block;width:100%;background:#ea580c;color:white;padding:13px 18px;border-radius:12px;font-size:15px;margin-top:3px}
+.yuhua-auth-submit:disabled{opacity:.65;cursor:wait}
+.yuhua-forgot{display:block;margin:12px 0 2px auto;background:none;color:#c2410c;font-weight:700;font-size:14px;padding:4px 0}
+.yuhua-auth-error,.yuhua-auth-success{border-radius:10px;padding:11px 12px;font-size:13px;line-height:1.6;margin:10px 0}
+.yuhua-auth-error{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}.yuhua-auth-success{background:#effdf5;color:#166534;border:1px solid #bbf7d0}
+.yuhua-auth-footnote{margin:18px 0 0;color:#94a3b8;text-align:center;font-size:12px;line-height:1.5}
+.yuhua-auth-setup{margin-top:17px;padding:15px;border-radius:12px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;line-height:1.6;font-size:13px}
+.yuhua-auth-setup a{color:#9a3412;text-decoration:underline}
+.yuhua-user-header{display:flex;align-items:center;gap:15px;flex-wrap:wrap;justify-content:flex-end}
+.yuhua-user-badge{display:flex;align-items:center;gap:9px;border:1px solid #e5e7eb;padding:7px 9px;border-radius:14px;background:white;min-width:0}
+.yuhua-user-badge[hidden]{display:none!important}
+.yuhua-user-avatar{display:grid;place-items:center;border-radius:50%;background:#fff1e6;color:#ea580c;width:34px;height:34px;flex:0 0 34px;font-weight:900}
+.yuhua-user-identity{display:flex;flex-direction:column;min-width:0}.yuhua-user-identity b{font-size:12px;max-width:165px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.yuhua-user-identity small{color:#64748b;font-size:11px;max-width:165px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.yuhua-logout{padding:7px 10px;background:#f1f5f9;color:#334155;font-size:12px;border-radius:8px}
+@media(max-width:670px){.yuhua-auth-gate{align-items:flex-start}.yuhua-user-header{justify-content:flex-start}.yuhua-user-badge{width:100%}.yuhua-user-identity{flex:1}}
+
 </style>
 </head>
 <body>
+<div id="yuhuaAuthGate" class="yuhua-auth-gate" role="region" aria-label="Đăng nhập YuHua Chinese">
+  <div class="yuhua-auth-card">
+    <div class="yuhua-auth-brand">
+      <span class="yuhua-brand-icon" aria-hidden="true">语</span>
+      <div><div class="yuhua-auth-school">YuHua Chinese</div><div class="yuhua-auth-slogan">Wings to the World of Chinese</div></div>
+    </div>
+    <h1>Chào mừng đến lớp học tiếng Trung</h1>
+    <p class="yuhua-auth-intro">Đăng ký hoặc đăng nhập tài khoản để học từ vựng, đọc bài khóa, làm bài tập HSK 1–6 và kiểm tra cuối khóa.</p>
+    <div id="yuhuaAuthLoading" class="yuhua-auth-loading" aria-live="polite">Đang kiểm tra phiên đăng nhập…</div>
+    <div id="yuhuaAuthUI" hidden>
+      <div class="yuhua-auth-tabs" role="tablist" aria-label="Đăng nhập hoặc đăng ký">
+        <button id="yuhuaModeLogin" type="button" class="on" role="tab" aria-selected="true">Đăng nhập</button>
+        <button id="yuhuaModeRegister" type="button" role="tab" aria-selected="false">Đăng ký tài khoản</button>
+      </div>
+      <form id="yuhuaAuthForm" novalidate>
+        <div id="yuhuaNameRow" class="yuhua-auth-field" hidden>
+          <label for="yuhuaName">Họ và tên học sinh</label>
+          <input id="yuhuaName" type="text" autocomplete="name" maxlength="70" placeholder="Nhập họ và tên">
+        </div>
+        <div class="yuhua-auth-field">
+          <label for="yuhuaEmail">Email</label>
+          <input id="yuhuaEmail" type="email" required autocomplete="email" placeholder="hocvien@example.com">
+        </div>
+        <div class="yuhua-auth-field">
+          <label for="yuhuaPassword">Mật khẩu</label>
+          <input id="yuhuaPassword" type="password" minlength="6" required autocomplete="current-password" placeholder="Ít nhất 6 ký tự">
+        </div>
+        <div id="yuhuaPasswordConfirmRow" class="yuhua-auth-field" hidden>
+          <label for="yuhuaPasswordConfirm">Nhập lại mật khẩu</label>
+          <input id="yuhuaPasswordConfirm" type="password" autocomplete="new-password" placeholder="Nhập lại mật khẩu">
+        </div>
+        <p id="yuhuaAuthError" class="yuhua-auth-error" role="alert" hidden></p>
+        <p id="yuhuaAuthSuccess" class="yuhua-auth-success" aria-live="polite" hidden></p>
+        <button id="yuhuaAuthSubmit" class="yuhua-auth-submit" type="submit">Đăng nhập để học</button>
+      </form>
+      <button id="yuhuaForgotPassword" type="button" class="yuhua-forgot">Quên mật khẩu?</button>
+      <p class="yuhua-auth-footnote">Tài khoản được xác thực bằng Firebase Authentication. Không chia sẻ mật khẩu với người khác.</p>
+    </div>
+    <div id="yuhuaAuthSetup" class="yuhua-auth-setup" hidden></div>
+  </div>
+</div>
+
 <header class="top">
   <div>
     <div class="kicker">YuHua Chinese • HSK Learning Hub</div>
     <h1>HSK Learning Hub</h1>
     <p>HSK 3.0 & HSK 2.0 • HSK 1–6 • Từ vựng • Bài khóa • Flashcard • Bài tập</p>
   </div>
-  <div class="stat" id="globalStat">YuHua v31</div>
+  <div class="yuhua-user-header">
+    <div class="stat" id="globalStat">YuHua v32</div>
+    <div class="yuhua-user-badge" id="yuhuaUserBadge" hidden>
+      <span class="yuhua-user-avatar">学</span>
+      <div class="yuhua-user-identity"><b id="yuhuaUserName">Học sinh</b><small id="yuhuaUserEmail"></small></div>
+      <button id="yuhuaLogout" type="button" class="yuhua-logout" aria-label="Đăng xuất">Đăng xuất</button>
+    </div>
+  </div>
 </header>
 <main>
 <section id="home" class="view active">
@@ -896,7 +981,7 @@ button{font:inherit;border:0;border-radius:12px;padding:11px 15px;font-weight:75
         <span>HSK 1–6</span>
         <span>Flashcard tự kiểm tra</span>
         <span>Mini quiz cuối bài</span>
-        <span>Lưu tiến độ trên máy</span>
+        <span>Tiến độ theo tài khoản trên máy</span>
       </div>
     </div>
     <div class="hero-image-wrap">
@@ -983,7 +1068,7 @@ button{font:inherit;border:0;border-radius:12px;padding:11px 15px;font-weight:75
   <div id="moduleContent" class="content-card"></div>
 </section>
 </main>
-<footer>YuHua Chinese • Wings to the World of Chinese • v31</footer>
+<footer>YuHua Chinese • Wings to the World of Chinese • v32</footer>
 <script async src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
 <script>
 const HSK1_DATA = [
@@ -17714,10 +17799,17 @@ const totalWords=HSK3_DATA.reduce((s,l)=>s+(l.words?.length||0),0);
 const textCount=HSK3_DATA.reduce((s,l)=>s+(l.texts?.length||0),0);
 $("globalStat").textContent=`HSK 3.0 + HSK 2.0 • HSK 1–6 • v31 • HSK 4: 20 bài`;
 
-function loadStore(key){
-  try{return JSON.parse(localStorage.getItem(key)||"{}")}catch{return {}}
+function userStorageKey(key){
+  // A new Firebase account on the same browser gets a separate local record.
+  const uid=window.YUHUA_ACTIVE_UID;
+  return uid ? `${key}__firebase_${uid}` : null;
 }
-function saveStore(key,data){try{localStorage.setItem(key,JSON.stringify(data))}catch(e){console.warn("Không thể lưu tiến độ trên thiết bị",e)}}
+function loadStore(key){
+  const scoped=userStorageKey(key);
+  if(!scoped)return {};
+  try{return JSON.parse(localStorage.getItem(scoped)||"{}")}catch{return {}}
+}
+function saveStore(key,data){const scoped=userStorageKey(key);if(!scoped)return;try{localStorage.setItem(scoped,JSON.stringify(data))}catch(e){console.warn("Không thể lưu tiến độ trên thiết bị",e)}}
 function lessonProgressKey(n){return selectedHSKSystem==="3.0" && selectedHSKLevel===3 ? String(n) : `${selectedHSKSystem}:${selectedHSKLevel}:${n}`}
 function getProgressData(){return loadStore(PROGRESS_KEY)}
 function setCompleted(n,module,done=true){
@@ -19065,4 +19157,148 @@ function openFromLocation(){
 openFromLocation();
 
 </script>
+
+<script src="firebase-config.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/13.4.0/firebase-app-compat.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/13.4.0/firebase-auth-compat.js"></script>
+<script>
+(function(){
+  "use strict";
+  const $a=(id)=>document.getElementById(id);
+  let auth=null, mode="login";
+  window.YUHUA_ACTIVE_UID=null;
+
+  const errorMessages={
+    "auth/invalid-email":"Email chưa đúng định dạng.",
+    "auth/email-already-in-use":"Email này đã được đăng ký. Hãy chuyển sang Đăng nhập.",
+    "auth/weak-password":"Mật khẩu quá yếu. Hãy sử dụng ít nhất 6 ký tự và mật khẩu khó đoán.",
+    "auth/invalid-credential":"Email hoặc mật khẩu không chính xác.",
+    "auth/user-not-found":"Email hoặc mật khẩu không chính xác.",
+    "auth/wrong-password":"Email hoặc mật khẩu không chính xác.",
+    "auth/too-many-requests":"Có quá nhiều lần đăng nhập. Vui lòng thử lại sau.",
+    "auth/network-request-failed":"Không thể kết nối đến Firebase. Hãy kiểm tra mạng.",
+    "auth/operation-not-allowed":"Chưa bật phương thức đăng nhập Email/Password trong Firebase Console.",
+    "auth/unauthorized-domain":"Tên miền website chưa được cho phép trong Firebase Authentication.",
+    "auth/configuration-not-found":"Không tìm thấy cấu hình Authentication cho dự án Firebase.",
+    "auth/invalid-api-key":"Firebase API key chưa được cấu hình đúng.",
+    "auth/app-not-authorized":"Dự án Firebase chưa cho phép ứng dụng web này."
+  };
+  const explain=e=>errorMessages[e?.code]||("Firebase: "+(e?.message||"Đã xảy ra lỗi xác thực."));
+  function message(text,kind="error"){
+    const bad=$a("yuhuaAuthError"),ok=$a("yuhuaAuthSuccess");
+    bad.hidden=true;ok.hidden=true;
+    if(text){const el=kind==="success"?ok:bad;el.textContent=text;el.hidden=false;}
+  }
+  function setMode(value){
+    mode=value;
+    const register=mode==="register";
+    $a("yuhuaModeLogin").classList.toggle("on",!register);
+    $a("yuhuaModeRegister").classList.toggle("on",register);
+    $a("yuhuaModeLogin").setAttribute("aria-selected",String(!register));
+    $a("yuhuaModeRegister").setAttribute("aria-selected",String(register));
+    $a("yuhuaNameRow").hidden=!register;
+    $a("yuhuaPasswordConfirmRow").hidden=!register;
+    $a("yuhuaName").required=register;
+    $a("yuhuaPasswordConfirm").required=register;
+    $a("yuhuaPassword").setAttribute("autocomplete",register?"new-password":"current-password");
+    $a("yuhuaAuthSubmit").textContent=register?"Tạo tài khoản và bắt đầu học":"Đăng nhập để học";
+    $a("yuhuaForgotPassword").hidden=register;
+    message("");
+  }
+  function showAuth(user){
+    if(user){
+      window.YUHUA_ACTIVE_UID=user.uid;
+      document.body.classList.add("yuhua-auth-ok");
+      $a("yuhuaAuthGate").setAttribute("aria-hidden","true");
+      $a("yuhuaUserBadge").hidden=false;
+      $a("yuhuaUserName").textContent=user.displayName||"Học sinh";
+      $a("yuhuaUserEmail").textContent=user.email||"";
+      // The existing HSK app already provides this function; refresh per-user progress.
+      if(typeof updateProgressUI==="function")updateProgressUI();
+    } else {
+      window.YUHUA_ACTIVE_UID=null;
+      document.body.classList.remove("yuhua-auth-ok");
+      $a("yuhuaAuthGate").removeAttribute("aria-hidden");
+      $a("yuhuaUserBadge").hidden=true;
+      $a("yuhuaAuthUI").hidden=false;
+      $a("yuhuaAuthLoading").hidden=true;
+      $a("yuhuaPassword").value="";
+      $a("yuhuaPasswordConfirm").value="";
+      setMode("login");
+      // If one learner signs out, don't leave the previous learner's lesson in memory/UI.
+      if($a("lesson"))$a("lesson").classList.remove("active");
+      if($a("home"))$a("home").classList.add("active");
+      const panel=$a("homePanel"); if(panel){panel.classList.add("hidden");panel.innerHTML="";}
+      if(typeof currentLesson!=="undefined")currentLesson=null;
+      message("");
+    }
+  }
+  function setupError(detail){
+    $a("yuhuaAuthLoading").hidden=true;
+    $a("yuhuaAuthUI").hidden=true;
+    $a("yuhuaAuthSetup").hidden=false;
+    $a("yuhuaAuthSetup").textContent=detail;
+    document.body.classList.remove("yuhua-auth-ok");
+  }
+  function setBusy(busy){$a("yuhuaAuthSubmit").disabled=busy;$a("yuhuaAuthSubmit").textContent=busy?"Đang xử lý…":(mode==="register"?"Tạo tài khoản và bắt đầu học":"Đăng nhập để học");}
+  async function submitAuth(evt){
+    evt.preventDefault();if(!auth)return;
+    message("");
+    const email=$a("yuhuaEmail").value.trim().toLowerCase();
+    const password=$a("yuhuaPassword").value;
+    if(!email||!password){message("Vui lòng nhập đầy đủ email và mật khẩu.");return;}
+    if(mode==="register"){
+      if(!$a("yuhuaName").value.trim()){message("Vui lòng nhập tên học sinh.");return;}
+      if(password.length<6){message("Mật khẩu cần ít nhất 6 ký tự.");return;}
+      if(password!==$a("yuhuaPasswordConfirm").value){message("Hai mật khẩu không trùng nhau.");return;}
+    }
+    setBusy(true);
+    try{
+      if(mode==="register"){
+        const result=await auth.createUserWithEmailAndPassword(email,password);
+        await result.user.updateProfile({displayName:$a("yuhuaName").value.trim()});
+        $a("yuhuaUserName").textContent=result.user.displayName||"Học sinh";
+        // Signing up also signs in with Firebase, state listener opens the lesson area.
+      } else {
+        await auth.signInWithEmailAndPassword(email,password);
+      }
+    }catch(e){message(explain(e));}finally{setBusy(false);}
+  }
+  async function forgot(){
+    const email=$a("yuhuaEmail").value.trim().toLowerCase();
+    if(!email){message("Hãy nhập email trước khi chọn Quên mật khẩu.");return;}
+    try{
+      await auth.sendPasswordResetEmail(email);
+      message("Nếu email tồn tại trong hệ thống, hướng dẫn đặt lại mật khẩu sẽ được gửi đến hộp thư.","success");
+    }catch(e){message(explain(e));}
+  }
+  function init(){
+    $a("yuhuaModeLogin").addEventListener("click",()=>setMode("login"));
+    $a("yuhuaModeRegister").addEventListener("click",()=>setMode("register"));
+    $a("yuhuaAuthForm").addEventListener("submit",submitAuth);
+    $a("yuhuaForgotPassword").addEventListener("click",forgot);
+    $a("yuhuaLogout").addEventListener("click",async()=>{
+      try{await auth.signOut();}catch(e){alert(explain(e));}
+    });
+    setMode("login");
+    const c=window.YUHUA_FIREBASE_CONFIG;
+    if(!c||!c.apiKey||!c.authDomain||!c.projectId||!c.appId||Object.values(c).some(x=>typeof x==="string"&&x.includes("REPLACE_WITH"))){
+      setupError("Website chưa được liên kết Firebase. Chủ website cần cập nhật file firebase-config.js bằng thông tin cấu hình Web App từ Firebase Console, bật Email/Password và thêm tên miền tenten2206.github.io vào Authorized domains. Sau đó upload cả index.html và firebase-config.js.");
+      return;
+    }
+    if(!window.firebase?.initializeApp){
+      setupError("Không tải được Firebase SDK. Hãy kiểm tra kết nối Internet và thử tải lại trang.");
+      return;
+    }
+    try{
+      if(!firebase.apps.length)firebase.initializeApp(c);
+      auth=firebase.auth();
+      auth.languageCode="vi";
+      auth.onAuthStateChanged(showAuth,e=>setupError(explain(e)));
+    }catch(e){setupError(explain(e));}
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true}); else init();
+})();
+</script>
+
 </body></html>
