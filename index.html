@@ -1212,6 +1212,21 @@ body.yh-study-open:has(#homePanel.yh39-hsk-detail-mode) .yh34-study-hero {displa
 #homePanel.yh39-hsk-detail-mode .yh38-hsk-open:hover strong{text-decoration:underline}
 @media(max-width:680px){.yh39-level-backbar{flex-direction:column;align-items:flex-start}.yh34-study-home #homePanel.yh39-hsk-detail-mode .selected-level-panel{padding:14px}}
 
+
+
+/* v40: home shows only the 2 program cards. Level selection is a separate page. */
+#yh40CatalogPage { display:none!important; background:#f8fafb; color:#253344; min-height:calc(100vh - 80px); padding:clamp(24px,4vw,56px) 20px 70px; }
+body.yh40-catalog-open:not(.yh-study-open) #yh40CatalogPage { display:block!important; }
+body.yh40-catalog-open:not(.yh-study-open) #yhLanding { display:none!important; }
+body.yh-study-open #yh40CatalogPage { display:none!important; }
+#yh40CatalogPage .yh34-program-detail[hidden] {display:none!important;}
+#yh40CatalogPage .yh34-program-detail {display:block; margin:0; padding:0; max-width:none; border:0; background:transparent;}
+.yh40-catalog-inner {width:min(1160px,100%);margin:0 auto;}
+.yh40-home-return {background:transparent;border:0;color:#178f80;font-size:14px;font-weight:800;padding:9px 0 22px;cursor:pointer;}
+.yh40-home-return:hover {text-decoration:underline;}
+#yh40CatalogPage .yh34-detail-heading {margin-top:0;}
+@media(max-width:640px){#yh40CatalogPage {padding:22px 15px 42px;} .yh40-home-return{font-size:13px;}}
+
 </style>
 </head>
 <body>
@@ -1481,6 +1496,16 @@ body.yh-study-open:has(#homePanel.yh39-hsk-detail-mode) .yh34-study-hero {displa
     </div>
   </section>
 
+
+  <section id="yh34About" class="yh34-about">
+    <div><span class="yh34-eyebrow">YU HUA CHINESE</span><h2>Học từng ngày, tiến bộ từng bài</h2><p>Ôn tập từ vựng và bài khóa, tự kiểm tra bằng flashcard và bài tập tổng hợp. Tài khoản được sử dụng để đăng nhập vào khu vực học tập.</p></div>
+    <div class="yh34-about-marks"><span>词汇 <small>Từ vựng</small></span><span>课文 <small>Bài khóa</small></span><span>练习 <small>Luyện tập</small></span></div>
+  </section>
+  <div class="yh-footer-public">© YuHua Chinese · Wings to the World of Chinese</div>
+</section>
+<section id="yh40CatalogPage" class="yh40-catalog-page" aria-label="Danh sách chương trình học" hidden>
+  <div class="yh40-catalog-inner">
+    <button class="yh40-home-return" type="button" onclick="YUHUA_NAV('home')">← Trang chủ · Chọn chương trình khác</button>
   <section id="yh34ProgramDetail" class="yh34-program-detail" hidden aria-live="polite">
     <div class="yh34-detail-heading">
       <div><span class="yh34-eyebrow" id="yh34DetailEyebrow">CHƯƠNG TRÌNH HỌC</span><h2 id="yh34DetailTitle">Tiếng Trung HSK</h2><p id="yh34DetailSub">Khóa học dành cho bạn.</p></div>
@@ -1488,12 +1513,7 @@ body.yh-study-open:has(#homePanel.yh39-hsk-detail-mode) .yh34-study-hero {displa
     </div>
     <div id="yh34DetailContent"></div>
   </section>
-
-  <section id="yh34About" class="yh34-about">
-    <div><span class="yh34-eyebrow">YU HUA CHINESE</span><h2>Học từng ngày, tiến bộ từng bài</h2><p>Ôn tập từ vựng và bài khóa, tự kiểm tra bằng flashcard và bài tập tổng hợp. Tài khoản được sử dụng để đăng nhập vào khu vực học tập.</p></div>
-    <div class="yh34-about-marks"><span>词汇 <small>Từ vựng</small></span><span>课文 <small>Bài khóa</small></span><span>练习 <small>Luyện tập</small></span></div>
-  </section>
-  <div class="yh-footer-public">© YuHua Chinese · Wings to the World of Chinese</div>
+  </div>
 </section>
 <main>
 <section id="home" class="view active yh34-study-home">
@@ -18288,7 +18308,7 @@ function isHSK2(){ return selectedHSKLevel===2; }
 if(!Array.isArray(HSK4_DATA)||HSK4_DATA.length!==20) throw new Error("Dữ liệu HSK 4 chưa đầy đủ");
 const totalWords=HSK3_DATA.reduce((s,l)=>s+(l.words?.length||0),0);
 const textCount=HSK3_DATA.reduce((s,l)=>s+(l.texts?.length||0),0);
-$("globalStat").textContent=`HSK 3.0 + HSK 2.0 • HSK 1–6 • v39 • HSK 4: 20 bài`;
+$("globalStat").textContent=`HSK 3.0 + HSK 2.0 • HSK 1–6 • v40 • HSK 4: 20 bài`;
 
 function userStorageKey(key){
   // A new Firebase account on the same browser gets a separate local record.
@@ -19904,9 +19924,16 @@ openFromLocation();
     if(catalogSystem!=="3.0")return 0;
     try {return ({1:HSK1_DATA.length,2:HSK2_DATA.length,3:HSK3_DATA.length,4:HSK4_DATA.length})[level]||0;}catch(e){return 0;}
   }
-  window.YUHUA_HIDE_PROGRAM=()=>{ $("yh34ProgramDetail").hidden=true; $("yh34Programs").scrollIntoView({behavior:"smooth",block:"start"}); };
+  window.YUHUA_HIDE_PROGRAM=()=>{
+    $("yh34ProgramDetail").hidden=true;
+    $("yh40CatalogPage").hidden=true;
+    document.body.classList.remove("yh40-catalog-open");
+    window.scrollTo({top:0,behavior:"smooth"});
+  };
   window.YUHUA_SHOW_PROGRAM=(program)=>{
     document.body.classList.remove("yh-study-open");
+    document.body.classList.add("yh40-catalog-open");
+    $("yh40CatalogPage").hidden=false;
     if($("lesson"))$("lesson").classList.remove("active");
     if($("home"))$("home").classList.add("active");
     const d=$("yh34ProgramDetail");
@@ -19962,6 +19989,9 @@ openFromLocation();
     }
     if(!window.YUHUA_ACTIVE_UID){window.YH_PENDING_HSK={system,level};window.YUHUA_OPEN_AUTH("login");return;}
     window.YH_PENDING_HSK=null;
+    document.body.classList.remove("yh40-catalog-open");
+    $("yh40CatalogPage").hidden=true;
+    $("yh34ProgramDetail").hidden=true;
     document.body.classList.add("yh-study-open");
     $("yctStudy")?.classList.remove("active");
     $("lesson")?.classList.remove("active");
@@ -20025,6 +20055,9 @@ openFromLocation();
     window.YH_PENDING_YCT=null;
     yctLevel=n; yctFlashIndex=0;yctFlashBack=false;yctOnlyForgotten=false;
     if(typeof window.YCT_GAME_RESET_STATE==="function")window.YCT_GAME_RESET_STATE();
+    document.body.classList.remove("yh40-catalog-open");
+    $("yh40CatalogPage").hidden=true;
+    $("yh34ProgramDetail").hidden=true;
     document.body.classList.add("yh-study-open");
     $("home")?.classList.remove("active");$("lesson")?.classList.remove("active");
     $("yctStudy")?.classList.add("active");
@@ -20518,7 +20551,9 @@ openFromLocation();
   window.YUHUA_ENTER=()=>$("yh34Programs")?.scrollIntoView({behavior:"smooth",block:"start"});
   window.YUHUA_NAV=(where)=>{
     if(where==="home"){
-      document.body.classList.remove("yh-study-open");
+      document.body.classList.remove("yh-study-open","yh40-catalog-open");
+      $("yh40CatalogPage").hidden=true;
+      $("yh34ProgramDetail").hidden=true;
       $("yctStudy")?.classList.remove("active");
       $("lesson")?.classList.remove("active");
       $("home")?.classList.add("active");
