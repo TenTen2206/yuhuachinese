@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>YuHua Chinese v35 – YCT 1–6 & HSK 1–6</title>
+  <title>YuHua Chinese v36 – YCT 1–6 giáo trình PDF & HSK</title>
   <style>
 
 *{box-sizing:border-box}:root{--o:#ef5b24;--os:#fff2ec;--ink:#202632;--muted:#6b7280;--line:#e6e7eb;--bg:#f7f8fb}
@@ -1066,6 +1066,19 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
 .yh35-practice-item{border:1px solid #dce9e4;background:#fbfefd;border-radius:12px;padding:15px;margin:12px 0}.yh35-practice-item>label{display:block;margin-bottom:9px;font-weight:750}
 @media(max-width:760px){.yh35-yct-public-levels{grid-template-columns:1fr}.yh35-yct-steps{grid-template-columns:1fr}.yh35-section-tabs{gap:7px}.yh35-main-tab{padding:13px 7px}.yh35-main-tab>strong{font-size:15px}.yh35-main-tab small{font-size:11px}.yh35-study-header{padding:18px}.yh35-study-icon{display:none}.yh35-content{padding:16px}.yh35-word-row{grid-template-columns:26px 1fr 1fr}.yh35-word-row .yh35-meaning{grid-column:2 / 4}.yh35-word-row button{grid-column:2 / 4}.yh35-quiz-choices{grid-template-columns:1fr}}
 @media(max-width:450px){.yh35-yct-level-card{gap:10px;padding:10px}.yh35-yct-cover{width:78px;flex-basis:78px;height:100px}.yh35-yct-cover .big{font-size:36px}.yh35-yct-level-desc strong{font-size:18px}.yh35-yct-arrow{font-size:18px}.yh35-study-header h2{font-size:31px}}
+
+/* ===== v36: YCT PDF textbooks & lesson navigation ===== */
+.yh36-pdf-hero{display:grid;grid-template-columns:145px minmax(0,1fr);gap:24px;align-items:center;padding:22px;border-radius:22px;border:1px solid #bbdfd8;background:linear-gradient(115deg,#f0fffa 0%,#ffffff 68%);margin:2px 0 22px}
+.yh36-pdf-bookcover{aspect-ratio:3/4;border-radius:15px;background:linear-gradient(140deg,#159889,#6adacc);box-shadow:8px 8px 0 #c8eee8,0 12px 30px #108e7e26;color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0}
+.yh36-pdf-bookcover b{font-size:34px;font-weight:900;font-style:italic;letter-spacing:3px}.yh36-pdf-bookcover span{font-size:75px;line-height:1.04;font-weight:900}.yh36-pdf-bookcover small{font-size:16px;font-weight:700}
+.yh36-pdf-booktext h3{font-size:clamp(22px,3vw,28px);margin:6px 0}.yh36-pdf-booktext p{margin:6px 0 14px;color:#536474;line-height:1.55}
+.yh36-pdf-meta,.yh36-pdf-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.yh36-pdf-meta span{font-size:12px;background:#e6f9f5;color:#237c70;padding:7px 10px;border-radius:100px;font-weight:700}.yh36-pdf-actions{margin-top:18px}
+.yh36-link-button{font-size:14px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:1px solid #bdded8;background:white;border-radius:11px;padding:11px 14px;font-weight:750;color:#12675d}.yh36-link-button:hover,.yh36-chapter:hover{border-color:#0d9488;background:#f1fffd}
+.yh36-chapter-heading{margin:26px 0 6px;font-size:22px}.yh36-chapter-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 20px}.yh36-chapter{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:7px;text-align:left;background:#fff;border:1px solid #e1e7e6;border-radius:14px;padding:14px 15px;min-height:115px;transition:.15s ease}.yh36-chapter b{color:#0f8b80;font-size:13px}.yh36-chapter span{font-size:15px;font-weight:750;line-height:1.4;overflow-wrap:anywhere}.yh36-chapter small{color:#657782;font-size:12px}
+.yh36-pdf-viewer{margin:24px 0;border:1px solid #b8dad4;border-radius:17px;overflow:hidden;background:white;scroll-margin-top:96px}.yh36-pdf-viewer[hidden]{display:none!important}.yh36-pdf-viewer-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 15px;background:#eafffb}.yh36-pdf-viewer-toolbar>div{display:flex;align-items:center;gap:12px}.yh36-pdf-viewer-toolbar a{color:#066d64;font-weight:750;text-decoration:none}.yh36-pdf-viewer iframe{width:100%;min-height:70vh;height:780px;border:0;background:#f4f4f4}.yh36-mobile-note{padding:0 15px 12px;font-size:13px;color:#556977}.yh36-digitization-note{font-size:13px;color:#6b7280;line-height:1.65;border-top:1px dashed #e5e7eb;padding-top:15px}
+@media(max-width:760px){.yh36-chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.yh36-pdf-hero{grid-template-columns:105px minmax(0,1fr);gap:16px;padding:15px}.yh36-pdf-bookcover b{font-size:24px}.yh36-pdf-bookcover span{font-size:54px}.yh36-pdf-bookcover small{font-size:12px}.yh36-pdf-viewer iframe{height:65vh;min-height:450px}}
+@media(max-width:460px){.yh36-chapter-grid{grid-template-columns:1fr}.yh36-pdf-hero{grid-template-columns:1fr}.yh36-pdf-bookcover{width:108px}.yh36-pdf-actions>*{flex:1}.yh36-pdf-viewer iframe{min-height:420px;height:60vh}.yh36-chapter{min-height:0}}
+
 </style>
 </head>
 <body>
@@ -19735,13 +19748,13 @@ openFromLocation();
     d.hidden=false;
     if(program==="YCT"){
       $("yh34DetailEyebrow").textContent="TIẾNG TRUNG DÀNH CHO TRẺ EM";
-      $("yh34DetailTitle").textContent="Chương trình YCT 1–6";
-      $("yh34DetailSub").textContent="Chọn cấp độ YCT, sau đó học theo Giáo trình · Từ vựng · Luyện tập.";
+      $("yh34DetailTitle").textContent="Giáo trình YCT · Quyển 1–6";
+      $("yh34DetailSub").textContent="Chọn quyển YCT từ 1 đến 6; xem PDF giáo trình hoặc chuyển sang Từ vựng và Luyện tập.";
       $("yh34DetailContent").innerHTML=`
         <div class="yh35-yct-catalog">
           <div class="yh35-yct-summary"><span aria-hidden="true">🎒</span><div><h3>Khám phá tiếng Trung cùng YCT</h3><p>Mỗi cấp độ có giáo trình, từ vựng (danh sách, flashcard, ôn tập) và luyện tập riêng.</p></div></div>
           <div class="yh35-yct-steps">
-            <div><span aria-hidden="true">📚</span>Giáo trình · Bài khóa</div>
+            <div><span aria-hidden="true">📚</span>Giáo trình PDF · Mục lục</div>
             <div><span aria-hidden="true">🃏</span>Từ vựng · Flashcard · Ôn tập</div>
             <div><span aria-hidden="true">✏️</span>Luyện tập và kiểm tra</div>
           </div>
@@ -19799,6 +19812,8 @@ openFromLocation();
     Array.from({length:6},(_,i)=>[i+1,{lessons:[],words:[],exercises:{translations:[],fill:[]}}])
   );
   let yctLevel=1, yctSection="textbook", yctSubtab="list", yctExerciseTab="quiz";
+  const YCT_PDF_BOOKS={"1":{"pages":60,"sizeMiB":5.3,"file":"YCT1.pdf","chapters":[{"title":"你好！","page":3,"number":1},{"title":"你叫什么？","page":7,"number":2},{"title":"他是谁？","page":11,"number":3},{"title":"我家有四口人。","page":16,"number":4},{"title":"我6岁。","page":21,"number":5},{"title":"你的个子真高！","page":26,"number":6},{"title":"这是谁的狗？","page":31,"number":7},{"title":"我去商店。","page":36,"number":8},{"title":"今天星期几？","page":41,"number":9},{"title":"现在几点？","page":46,"number":10},{"title":"你吃什么？","page":51,"number":11},{"title":"复习 · Ôn tập","page":56,"number":12}]},"2":{"pages":59,"sizeMiB":5.5,"file":"YCT2.pdf","chapters":[{"title":"我可以坐这儿吗？","page":5,"number":1},{"title":"你早上几点起床？","page":10,"number":2},{"title":"你的铅笔呢？","page":15,"number":3},{"title":"书包里有两本书。","page":20,"number":4},{"title":"你会不会做饭？","page":25,"number":5},{"title":"包子多少钱一个？","page":30,"number":6},{"title":"今天比昨天热。","page":35,"number":7},{"title":"马丁比我大三岁。","page":40,"number":8},{"title":"你今天做什么了？","page":45,"number":9},{"title":"你怎么了？","page":49,"number":10},{"title":"我来北京一年了。","page":54,"number":11},{"title":"复习 · Ôn tập","number":12,"page":57}]},"3":{"pages":64,"sizeMiB":5.8,"file":"YCT3.pdf","chapters":[{"title":"我三年级。","page":5,"number":1},{"title":"你喜欢什么运动？","page":10,"number":2},{"title":"我在画画儿呢。","page":15,"number":3},{"title":"喂，您好！","page":20,"number":4},{"title":"再吃几个。","page":25,"number":5},{"title":"我能自己穿。","page":30,"number":6},{"title":"生日快乐！","page":35,"number":7},{"title":"下雪了。","page":40,"number":8},{"title":"笑一笑！","page":45,"number":9},{"title":"谁跑得快？","page":50,"number":10},{"title":"妈妈把糖给弟弟了。","page":55,"number":11},{"title":"复习 · Ôn tập","page":60,"number":12}]},"4":{"pages":75,"sizeMiB":20.7,"file":"YCT4.pdf","chapters":[{"title":"我们有一百零八个学生。","page":10,"number":1},{"title":"你学汉语多长时间了？","page":15,"number":2},{"title":"早上八点半就开门。","page":20,"number":3},{"title":"我感冒了。","page":25,"number":4},{"title":"把门关上。","page":30,"number":5},{"title":"你去过我们的新教室吗？","page":35,"number":6},{"title":"你们每天怎么去学校？","page":40,"number":7},{"title":"要下雨了。","page":45,"number":8},{"title":"你是什么时候去的？","page":50,"number":9},{"title":"爸爸为什么不休息？","page":55,"number":10},{"title":"它长得很快。","page":60,"number":11},{"title":"复习 · Ôn tập","page":65,"number":12}]},"5":{"pages":135,"sizeMiB":18.7,"file":"YCT5.pdf","chapters":[{"title":"你对中国功夫感兴趣吗？","page":8,"number":1},{"title":"兔子更可爱。","page":16,"number":2},{"title":"电梯坏了。","page":24,"number":3},{"title":"每个人都有自己的习惯。","page":32,"number":4},{"title":"他们多么年轻啊！","page":40,"number":5},{"title":"站着的还是坐着的？","page":48,"number":6},{"title":"我经常去体育馆锻炼身体。","page":56,"number":7},{"title":"北京一共有四个季节。","page":64,"number":8},{"title":"冰激凌既好吃又便宜。","page":72,"number":9},{"title":"你的汉语会越来越好。","page":80,"number":10},{"title":"来一盘羊肉饺子。","page":88,"number":11},{"title":"坐飞机或者坐火车都可以。","page":96,"number":12},{"title":"我先帮你补牙。","page":104,"number":13},{"title":"我打算去中国旅游。","page":112,"number":14},{"title":"复习 · Ôn tập","page":120,"number":15}]},"6":{"pages":135,"sizeMiB":18.9,"file":"YCT6.pdf","chapters":[{"title":"我属猴。","page":10,"number":1},{"title":"他数学好极了。","page":18,"number":2},{"title":"小鸟正在唱歌。","page":26,"number":3},{"title":"你打扫一下房间好吗？","page":34,"number":4},{"title":"你太马虎了！","page":42,"number":5},{"title":"你扮演什么？","page":50,"number":6},{"title":"他们不是双胞胎。","page":58,"number":7},{"title":"小鱼被小猫吃了。","page":66,"number":8},{"title":"他家搬到动物园附近了。","page":74,"number":9},{"title":"月亮离我们多远？","page":82,"number":10},{"title":"我用帽子换你的盘子。","page":90,"number":11},{"title":"以后要注意。","page":98,"number":12},{"title":"我爱吃辣的。","page":106,"number":13},{"title":"有的熊猫一直睡觉。","page":114,"number":14},{"title":"复习 · Ôn tập","page":122,"number":15}]}};
+
   let yctFlashIndex=0, yctFlashBack=false, yctOnlyForgotten=false, yctReviewQuestions=[];
   const yctLabels=["Khởi đầu vui vẻ","Khám phá từ mới","Bước tiếp cùng tiếng Trung","Luyện tập mỗi ngày","Tăng cường kỹ năng","Tổng kết và vận dụng"];
   const yctHanzi=["你","好","学","习","中","文"];
@@ -19850,11 +19865,47 @@ openFromLocation();
     else window.YCT_SHOW_PRACTICE_TAB(yctExerciseTab);
   };
   function renderYctTextbook(){
-    const d=levelData(),ls=arr(d.lessons);
+    const d=levelData(),ls=arr(d.lessons),book=YCT_PDF_BOOKS[yctLevel];
     const content=$("yh35YctContent");
-    content.innerHTML=`<h3>📚 Giáo trình YCT ${yctLevel}</h3><p class="muted">Bài học, bài khóa và hội thoại theo từng bài trong giáo trình.</p>
-    ${ls.length?ls.map((l,i)=>`<div class="yh35-lesson-row"><div><strong>Bài ${i+1} – ${safe(l.title||`Bài ${i+1}`)}</strong><br><small class="muted">${arr(l.words).length} từ · ${arr(l.texts).length} bài khóa</small></div><button class="secondary" onclick="YCT_OPEN_TEXT(${i})">Xem bài</button></div>`).join(""):empty("📖",`Chưa nhập giáo trình YCT ${yctLevel}`,`Các bài học và bài khóa YCT ${yctLevel} sẽ xuất hiện ở đây khi có tài liệu nguồn.`)}`;
+    const url=book.file;
+    content.innerHTML=`
+      <div class="yh36-pdf-hero">
+        <div class="yh36-pdf-bookcover" aria-hidden="true"><b>YCT</b><span>${yctLevel}</span><small>标准教程</small></div>
+        <div class="yh36-pdf-booktext">
+          <div class="kicker">TÀI LIỆU GIÁO TRÌNH PDF</div>
+          <h3>Giáo trình YCT ${yctLevel} · 标准教程 ${yctLevel}</h3>
+          <p>Đọc trực tiếp bản PDF do giáo viên cung cấp, hoặc mở theo từng bài trong mục lục.</p>
+          <div class="yh36-pdf-meta"><span>📄 ${book.pages} trang PDF</span><span>💾 ${book.sizeMiB} MiB</span><span>📚 ${book.chapters.length} mục bài học</span></div>
+          <div class="yh36-pdf-actions">
+            <button class="primary" type="button" onclick="YCT_OPEN_PDF(1)">📖 Đọc trực tuyến</button>
+            <a class="yh36-link-button" href="${url}" target="_blank" rel="noopener noreferrer">↗ Mở PDF</a>
+            <a class="yh36-link-button" href="${url}" download="YCT${yctLevel}.pdf">↓ Tải PDF</a>
+          </div>
+        </div>
+      </div>
+      <h3 class="yh36-chapter-heading">Mục lục giáo trình YCT ${yctLevel}</h3>
+      <p class="muted">Chọn một bài để mở đúng vị trí trong tài liệu PDF.</p>
+      <div class="yh36-chapter-grid">${book.chapters.map(x=>`<button class="yh36-chapter" type="button" onclick="YCT_OPEN_PDF(${x.page})"><b>Bài ${x.number}</b><span>${safe(x.title)}</span><small>Trang PDF ${x.page}</small></button>`).join("")}</div>
+      <div class="yh36-pdf-viewer" id="yh36PdfViewer" hidden>
+        <div class="yh36-pdf-viewer-toolbar"><b>📖 Đọc giáo trình YCT ${yctLevel} <span id="yh36PdfPageLabel"></span></b><div><a id="yh36PdfOpenTab" href="${url}" target="_blank" rel="noopener noreferrer">Mở riêng ↗</a><button type="button" class="secondary" onclick="YCT_HIDE_PDF()">Ẩn PDF</button></div></div>
+        <iframe id="yh36PdfFrame" title="Giáo trình YCT ${yctLevel} PDF" loading="lazy" allowfullscreen></iframe>
+        <p class="yh36-mobile-note">Nếu thiết bị không hiển thị trình đọc bên dưới, hãy chọn <b>Mở PDF</b> để xem bằng trình duyệt.</p>
+      </div>
+      ${ls.length?`<h3 class="yh36-chapter-heading">Bài học tương tác đã biên soạn</h3>${ls.map((l,i)=>`<div class="yh35-lesson-row"><div><strong>Bài ${i+1} – ${safe(l.title||`Bài ${i+1}`)}</strong><br><small class="muted">${arr(l.words).length} từ · ${arr(l.texts).length} bài khóa</small></div><button class="secondary" onclick="YCT_OPEN_TEXT(${i})">Xem bài</button></div>`).join("")}`:`<p class="yh36-digitization-note"><b>Lưu ý:</b> Giáo trình PDF đã được tích hợp. Từ vựng, flashcard và luyện tập tương tác cần được nhập dữ liệu riêng từ giáo trình; chúng không tự tạo khi thêm PDF.</p>`}
+    `;
   }
+  window.YCT_OPEN_PDF=(requestedPage=1)=>{
+    const book=YCT_PDF_BOOKS[yctLevel];if(!book)return;
+    const page=Math.max(1,Math.min(book.pages,Math.floor(Number(requestedPage)||1)));
+    const viewer=$("yh36PdfViewer"),frame=$("yh36PdfFrame"),label=$("yh36PdfPageLabel"),tab=$("yh36PdfOpenTab");
+    if(!viewer || !frame)return;
+    viewer.hidden=false;
+    const url=book.file+"#page="+page+"&view=FitH";
+    // Set the URL on demand to avoid downloading large PDF files on page load.
+    frame.src=url;tab.href=url;label.textContent=`· Trang ${page}`;
+    viewer.scrollIntoView({behavior:"smooth",block:"start"});
+  };
+  window.YCT_HIDE_PDF=()=>{const box=$("yh36PdfViewer"),frame=$("yh36PdfFrame");if(box)box.hidden=true;if(frame)frame.removeAttribute("src");};
   window.YCT_OPEN_TEXT=i=>{
     const l=arr(levelData().lessons)[Number(i)];if(!l)return;
     const texts=arr(l.texts);
