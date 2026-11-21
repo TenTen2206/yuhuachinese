@@ -1150,7 +1150,7 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
 
 
 /* v38 - Student learning achievements dashboard */
-.yh35-section-tabs{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.yh35-section-tabs{grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
 .yh38-achievements,.yh38-hsk-progress-wrapper{background:#fff;border:1px solid #e2e8f0;border-radius:20px;padding:20px;margin-top:16px;color:#213242}
 .yh38-ach-header{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .yh38-ach-header h3,.yh38-hsk-progress-heading h3{font-size:24px;margin:5px 0 8px}
@@ -1386,7 +1386,7 @@ body.yh-study-open #yh40CatalogPage { display:none!important; }
     <div class="yh34-hero-copy">
       <span class="yh34-eyebrow">YU HUA CHINESE · WINGS TO THE WORLD OF CHINESE</span>
       <h1>Học tiếng Trung<br><em>vui mỗi ngày,</em><br>vững từng bước.</h1>
-      <p>Chọn lộ trình phù hợp với bạn: <strong>YCT dành cho trẻ em</strong> hoặc <strong>HSK dành cho người học tiếng Trung</strong>. Học theo giáo trình, luyện tập và theo dõi tiến độ trên cùng một website.</p>
+      <p>Chọn lộ trình phù hợp với bạn: <strong>YCT dành cho trẻ em</strong> hoặc <strong>HSK dành cho người học tiếng Trung</strong>. Học từ vựng, luyện tập, chơi game và theo dõi tiến độ trên cùng một website.</p>
       <button type="button" class="yh34-btn yh34-btn-primary" onclick="YUHUA_ENTER()">Khám phá khóa học <span aria-hidden="true">→</span></button>
     </div>
     <div class="yh34-hero-art"><svg class="yh-student-illustration" viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Minh họa học sinh học tiếng Trung trên máy tính cùng sách và thẻ từ vựng">
@@ -1564,14 +1564,13 @@ body.yh-study-open #yh40CatalogPage { display:none!important; }
   <header class="yh35-study-header">
     <div><span class="yh34-eyebrow">TIẾNG TRUNG TRẺ EM · YCT</span>
       <h2 id="yh35StudyLevel">YCT 1</h2>
-      <p>Học theo giáo trình, ôn từ vựng và khám phá các trò chơi tiếng Trung dành cho trẻ em.</p>
+      <p>Ôn từ vựng, luyện tập và khám phá các trò chơi tiếng Trung dành cho trẻ em.</p>
     </div>
     <div class="yh35-study-icon" aria-hidden="true">童</div>
   </header>
   <div class="yh35-level-nav" id="yh35YctLevelNav" aria-label="Chọn cấp độ YCT"></div>
   <div class="yh35-section-tabs" id="yh35YctSectionTabs" role="group" aria-label="Nội dung YCT">
-    <button type="button" class="yh35-main-tab active" data-yct-tab="textbook" onclick="YCT_SHOW_SECTION('textbook')"><span aria-hidden="true">📚</span><strong>Giáo trình</strong><small>Bài học và bài khóa</small></button>
-    <button type="button" class="yh35-main-tab" data-yct-tab="vocab" onclick="YCT_SHOW_SECTION('vocab')"><span aria-hidden="true">🧩</span><strong>Từ vựng</strong><small>Flashcard · Ôn tập</small></button>
+    <button type="button" class="yh35-main-tab active" data-yct-tab="vocab" onclick="YCT_SHOW_SECTION('vocab')"><span aria-hidden="true">🧩</span><strong>Từ vựng</strong><small>Flashcard · Ôn tập</small></button>
     <button type="button" class="yh35-main-tab" data-yct-tab="practice" onclick="YCT_SHOW_SECTION('practice')"><span aria-hidden="true">✏️</span><strong>Luyện tập</strong><small>Trắc nghiệm · Điền từ · Dịch câu</small></button>
     <button type="button" class="yh35-main-tab yh37-game-main-tab" data-yct-tab="games" onclick="YCT_SHOW_SECTION('games')"><span aria-hidden="true">🎮</span><strong>Game YCT</strong><small>4 trò chơi theo bài</small></button>
     <button type="button" class="yh35-main-tab yh38-achievement-tab" data-yct-tab="achievements" onclick="YCT_SHOW_SECTION('achievements')"><span aria-hidden="true">📈</span><strong>Thành tích học tập</strong><small>Tiến độ theo từng bài</small></button>
@@ -1579,7 +1578,7 @@ body.yh-study-open #yh40CatalogPage { display:none!important; }
   <div id="yh35YctContent" class="yh35-content" aria-live="polite"></div>
 </section>
 </main>
-<footer>YuHua Chinese • Wings to the World of Chinese • v39</footer>
+<footer>YuHua Chinese • Wings to the World of Chinese • v41</footer>
 <script async src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
 <script>
 const HSK1_DATA = [
@@ -18308,7 +18307,7 @@ function isHSK2(){ return selectedHSKLevel===2; }
 if(!Array.isArray(HSK4_DATA)||HSK4_DATA.length!==20) throw new Error("Dữ liệu HSK 4 chưa đầy đủ");
 const totalWords=HSK3_DATA.reduce((s,l)=>s+(l.words?.length||0),0);
 const textCount=HSK3_DATA.reduce((s,l)=>s+(l.texts?.length||0),0);
-$("globalStat").textContent=`HSK 3.0 + HSK 2.0 • HSK 1–6 • v40 • HSK 4: 20 bài`;
+$("globalStat").textContent=`HSK 3.0 + HSK 2.0 • HSK 1–6 • v41 • HSK 4: 20 bài`;
 
 function userStorageKey(key){
   // A new Firebase account on the same browser gets a separate local record.
@@ -19940,16 +19939,16 @@ openFromLocation();
     d.hidden=false;
     if(program==="YCT"){
       $("yh34DetailEyebrow").textContent="TIẾNG TRUNG DÀNH CHO TRẺ EM";
-      $("yh34DetailTitle").textContent="Giáo trình YCT · Quyển 1–6";
-      $("yh34DetailSub").textContent="Chọn quyển YCT từ 1 đến 6; xem PDF giáo trình hoặc chuyển sang Từ vựng và Luyện tập.";
+      $("yh34DetailTitle").textContent="Khóa học tiếng Trung YCT 1–6";
+      $("yh34DetailSub").textContent="Chọn cấp độ YCT để học từ vựng, làm bài luyện tập, chơi game và xem thành tích.";
       $("yh34DetailContent").innerHTML=`
         <div class="yh35-yct-catalog">
-          <div class="yh35-yct-summary"><span aria-hidden="true">🎒</span><div><h3>Khám phá tiếng Trung cùng YCT</h3><p>Mỗi cấp có giáo trình, từ vựng, luyện tập và 4 trò chơi ôn tập tiếng Trung.</p></div></div>
+          <div class="yh35-yct-summary"><span aria-hidden="true">🎒</span><div><h3>Khám phá tiếng Trung cùng YCT</h3><p>Mỗi cấp có từ vựng, luyện tập, 4 trò chơi và bảng theo dõi thành tích học tập.</p></div></div>
           <div class="yh35-yct-steps">
-            <div><span aria-hidden="true">📚</span>Giáo trình PDF · Mục lục</div>
             <div><span aria-hidden="true">🃏</span>Từ vựng · Flashcard · Ôn tập</div>
             <div><span aria-hidden="true">✏️</span>Luyện tập và kiểm tra</div>
             <div><span aria-hidden="true">🎮</span>Game học tiếng Trung</div>
+            <div><span aria-hidden="true">📈</span>Thành tích học tập theo bài</div>
           </div>
           <div class="yh35-yct-public-levels" id="yh35PublicYctLevels" aria-label="Các cấp độ YCT"></div>
         </div>`;
@@ -20018,7 +20017,7 @@ openFromLocation();
     selected.forEach(w=>{if(!known.has(w.hanzi+'|'+w.pinyin)){(original.words||(original.words=[])).push({...w});known.add(w.hanzi+'|'+w.pinyin)}});
     window.YUHUA_YCT_DATA[level]=original;
   }
-  let yctLevel=1, yctSection="textbook", yctSubtab="list", yctExerciseTab="quiz";
+  let yctLevel=1, yctSection="vocab", yctSubtab="list", yctExerciseTab="quiz";
   const YCT_PDF_BOOKS={"1":{"pages":60,"sizeMiB":5.3,"file":"YCT1.pdf","chapters":[{"title":"你好！","page":3,"number":1},{"title":"你叫什么？","page":7,"number":2},{"title":"他是谁？","page":11,"number":3},{"title":"我家有四口人。","page":16,"number":4},{"title":"我6岁。","page":21,"number":5},{"title":"你的个子真高！","page":26,"number":6},{"title":"这是谁的狗？","page":31,"number":7},{"title":"我去商店。","page":36,"number":8},{"title":"今天星期几？","page":41,"number":9},{"title":"现在几点？","page":46,"number":10},{"title":"你吃什么？","page":51,"number":11},{"title":"复习 · Ôn tập","page":56,"number":12}]},"2":{"pages":59,"sizeMiB":5.5,"file":"YCT2.pdf","chapters":[{"title":"我可以坐这儿吗？","page":5,"number":1},{"title":"你早上几点起床？","page":10,"number":2},{"title":"你的铅笔呢？","page":15,"number":3},{"title":"书包里有两本书。","page":20,"number":4},{"title":"你会不会做饭？","page":25,"number":5},{"title":"包子多少钱一个？","page":30,"number":6},{"title":"今天比昨天热。","page":35,"number":7},{"title":"马丁比我大三岁。","page":40,"number":8},{"title":"你今天做什么了？","page":45,"number":9},{"title":"你怎么了？","page":49,"number":10},{"title":"我来北京一年了。","page":54,"number":11},{"title":"复习 · Ôn tập","number":12,"page":57}]},"3":{"pages":64,"sizeMiB":5.8,"file":"YCT3.pdf","chapters":[{"title":"我三年级。","page":5,"number":1},{"title":"你喜欢什么运动？","page":10,"number":2},{"title":"我在画画儿呢。","page":15,"number":3},{"title":"喂，您好！","page":20,"number":4},{"title":"再吃几个。","page":25,"number":5},{"title":"我能自己穿。","page":30,"number":6},{"title":"生日快乐！","page":35,"number":7},{"title":"下雪了。","page":40,"number":8},{"title":"笑一笑！","page":45,"number":9},{"title":"谁跑得快？","page":50,"number":10},{"title":"妈妈把糖给弟弟了。","page":55,"number":11},{"title":"复习 · Ôn tập","page":60,"number":12}]},"4":{"pages":75,"sizeMiB":20.7,"file":"YCT4.pdf","chapters":[{"title":"我们有一百零八个学生。","page":10,"number":1},{"title":"你学汉语多长时间了？","page":15,"number":2},{"title":"早上八点半就开门。","page":20,"number":3},{"title":"我感冒了。","page":25,"number":4},{"title":"把门关上。","page":30,"number":5},{"title":"你去过我们的新教室吗？","page":35,"number":6},{"title":"你们每天怎么去学校？","page":40,"number":7},{"title":"要下雨了。","page":45,"number":8},{"title":"你是什么时候去的？","page":50,"number":9},{"title":"爸爸为什么不休息？","page":55,"number":10},{"title":"它长得很快。","page":60,"number":11},{"title":"复习 · Ôn tập","page":65,"number":12}]},"5":{"pages":135,"sizeMiB":18.7,"file":"YCT5.pdf","chapters":[{"title":"你对中国功夫感兴趣吗？","page":8,"number":1},{"title":"兔子更可爱。","page":16,"number":2},{"title":"电梯坏了。","page":24,"number":3},{"title":"每个人都有自己的习惯。","page":32,"number":4},{"title":"他们多么年轻啊！","page":40,"number":5},{"title":"站着的还是坐着的？","page":48,"number":6},{"title":"我经常去体育馆锻炼身体。","page":56,"number":7},{"title":"北京一共有四个季节。","page":64,"number":8},{"title":"冰激凌既好吃又便宜。","page":72,"number":9},{"title":"你的汉语会越来越好。","page":80,"number":10},{"title":"来一盘羊肉饺子。","page":88,"number":11},{"title":"坐飞机或者坐火车都可以。","page":96,"number":12},{"title":"我先帮你补牙。","page":104,"number":13},{"title":"我打算去中国旅游。","page":112,"number":14},{"title":"复习 · Ôn tập","page":120,"number":15}]},"6":{"pages":135,"sizeMiB":18.9,"file":"YCT6.pdf","chapters":[{"title":"我属猴。","page":10,"number":1},{"title":"他数学好极了。","page":18,"number":2},{"title":"小鸟正在唱歌。","page":26,"number":3},{"title":"你打扫一下房间好吗？","page":34,"number":4},{"title":"你太马虎了！","page":42,"number":5},{"title":"你扮演什么？","page":50,"number":6},{"title":"他们不是双胞胎。","page":58,"number":7},{"title":"小鱼被小猫吃了。","page":66,"number":8},{"title":"他家搬到动物园附近了。","page":74,"number":9},{"title":"月亮离我们多远？","page":82,"number":10},{"title":"我用帽子换你的盘子。","page":90,"number":11},{"title":"以后要注意。","page":98,"number":12},{"title":"我爱吃辣的。","page":106,"number":13},{"title":"有的熊猫一直睡觉。","page":114,"number":14},{"title":"复习 · Ôn tập","page":122,"number":15}]}};
 
   let yctFlashIndex=0, yctFlashBack=false, yctOnlyForgotten=false, yctReviewQuestions=[];
@@ -20045,7 +20044,7 @@ openFromLocation();
     container.innerHTML=Array.from({length:6},(_,i)=>{const lv=i+1;return `
       <button type="button" class="yh35-yct-level-card" onclick="YH_OPEN_YCT_LEVEL(${lv})" aria-label="YCT ${lv}">
         <span class="yh35-yct-cover c${lv}"><span class="big">${yctHanzi[i]}</span><small>YCT ${lv}</small></span>
-        <span class="yh35-yct-level-desc"><strong>YCT ${lv}</strong><span>${yctLabels[i]}</span><small>Giáo trình · Từ vựng · Luyện tập · Game</small></span>
+        <span class="yh35-yct-level-desc"><strong>YCT ${lv}</strong><span>${yctLabels[i]}</span><small>Từ vựng · Luyện tập · Game · Thành tích</small></span>
         <span class="yh35-yct-arrow" aria-hidden="true">→</span>
       </button>`}).join("");
   };
@@ -20063,68 +20062,18 @@ openFromLocation();
     $("yctStudy")?.classList.add("active");
     $("yh35StudyLevel").textContent=`YCT ${n}`;
     $("yh35YctLevelNav").innerHTML=Array.from({length:6},(_,i)=>`<button class="${i+1===n?"active":""}" onclick="YH_OPEN_YCT_LEVEL(${i+1})">YCT ${i+1}</button>`).join("");
-    window.YCT_SHOW_SECTION("textbook");
+    window.YCT_SHOW_SECTION("vocab");
     window.scrollTo({top:0,behavior:"smooth"});
   };
   window.YCT_SHOW_SECTION=(section)=>{
     if(!window.YUHUA_ACTIVE_UID){window.YUHUA_OPEN_AUTH("login");return;}
-    if(!["textbook","vocab","practice","games","achievements"].includes(section))return;
+    if(!["vocab","practice","games","achievements"].includes(section))return;
     yctSection=section;
     document.querySelectorAll("#yh35YctSectionTabs [data-yct-tab]").forEach(b=>b.classList.toggle("active",b.dataset.yctTab===section));
-    if(section==="textbook")renderYctTextbook();
-    else if(section==="vocab")window.YCT_SHOW_VOCAB_TAB(yctSubtab);
+    if(section==="vocab")window.YCT_SHOW_VOCAB_TAB(yctSubtab);
     else if(section==="games")window.YCT_SHOW_GAMES();
     else if(section==="achievements")window.YCT_SHOW_ACHIEVEMENTS();
     else window.YCT_SHOW_PRACTICE_TAB(yctExerciseTab);
-  };
-  function renderYctTextbook(){
-    const d=levelData(),ls=arr(d.lessons),book=YCT_PDF_BOOKS[yctLevel];
-    const content=$("yh35YctContent");
-    const url=book.file;
-    content.innerHTML=`
-      <div class="yh36-pdf-hero">
-        <div class="yh36-pdf-bookcover" aria-hidden="true"><b>YCT</b><span>${yctLevel}</span><small>标准教程</small></div>
-        <div class="yh36-pdf-booktext">
-          <div class="kicker">TÀI LIỆU GIÁO TRÌNH PDF</div>
-          <h3>Giáo trình YCT ${yctLevel} · 标准教程 ${yctLevel}</h3>
-          <p>Đọc trực tiếp bản PDF do giáo viên cung cấp, hoặc mở theo từng bài trong mục lục.</p>
-          <div class="yh36-pdf-meta"><span>📄 ${book.pages} trang PDF</span><span>💾 ${book.sizeMiB} MiB</span><span>📚 ${book.chapters.length} mục bài học</span></div>
-          <div class="yh36-pdf-actions">
-            <button class="primary" type="button" onclick="YCT_OPEN_PDF(1)">📖 Đọc trực tuyến</button>
-            <a class="yh36-link-button" href="${url}" target="_blank" rel="noopener noreferrer">↗ Mở PDF</a>
-            <a class="yh36-link-button" href="${url}" download="YCT${yctLevel}.pdf">↓ Tải PDF</a>
-          </div>
-        </div>
-      </div>
-      <h3 class="yh36-chapter-heading">Mục lục giáo trình YCT ${yctLevel}</h3>
-      <p class="muted">Chọn một bài để mở đúng vị trí trong tài liệu PDF.</p>
-      <div class="yh36-chapter-grid">${book.chapters.map(x=>`<div class="yh38-chapter-wrap"><button class="yh36-chapter" type="button" onclick="YCT_OPEN_PDF(${x.page})"><b>Bài ${x.number}</b><span>${safe(x.title)}</span><small>Trang PDF ${x.page}</small></button><button type="button" class="yh38-read-btn ${YCT_ACH_IS_READ(x.number)?'done':''}" onclick="YCT_ACH_MARK_READ(${x.number})">${YCT_ACH_IS_READ(x.number)?'✓ Đã học bài này':'□ Đánh dấu đã học'}</button></div>`).join("")}</div>
-      <div class="yh37-textbook-games"><div><b>🎮 Chơi game sau khi học</b><small>Ghép từ, lật thẻ, luyện nghe và xếp câu trong 4 bài đầu.</small></div><button class="primary" type="button" onclick="YCT_GAME_GO(0)">Vào Game YCT →</button></div>
-      <div class="yh36-pdf-viewer" id="yh36PdfViewer" hidden>
-        <div class="yh36-pdf-viewer-toolbar"><b>📖 Đọc giáo trình YCT ${yctLevel} <span id="yh36PdfPageLabel"></span></b><div><a id="yh36PdfOpenTab" href="${url}" target="_blank" rel="noopener noreferrer">Mở riêng ↗</a><button type="button" class="secondary" onclick="YCT_HIDE_PDF()">Ẩn PDF</button></div></div>
-        <iframe id="yh36PdfFrame" title="Giáo trình YCT ${yctLevel} PDF" loading="lazy" allowfullscreen></iframe>
-        <p class="yh36-mobile-note">Nếu thiết bị không hiển thị trình đọc bên dưới, hãy chọn <b>Mở PDF</b> để xem bằng trình duyệt.</p>
-      </div>
-      ${ls.length?`<h3 class="yh36-chapter-heading">Bài học tương tác đã biên soạn</h3>${ls.map((l,i)=>`<div class="yh35-lesson-row"><div><strong>Bài ${i+1} – ${safe(l.title||`Bài ${i+1}`)}</strong><br><small class="muted">${arr(l.words).length} từ · ${arr(l.texts).length} bài khóa</small></div><button class="secondary" onclick="YCT_OPEN_TEXT(${i})">Xem bài</button></div>`).join("")}`:`<p class="yh36-digitization-note"><b>Lưu ý:</b> 4 bài đầu đã có dữ liệu từ vựng chọn lọc để chơi game và dùng flashcard. Các bài còn lại vẫn đọc qua PDF, chưa được số hóa tương tác đầy đủ.</p>`}
-    `;
-  }
-  window.YCT_OPEN_PDF=(requestedPage=1)=>{
-    const book=YCT_PDF_BOOKS[yctLevel];if(!book)return;
-    const page=Math.max(1,Math.min(book.pages,Math.floor(Number(requestedPage)||1)));
-    const viewer=$("yh36PdfViewer"),frame=$("yh36PdfFrame"),label=$("yh36PdfPageLabel"),tab=$("yh36PdfOpenTab");
-    if(!viewer || !frame)return;
-    viewer.hidden=false;
-    const url=book.file+"#page="+page+"&view=FitH";
-    // Set the URL on demand to avoid downloading large PDF files on page load.
-    frame.src=url;tab.href=url;label.textContent=`· Trang ${page}`;
-    viewer.scrollIntoView({behavior:"smooth",block:"start"});
-  };
-  window.YCT_HIDE_PDF=()=>{const box=$("yh36PdfViewer"),frame=$("yh36PdfFrame");if(box)box.hidden=true;if(frame)frame.removeAttribute("src");};
-  window.YCT_OPEN_TEXT=i=>{
-    const l=arr(levelData().lessons)[Number(i)];if(!l)return;
-    const texts=arr(l.texts);
-    $("yh35YctContent").innerHTML=`<button class="secondary" onclick="YCT_SHOW_SECTION('textbook')">← Trở lại giáo trình</button><h3 style="margin-top:16px">${safe(l.title||`Bài ${Number(i)+1}`)}</h3>
-       ${texts.length?texts.map((t,j)=>`<div class="yh35-text-content"><b>课文 ${j+1}</b>\n${safe(typeof t==="string"?t:t.content||"")}</div>`).join(""):empty("📖","Chưa nhập bài khóa","Bài này chưa có bài khóa YCT được nhập.")}`;
   };
   window.YCT_SHOW_VOCAB_TAB=tab=>{
     if(!["list","flash","review"].includes(tab))tab="list";
@@ -20250,21 +20199,10 @@ openFromLocation();
     const memorized=words.filter(w=>memory[wordKey(w)]==='known').length;
     const quiz=saved.quizzes?.[n]||null;
     const games=yctLessonGames(n);
-    const possible=1+(words.length?6:0); // 1 PDF, 1 vocabulary, 1 quiz, 4 games
-    const done=(r.read?1:0)+(words.length?(Number(memorized===words.length)+Number(!!quiz?.attempts)+games.length):0);
-    return {n,read:!!r.read,words,memorized,quiz,games,done,possible,pct:Math.round(done/possible*100),updated:r.updated||quiz?.updated||''};
+    const possible=words.length?6:0; // 1 fully remembered word set, 1 vocabulary quiz, 4 games; PDF is no longer counted
+    const done=words.length?(Number(memorized===words.length)+Number(!!quiz?.attempts)+games.length):0;
+    return {n,words,memorized,quiz,games,done,possible,pct:possible?Math.round(done/possible*100):null,updated:quiz?.updated||''};
   }
-  window.YCT_ACH_IS_READ=n=>!!yctAchievementRead().lessons?.[n]?.read;
-  window.YCT_ACH_MARK_READ=n=>{
-    if(!window.YUHUA_ACTIVE_UID){window.YUHUA_OPEN_AUTH('login');return;}
-    const book=YCT_PDF_BOOKS[yctLevel];if(!book?.chapters.some(ch=>ch.number===Number(n)))return;
-    const d=yctAchievementRead();d.lessons=d.lessons||{};
-    const previous=d.lessons[n]||{};
-    d.lessons[n]={...previous,read:!previous.read,updated:new Date().toISOString()};
-    yctAchievementWrite(d);
-    if(yctSection==='achievements')window.YCT_SHOW_ACHIEVEMENTS();
-    else if(yctSection==='textbook')renderYctTextbook();
-  };
   window.YCT_ACH_SAVE_GLOBAL_QUIZ=(type,correct,total)=>{
     if(!total)return;
     const d=yctAchievementRead();d.globalQuizzes=d.globalQuizzes||{};
@@ -20310,32 +20248,27 @@ openFromLocation();
   window.YCT_SHOW_ACHIEVEMENTS=()=>{
     if(!window.YUHUA_ACTIVE_UID){window.YUHUA_OPEN_AUTH('login');return;}
     const chapters=YCT_PDF_BOOKS[yctLevel]?.chapters||[];
-    const rows=chapters.map(ch=>({...yctAchievementRow(ch.number),title:ch.title,page:ch.page}));
+    const rows=chapters.map(ch=>({...yctAchievementRow(ch.number),title:ch.title}));
     const activityDone=rows.reduce((a,r)=>a+r.done,0),activityAll=rows.reduce((a,r)=>a+r.possible,0);
     const pct=activityAll?Math.round(100*activityDone/activityAll):0;
-    const readCount=rows.filter(r=>r.read).length,wordsMem=rows.reduce((a,r)=>a+r.memorized,0);
+    const activeLessons=rows.filter(r=>r.possible>0).length;
+    const wordsMem=rows.reduce((a,r)=>a+r.memorized,0);
     const gameCount=rows.reduce((a,r)=>a+r.games.reduce((b,g)=>b+(g.attempts||0),0),0);
     const global=yctAchievementRead().globalQuizzes||{};
     $('yh35YctContent').innerHTML=`<div class="yh38-achievements">
-      <div class="yh38-ach-header"><div><span class="yh37-eyebrow">📈 BÁO CÁO CÁ NHÂN · YCT ${yctLevel}</span><h3>Thành tích học tập theo từng bài</h3><p class="muted">Theo dõi việc đã đọc giáo trình, ghi nhớ từ vựng, kiểm tra và chơi game. Dữ liệu riêng cho tài khoản trên trình duyệt này.</p></div><span class="yh38-progress-circle">${pct}%</span></div>
-      <div class="yh38-overall-progress"><div class="yh38-bar"><span style="width:${pct}%"></span></div><small>Đã ghi nhận ${activityDone}/${activityAll} hoạt động khả dụng. Bài 5 trở đi hiện chỉ có PDF.</small></div>
-      <div class="yh38-stats"><div><b>${readCount}/${rows.length}</b><span>Bài đã đánh dấu học</span></div><div><b>${wordsMem}</b><span>Từ đã nhớ qua Flashcard</span></div><div><b>${gameCount}</b><span>Lượt game theo bài</span></div><div><b>${Object.values(global).reduce((a,q)=>a+(q.attempts||0),0)}</b><span>Bài ôn tập chung</span></div></div>
+      <div class="yh38-ach-header"><div><span class="yh37-eyebrow">📈 BÁO CÁO CÁ NHÂN · YCT ${yctLevel}</span><h3>Thành tích học tập theo từng bài</h3><p class="muted">Theo dõi từ vựng đã nhớ, kiểm tra và trò chơi. Mỗi tài khoản có dữ liệu riêng trên trình duyệt hiện tại.</p></div><span class="yh38-progress-circle">${pct}%</span></div>
+      <div class="yh38-overall-progress"><div class="yh38-bar"><span style="width:${pct}%"></span></div><small>Đã hoàn thành ${activityDone}/${activityAll} hoạt động tương tác hiện có tại ${activeLessons} bài. Những bài chưa có dữ liệu sẽ không tính vào tỷ lệ.</small></div>
+      <div class="yh38-stats"><div><b>${activeLessons}/${rows.length}</b><span>Bài có hoạt động tương tác</span></div><div><b>${wordsMem}</b><span>Từ đã nhớ qua Flashcard</span></div><div><b>${gameCount}</b><span>Lượt game theo bài</span></div><div><b>${Object.values(global).reduce((a,q)=>a+(q.attempts||0),0)}</b><span>Bài ôn tập chung</span></div></div>
       <h4>Tiến độ từng bài · YCT ${yctLevel}</h4>
-      <div class="yh38-table-scroll"><table class="yh38-report-table"><thead><tr><th>Bài học</th><th>Giáo trình</th><th>Flashcard</th><th>Kiểm tra từ</th><th>Game</th><th>Tiến độ</th><th>Hoạt động</th></tr></thead><tbody>
-      ${rows.map(r=>`<tr><td><strong>Bài ${r.n}</strong><small>${safe(r.title)}</small></td><td><button class="yh38-cell-chip ${r.read?'done':''}" onclick="YCT_ACH_MARK_READ(${r.n})">${r.read?'✓ Đã học':'□ Chưa đánh dấu'}</button></td>
-       <td>${r.words.length?`<b>${r.memorized}/${r.words.length}</b><small>từ đã nhớ</small>`:'<span class="yh38-na">Chưa số hóa</span>'}</td>
+      <div class="yh38-table-scroll"><table class="yh38-report-table"><thead><tr><th>Bài học</th><th>Flashcard</th><th>Kiểm tra từ</th><th>Game</th><th>Tiến độ</th><th>Hoạt động</th></tr></thead><tbody>
+      ${rows.map(r=>`<tr><td><strong>Bài ${r.n}</strong><small>${safe(r.title)}</small></td>
+       <td>${r.words.length?`<b>${r.memorized}/${r.words.length}</b><small>từ đã nhớ</small>`:'<span class="yh38-na">Chưa có dữ liệu</span>'}</td>
        <td>${r.words.length?`<b>${r.quiz?.bestPct??'—'}${r.quiz?'%':''}</b><small>${r.quiz?.attempts||0} lượt kiểm tra</small>`:'<span class="yh38-na">Chưa có đề</span>'}</td>
        <td>${r.words.length?`<b>${r.games.length}/4</b><small>trò đã chơi</small>`:'<span class="yh38-na">Chưa có game</span>'}</td>
-       <td><b>${r.pct}%</b><div class="yh38-bar small"><span style="width:${r.pct}%"></span></div><small>${r.done}/${r.possible} hoạt động</small></td>
-       <td class="yh38-actions"><button onclick="YCT_OPEN_LESSON_FROM_REPORT(${r.n})">📖 Xem bài</button>${r.words.length>=2?`<button onclick="YCT_ACH_START_TEST(${r.n})">📝 Kiểm tra</button><button onclick="YCT_GAME_GO(${r.n})">🎮 Game</button>`:''}</td></tr>`).join('')}
+       <td>${r.possible?`<b>${r.pct}%</b><div class="yh38-bar small"><span style="width:${r.pct}%"></span></div><small>${r.done}/${r.possible} hoạt động</small>`:'<span class="yh38-na">Chưa mở học liệu tương tác</span>'}</td>
+       <td class="yh38-actions">${r.words.length>=2?`<button onclick="YCT_SHOW_SECTION('vocab');YCT_SHOW_VOCAB_TAB('flash')">🃏 Flashcard</button><button onclick="YCT_ACH_START_TEST(${r.n})">📝 Kiểm tra</button><button onclick="YCT_GAME_GO(${r.n})">🎮 Game</button>`:'<span class="yh38-na">Đang bổ sung</span>'}</td></tr>`).join('')}
       </tbody></table></div>
-      <p class="yh38-disclaimer">* Tỷ lệ dựa trên hoạt động đã có trong website, không phải điểm đánh giá năng lực YCT chính thức. Chỉ bốn bài đầu mỗi cấp có bộ từ và game tương tác; các bài tiếp theo chỉ theo dõi trạng thái đọc PDF. Đánh dấu “Đã học” là tự xác nhận.</p></div>`;
-  };
-  window.YCT_OPEN_LESSON_FROM_REPORT=n=>{
-    const item=YCT_PDF_BOOKS[yctLevel]?.chapters.find(x=>x.number===n);
-    if(!item)return;
-    window.YCT_SHOW_SECTION('textbook');
-    window.YCT_OPEN_PDF(item.page);
+      <p class="yh38-disclaimer">* Tỷ lệ chỉ phản ánh hoạt động Flashcard, kiểm tra từ và 4 trò chơi của các bài đã được số hóa (hiện là bài 1–4 của mỗi cấp). Đây không phải điểm thi YCT chính thức. Trạng thái đọc PDF ở các phiên bản trước không còn được tính.</p></div>`;
   };
 
   /* ===== v37 · YCT learning games: match, memory, listening, sentence order ===== */
@@ -20366,7 +20299,7 @@ openFromLocation();
     const ls=gameLessons();
     yg("yh35YctContent").innerHTML=`
       <div class="yh37-game-heading">
-        <div><span class="yh37-eyebrow">🌟 HỌC MÀ CHƠI · YCT ${yctLevel}</span><h3>Thế giới trò chơi tiếng Trung</h3><p>Vừa chơi vừa nhớ chữ Hán, phát âm và mẫu câu theo giáo trình.</p></div>
+        <div><span class="yh37-eyebrow">🌟 HỌC MÀ CHƠI · YCT ${yctLevel}</span><h3>Thế giới trò chơi tiếng Trung</h3><p>Vừa chơi vừa nhớ chữ Hán, phát âm và mẫu câu phù hợp từng cấp YCT.</p></div>
         <div class="yh37-game-mascot" aria-hidden="true">🐼</div>
       </div>
       <div class="yh37-game-toolbar"><label for="yh37LessonChoice">Chọn nội dung</label><select id="yh37LessonChoice" onchange="YCT_GAME_CHOOSE_LESSON(this.value)">
@@ -20382,8 +20315,8 @@ openFromLocation();
         ].map(([mode,ic,title,desc,bg])=>`<button class="yh37-game-card" type="button" style="--game-bg:${bg}" onclick="YCT_GAME_START('${mode}')"><span class="yh37-game-icon">${ic}</span><strong>${title}</strong><small>${desc}</small><span class="yh37-game-start">Chơi ngay →</span></button>`).join("")}
       </div>
       <div class="yh37-game-record" id="yh37GameRecords"></div>
-      <p class="yh37-game-source">📖 Các câu hỏi được xây dựng từ phần <b>Let's learn</b> và <b>Key Sentences</b>, bài 1–4 của YCT Standard Course ${yctLevel}. Bấm “Trang giáo trình” để xem bản PDF gốc. Đây là học liệu thực hành bổ sung, chưa bao phủ toàn bộ từ vựng của 6 quyển.</p>
-      <div class="yh37-game-footnav"><button class="secondary" type="button" onclick="YCT_SHOW_SECTION('textbook')">📚 Trang giáo trình</button><button class="secondary" type="button" onclick="YCT_SHOW_SECTION('vocab')">🗂 Ôn Flashcard</button></div>
+      <p class="yh37-game-source">📖 Các câu hỏi được xây dựng từ phần <b>Let's learn</b> và <b>Key Sentences</b>, bài 1–4 của YCT Standard Course ${yctLevel}. Đây là học liệu thực hành bổ sung, chưa bao phủ toàn bộ từ vựng của 6 quyển.</p>
+      <div class="yh37-game-footnav"><button class="secondary" type="button" onclick="YCT_SHOW_SECTION('vocab')">🗂 Ôn Flashcard</button><button class="secondary" type="button" onclick="YCT_SHOW_SECTION('achievements')">📈 Xem thành tích</button></div>
     `;
     const records=getGameRecords();
     yg("yh37GameRecords").innerHTML=`<b>🏆 Thành tích của em</b><div>${Object.keys(gameIcons).map(mode=>{const x=records[`${mode}_${gameLesson||"all"}`];return `<span>${gameIcons[mode]} ${x?`Tốt nhất ${x.bestPct}% · ${x.attempts} lượt`:'Chưa chơi'}</span>`}).join("")}</div><small>Lưu trên trình duyệt theo tài khoản hiện tại.</small>`;
