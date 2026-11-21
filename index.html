@@ -1194,6 +1194,24 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
 .yh38-hsk-progress-wrapper{margin-bottom:24px}
 @media(max-width:900px){.yh35-section-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:650px){.yh35-section-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.yh38-achievements,.yh38-hsk-progress-wrapper{padding:14px}.yh38-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.yh38-ach-header h3{font-size:20px}.yh38-ach-header .muted{font-size:13px}.yh38-progress-circle{width:60px;height:60px;min-width:60px;font-size:17px}.yh38-test-head{flex-direction:column;gap:10px}}
+
+/* YuHua v39 – distinct HSK catalog and focused course screens */
+#homePanel.yh39-hsk-detail-mode .panel-title-row,
+#homePanel.yh39-hsk-detail-mode #systemGrid,
+#homePanel.yh39-hsk-detail-mode .curriculum-level-section,
+#homePanel.yh39-hsk-detail-mode #hsk3ProgressWrap {display:none!important}
+#homePanel:not(.yh39-hsk-detail-mode) #selectedLevelPanel {display:none!important}
+#homePanel.yh39-hsk-detail-mode #selectedLevelPanel {display:block!important;margin-top:0}
+body.yh-study-open:has(#homePanel.yh39-hsk-detail-mode) .yh34-study-hero {display:none!important}
+.yh39-level-backbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px}
+.yh39-back-levels{background:#eaf8f4;border:1px solid #b8ddd4;color:#177f77;border-radius:12px;padding:11px 16px;font-weight:800;cursor:pointer}
+.yh39-back-levels:hover,.yh39-back-levels:focus-visible{background:#d5f3ea;outline-color:#239e91}
+.yh39-course-trail{font-size:13px;font-weight:700;color:#64837e}
+.yh39-table-help{margin:12px 3px 5px;color:#52716d;font-size:14px;line-height:1.6}
+#homePanel.yh39-hsk-detail-mode .yh38-hsk-open{cursor:pointer;text-align:left}
+#homePanel.yh39-hsk-detail-mode .yh38-hsk-open:hover strong{text-decoration:underline}
+@media(max-width:680px){.yh39-level-backbar{flex-direction:column;align-items:flex-start}.yh34-study-home #homePanel.yh39-hsk-detail-mode .selected-level-panel{padding:14px}}
+
 </style>
 </head>
 <body>
@@ -1541,7 +1559,7 @@ body{--o:#249e91;--os:#eaf8f5;--yh-teal:#35b7a7;--yh-teal-dark:#167e76} body:not
   <div id="yh35YctContent" class="yh35-content" aria-live="polite"></div>
 </section>
 </main>
-<footer>YuHua Chinese • Wings to the World of Chinese • v38</footer>
+<footer>YuHua Chinese • Wings to the World of Chinese • v39</footer>
 <script async src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
 <script>
 const HSK1_DATA = [
@@ -18270,7 +18288,7 @@ function isHSK2(){ return selectedHSKLevel===2; }
 if(!Array.isArray(HSK4_DATA)||HSK4_DATA.length!==20) throw new Error("Dữ liệu HSK 4 chưa đầy đủ");
 const totalWords=HSK3_DATA.reduce((s,l)=>s+(l.words?.length||0),0);
 const textCount=HSK3_DATA.reduce((s,l)=>s+(l.texts?.length||0),0);
-$("globalStat").textContent=`HSK 3.0 + HSK 2.0 • HSK 1–6 • v38 • HSK 4: 20 bài`;
+$("globalStat").textContent=`HSK 3.0 + HSK 2.0 • HSK 1–6 • v39 • HSK 4: 20 bài`;
 
 function userStorageKey(key){
   // A new Firebase account on the same browser gets a separate local record.
@@ -18409,36 +18427,35 @@ function renderLessons(){
     </div>
 
     <div class="yh38-hsk-progress-wrapper"><div class="yh38-hsk-progress-heading"><div><div class="kicker">📈 THÀNH TÍCH HỌC TẬP</div><h3>Tiến độ từng bài ${levelLabel}</h3><p class="muted">Theo dõi hoạt động đã hoàn thành và kết quả mini quiz theo bài. Lưu riêng theo tài khoản trên trình duyệt.</p></div></div><div id="yh38HskProgress"></div></div>
-    <h2 class="lesson-heading">Các bài ${levelLabel} • ${systemLabel}</h2>
-    <div id="lessonGrid" class="lesson-grid"></div>`;
+    <p class="yh39-table-help">📖 Nhấn vào tên <b>Bài 1, Bài 2…</b> trong bảng thành tích để mở bài học tương ứng.</p>`;
 
-  const grid=$("lessonGrid");
-  grid.innerHTML=data.map(l=>{
-    if(selectedHSKLevel===1 || selectedHSKLevel===2){
-      const textCount=(l.texts||[]).length;
-      const wordCount=(l.words||[]).length;
-      return `<button class="lesson-card" onclick="openLesson(${l.n})">
-        <div class="lesson-num">BÀI ${l.n}</div>
-        <h3>${escapeHtml(l.title)}</h3>
-        ${selectedHSKLevel===2?`<div class="grammar-mini">${(l.grammar||[]).map(g=>`<span>${escapeHtml(g)}</span>`).join("")}</div>`:""}
-        <div class="muted" style="margin-top:10px">${wordCount} từ • ${textCount} bài khóa</div>
-        <div class="lesson-progress-mini"><span>${lessonPercent(l)}%</span><div class="progress-track small"><div class="progress-bar" style="width:${lessonPercent(l)}%"></div></div></div>
-      </button>`;
-    }
-
-    const pct=lessonPercent(l);
-    return `${selectedHSKLevel===4 && (l.n===1||l.n===11)?`<h3 class="hsk-volume-heading">${l.n===1?"HSK 4 – Quyển thượng (Bài 1–10)":"HSK 4 – Quyển hạ (Bài 11–20)"}</h3>`:""}<button class="lesson-card" onclick="openLesson(${l.n})">
-      <div class="lesson-num">BÀI ${l.n}</div>
-      <h3>${escapeHtml(l.title)}</h3>
-      ${statusText(l)}
-      <div class="muted" style="margin-top:8px">${l.words?.length||0} từ • ${l.texts?.length||0}/4 bài khóa</div>
-      <div class="lesson-progress-mini">
-        <span>${pct}%</span><div class="progress-track small"><div class="progress-bar" style="width:${pct}%"></div></div>
-      </div>
-    </button>`;
-  }).join("");
+  // v39: lesson cards removed from the bottom of HSK overview.
+  // Every lesson stays accessible via its clickable row in the achievement table.
   renderHskAchievementTable();
 }
+
+
+// v39 HSK navigation: one screen for choosing a level, a separate screen for
+// that level's review, examination and learning achievements.
+window.YH_HSK_SHOW_DETAIL=(scroll=true)=>{
+  const panel=$("homePanel");if(!panel)return;
+  panel.classList.add("yh39-hsk-detail-mode");
+  const selected=$("selectedLevelPanel");if(selected)selected.hidden=false;
+  if(scroll && selected)selected.scrollIntoView({behavior:"smooth",block:"start"});
+};
+window.YH_HSK_SHOW_CATALOG=(scroll=true)=>{
+  const panel=$("homePanel");if(!panel)return;
+  panel.classList.remove("yh39-hsk-detail-mode");
+  const selected=$("selectedLevelPanel");if(selected)selected.hidden=true;
+  if(scroll){
+    const target=panel.querySelector(".curriculum-level-section")||panel;
+    target.scrollIntoView({behavior:"smooth",block:"start"});
+  }
+};
+window.YH_HSK_RETURN_DETAIL=()=>{
+  renderHomeReview();
+  if(typeof window.YH_HSK_SHOW_DETAIL==="function")window.YH_HSK_SHOW_DETAIL(false);
+};
 
 function renderHomeTeacher(){
   $("homePanel").innerHTML=`
@@ -18518,7 +18535,11 @@ function renderHomeReview(){
         <div id="levelGrid" class="level-grid review-level-grid"></div>
       </div>
 
-      <div id="selectedLevelPanel" class="selected-level-panel">
+      <div id="selectedLevelPanel" class="selected-level-panel" hidden>
+        <div class="yh39-level-backbar">
+          <button class="yh39-back-levels" type="button" onclick="YH_HSK_SHOW_CATALOG()">← Chọn cấp độ HSK khác</button>
+          <span id="yh39CourseTrail" class="yh39-course-trail">HSK 3.0 · HSK 2</span>
+        </div>
         <div class="level-panel-head">
           <div>
             <div class="kicker" id="selectedLevelKicker">Trình độ đang chọn</div>
@@ -18556,6 +18577,7 @@ function renderHomeReview(){
   renderLevelGrid();
   selectHSKSystem(selectedHSKSystem, false);
   selectHSKLevel(selectedHSKLevel, false);
+  if(typeof window.YH_HSK_SHOW_CATALOG==="function")window.YH_HSK_SHOW_CATALOG(false);
 }
 
 window.openHomePanel=type=>{
@@ -18601,10 +18623,7 @@ window.selectHSKSystem=(system,doScroll=true)=>{
   renderSystemGrid();
   renderLevelGrid();
   selectHSKLevel(selectedHSKLevel,false);
-
-  if(doScroll && $("selectedLevelPanel")){
-    window.scrollTo({top:$("selectedLevelPanel").offsetTop-20,behavior:"smooth"});
-  }
+  if(doScroll && typeof window.YH_HSK_SHOW_CATALOG==="function")window.YH_HSK_SHOW_CATALOG(false);
 };
 
 function renderLevelGrid(){
@@ -18632,11 +18651,11 @@ window.selectHSKLevel=(level,doScroll=true)=>{
   if(!$("selectedLevelTitle")) return;
 
   $("selectedLevelTitle").textContent=`${lvl.title} • HSK ${selectedHSKSystem}`;
-  $("selectedLevelDesc").textContent =
-    selectedHSKSystem==="3.0"
-      ? (currentLevelData().length ? "Nội dung hiện có thuộc hệ HSK 3.0." : "")
-      : "";
-  $("selectedLevelKicker").textContent=`Trình độ đang chọn • HSK ${selectedHSKSystem}`;
+  $("selectedLevelDesc").textContent = currentLevelData().length
+    ? "Ôn tập, kiểm tra cuối khóa và theo dõi thành tích từng bài học."
+    : "Chưa có dữ liệu bài học cho cấp này.";
+  $("selectedLevelKicker").textContent=`CHƯƠNG TRÌNH HSK ${selectedHSKSystem}`;
+  if($("yh39CourseTrail"))$("yh39CourseTrail").textContent=`HSK ${selectedHSKSystem} · HSK ${level}`;
 
   const status=$("selectedLevelStatus");
   if(status) status.style.display="none";
@@ -18650,6 +18669,7 @@ window.selectHSKLevel=(level,doScroll=true)=>{
 
   renderLevelGrid();
   updateProgressUI();
+  if(doScroll && typeof window.YH_HSK_SHOW_DETAIL==="function")window.YH_HSK_SHOW_DETAIL(false);
 
   if(doScroll && $("selectedLevelPanel")){
     window.scrollTo({top:$("selectedLevelPanel").offsetTop-20,behavior:"smooth"});
@@ -18705,6 +18725,7 @@ $("backBtn").onclick=()=>{
   selectHSKSystem(selectedHSKSystem,false);
   selectHSKLevel(selectedHSKLevel,false);
   updateProgressUI();
+  if(typeof window.YH_HSK_SHOW_DETAIL==="function")window.YH_HSK_SHOW_DETAIL(false);
   window.scrollTo({top:0,behavior:"smooth"});
 };
 document.querySelectorAll("[data-module]").forEach(b=>b.onclick=()=>showModule(b.dataset.module));
@@ -19280,7 +19301,7 @@ window.renderLevelReview=level=>{
           <h2>Ôn tập ${levelName(level)} • HSK ${selectedHSKSystem}</h2>
           <p class="muted">Tổng hợp ${words.length} mục từ từ tất cả các bài thuộc HSK ${selectedHSKSystem} và một bài tập chung.</p>
         </div>
-        <button class="ghost" onclick="renderHomeReview()">← Quay lại chọn HSK</button>
+        <button class="ghost" onclick="YH_HSK_RETURN_DETAIL()">← Quay lại chọn HSK</button>
       </div>
 
       <div class="level-review-tabs">
@@ -19491,7 +19512,7 @@ window.renderFinalCourseTest=level=>{
             <div class="kicker">Test cuối khóa</div>
             <h2>HSK ${selectedHSKSystem} • HSK ${level}</h2>
           </div>
-          <button class="ghost" onclick="renderHomeReview()">← Quay lại</button>
+          <button class="ghost" onclick="YH_HSK_RETURN_DETAIL()">← Quay lại</button>
         </div>
         <div class="empty-state">
           Chưa có dữ liệu bài học để tạo test cuối khóa cho cấp độ này.
@@ -19518,7 +19539,7 @@ window.renderFinalCourseTest=level=>{
           <h2>Final Test HSK ${level}</h2>
           <p class="muted">${questions.length} câu • Từ vựng + Pinyin + Nhận diện chữ Hán + Bài khóa</p>
         </div>
-        <button class="ghost" onclick="renderHomeReview()">← Thoát bài test</button>
+        <button class="ghost" onclick="YH_HSK_RETURN_DETAIL()">← Thoát bài test</button>
       </div>
 
       <div class="final-test-info">
@@ -19948,6 +19969,7 @@ openFromLocation();
     if(typeof renderHomeReview==="function")renderHomeReview();
     if(typeof selectHSKSystem==="function")selectHSKSystem(system,false);
     if(typeof selectHSKLevel==="function")selectHSKLevel(level,false);
+    if(typeof window.YH_HSK_SHOW_DETAIL==="function")window.YH_HSK_SHOW_DETAIL(false);
     window.scrollTo({top:0,behavior:"smooth"});
   };
 
